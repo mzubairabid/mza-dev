@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-  const nextConfig = {
+const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -9,12 +9,10 @@
       },
     ],
   },
-  
-  // 👇 Unused JS aur heavy icon/UI packages ko optimize karega
+
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion", "radix-ui"],
   },
-};
 
   async redirects() {
     return [
