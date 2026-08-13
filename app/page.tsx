@@ -8,7 +8,7 @@ import { Approach } from "@/components/sections/approach";
 import { Stack } from "@/components/sections/stack";
 import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
-export const dynamic = "force-static";
+
 
 export default function Home() {
   return (
