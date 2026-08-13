@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* 1. Tailwind v4 Theme Configuration */
+@theme {
+  /* Editorial Tech Typography Fonts */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Playfair Display", "Newsreader", Georgia, Cambria, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Color Mappings for Tailwind CSS Utility Classes */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-success: var(--success);
+  --color-success-hover: var(--success-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Nav Theme Classes */
+  --color-nav-bg: var(--nav-bg);
+  --color-nav-scrolled-bg: var(--nav-scrolled-bg);
+  --color-nav-border: var(--nav-border);
+  --color-submenu-bg: var(--submenu-bg);
+  --color-submenu-border: var(--submenu-border);
+
+  /* Radius Scales */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+}
+
+/* 2. Color Palette & Root CSS Variables (Blue + Emerald Modern Tech Theme) */
+:root {
+  /* Warm Slate & Crisp Light Theme */
+  --background: #F8FAFC;         /* Soft Cool Gray/White Background */
+  --foreground: #0F172A;         /* Slate 900 Text */
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F172A;
+  
+  /* Primary Theme Color (Tech Blue) */
+  --primary: #2563EB;            /* Blue 600 */
+  --primary-hover: #1D4ED8;      /* Blue 700 */
+  --primary-foreground: #FFFFFF;
+
+  /* Success & Action Color (Emerald Green) */
+  --success: #059669;            /* Emerald 600 */
+  --success-hover: #047857;      /* Emerald 700 */
+  
+  --secondary: #F1F5F9;          /* Slate 100 */
+  --secondary-foreground: #0F172A;
+  
+  --muted: #F1F5F9;              /* Slate 100 */
+  --muted-foreground: #64748B;   /* Slate 500 Muted Text */
+  
+  --accent: #EFF6FF;             /* Blue 50 Light Hover State */
+  --accent-foreground: #2563EB;
+  
+  --destructive: #EF4444;
+  --border: #E2E8F0;             /* Slate 200 Border */
+  --input: #E2E8F0;
+  --ring: #2563EB;
+
+  /* Header Navbar & Submenu Colors (Light Mode) */
+  --nav-bg: rgba(248, 250, 252, 0.85);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
+  --nav-border: rgba(226, 232, 240, 0.8);
+  --submenu-bg: #FFFFFF;
+  --submenu-border: #E2E8F0;
+}
+
+.dark {
+  /* Obsidian & Deep Slate Dark Theme */
+  --background: #090D16;         /* Deep Rich Black/Navy */
+  --foreground: #F8FAFC;         /* Crisp Light Gray Text */
+  --card: #111827;
+  --card-foreground: #F8FAFC;
+  --popover: #111827;
+  --popover-foreground: #F8FAFC;
+  
+  /* Primary Theme Color (Tech Blue - Dark Mode Contrast) */
+  --primary: #3B82F6;            /* Blue 500 */
+  --primary-hover: #60A5FA;      /* Blue 400 */
+  --primary-foreground: #090D16;
+
+  /* Success & Action Color (Emerald Green) */
+  --success: #10B981;            /* Emerald 500 */
+  --success-hover: #34D399;      /* Emerald 400 */
+  
+  --secondary: #1E293B;          /* Slate 800 */
+  --secondary-foreground: #F8FAFC;
+  
+  --muted: #1E293B;
+  --muted-foreground: #94A3B8;   /* Slate 400 */
+  
+  --accent: #1E293B;
+  --accent-foreground: #3B82F6;
+  
+  --destructive: #F87171;
+  --border: #1E293B;
+  --input: #1E293B;
+  --ring: #3B82F6;
+
+  /* Header Navbar & Submenu Colors (Dark Mode) */
+  --nav-bg: rgba(9, 13, 22, 0.85);
+  --nav-scrolled-bg: rgba(17, 24, 39, 0.92);
+  --nav-border: rgba(30, 41, 59, 0.8);
+  --submenu-bg: #111827;
+  --submenu-border: #1E293B;
+}
+
+/* 3. Global Base & SEO / Typography Defaults */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Headings Accent */
+  h1, h2, h3, h4, .font-editorial {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* 4. Header Nav & Sub-Menu Styling Utilities */
+@utility site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease-in-out;
+
+  &.is-scrolled {
+    background-color: var(--nav-scrolled-bg);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    border-bottom-color: var(--border);
+  }
+}
+
+@utility nav-link {
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--primary);
+    background-color: var(--accent);
+  }
+}
+
+@utility sub-menu {
+  background-color: var(--submenu-bg);
+  border: 1px solid var(--submenu-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+  backdrop-filter: blur(16px);
+
+  & .sub-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    border-radius: var(--radius-sm);
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: var(--accent);
+      color: var(--primary);
+      transform: translateX(2px);
+    }
+  }
+}
+
+/* 5. Content Canvas Utility (Auto-styles Markdown Posts / Calculators) */
+@utility content-canvas {
+  /* Headings Setup */
+  & h1, & h2, & h3, & h4 {
+    font-family: var(--font-serif);
+    color: var(--foreground);
+    margin-top: 1.8em;
+    margin-bottom: 0.6em;
+    line-height: 1.25;
+  }
+
+  & h1 { font-size: 2.25rem; font-weight: 600; }
+  & h2 { font-size: 1.75rem; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+  & h3 { font-size: 1.35rem; font-weight: 500; }
+
+  /* Paragraphs */
+  & p {
+    color: var(--foreground);
+    font-size: 1rem;
+    line-height: 1.75;
+    margin-bottom: 1.25em;
+    opacity: 0.92;
+  }
+
+  /* Code Blocks */
+  & code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    background-color: var(--muted);
+    color: var(--primary);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-xs);
+    border: 1px solid var(--border);
+  }
+
+  /* High Converting Links */
+  & a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--primary-hover);
+    }
+  }
+
+  /* Structured Lists */
+  & ul, & ol {
+    margin-bottom: 1.25em;
+    padding-left: 1.5em;
+  }
+
+  & ul { list-style-type: disc; }
+  & ol { list-style-type: decimal; }
+  & li { margin-bottom: 0.5em; line-height: 1.6; }
+
+  /* Tables */
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.9rem;
+  }
+
+  & th, & td {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  & th {
+    background-color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* Blockquotes & Images */
+  & blockquote {
+    border-left: 3px solid var(--primary);
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--muted-foreground);
+    margin: 1.5em 0;
+  }
+
+  & img {
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin: 1.5em 0;
+  }
+}
