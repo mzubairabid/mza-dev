@@ -3,6 +3,20 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Inter, JetBrains_Mono } from "next/font/google"; // Next.js Optimized Fonts
+
+// 1. Google Fonts ko directly inhi variables se attach karein
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans", // CSS variable name
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono", // CSS variable name
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Muhammad Zubair Abid - Full-Stack Developer & SEO Specialist",
