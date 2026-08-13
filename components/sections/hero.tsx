@@ -61,7 +61,10 @@ export function Hero() {
                   alt="Muhammad Zubair Abid"
                   width={600}
                   height={400}
-                  priority
+                  priority={true} // Explicitly true karein
+                  loading="eager" // Force explicit eager loading
+                  fetchPriority="high" // Direct browser high priority hint
+                  quality={80} // Size reduce karne ke liye slightly optimize quality
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
                   onError={() => setImgError(true)}
                 />
