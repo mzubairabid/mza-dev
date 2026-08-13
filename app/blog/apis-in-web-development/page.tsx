@@ -83,19 +83,19 @@ export default function ApiRoleShopifyCaseStudyPostPage() {
     author: {
       "@type": "Person",
       name: "Muhammad Zubair Abid",
-      url: "https://gadgetcrunchie.com/about",
+      url: "https://mzadev.com/about",
     },
     publisher: {
       "@type": "Organization",
-      name: "Gadget Crunchie",
+      name: "MZA Dev",
       logo: {
         "@type": "ImageObject",
-        url: "https://gadgetcrunchie.com/logo.png",
+        url: "https://mzadev.com/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://gadgetcrunchie.com/blog/role-of-apis-shopify-case-study",
+      "@id": "https://mzadev.com/blog/role-of-apis-shopify-case-study",
     },
   };
 
@@ -294,7 +294,7 @@ export default function ApiRoleShopifyCaseStudyPostPage() {
                       Watch Full Technical Breakdown
                     </h4>
                     <p className="text-xs text-muted-foreground">
-                      Subscribe to ByteScript MZA on YouTube for in-depth web
+                      Subscribe to MZA Dev on YouTube for in-depth web
                       dev & API tutorials.
                     </p>
                   </div>

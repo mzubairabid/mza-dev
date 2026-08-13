@@ -293,7 +293,7 @@ export default function ServicesPage() {
               rel="noopener noreferrer"
               className="text-primary font-bold hover:underline inline-flex items-center gap-1 shrink-0"
             >
-              Click here to watch ByteScript MZA now! <ExternalLink className="w-3.5 h-3.5" />
+              Click here to watch MZA Dev now! <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
         </section>

@@ -499,7 +499,7 @@ export default function HtmlCssJsEditorToolPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             <Link
-              href="/blog"
+              href="/blog/modern-css-layouts-for-websites"
               className="p-4 rounded-xl border border-border bg-background hover:bg-accent/50 transition-colors flex items-center justify-between group"
             >
               <span className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -509,7 +509,7 @@ export default function HtmlCssJsEditorToolPage() {
             </Link>
 
             <Link
-              href="/blog"
+              href="/blog/core-web-vitals-in-2026"
               className="p-4 rounded-xl border border-border bg-background hover:bg-accent/50 transition-colors flex items-center justify-between group"
             >
               <span className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">

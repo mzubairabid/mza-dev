@@ -19,27 +19,27 @@ const featuredProjects: Project[] = [
     title: "German E-Commerce Store & PayPal Integration",
     category: "WooCommerce / Custom Dev",
     description: "Full store redesign with custom PayPal payment gateway integration and localized checkout flow.",
-    image: "/project-images/portfolio-hero-day.png", // public/project-images/ se apni image ka path dein
+    image: "/project-images/desi-shopzellingen-hero.webp", // public/project-images/ se apni image ka path dein
     tags: ["WordPress", "WooCommerce", "PayPal API", "PHP"],
-    liveUrl: "https://example.com",
+    liveUrl: "#",
   },
   {
     id: "2",
     title: "Enterprise Electronic Security Platform",
     category: "Web System & SEO",
     description: "12-page web platform deployed in Dubai featuring localized Arabic content and rapid Google indexing architecture.",
-    image: "/project-images/portfolio-hero-day.png",
+    image: "/project-images/gmbh-X-B2B-ch-hero.webp",
     tags: ["Next.js", "Tailwind CSS", "Technical SEO", "Arabic i18n"],
-    liveUrl: "https://example.com",
+    liveUrl: "#",
   },
   {
     id: "3",
     title: "Custom Interactive Financial Engine",
     category: "JavaScript / Custom Tools",
     description: "Custom vanilla JavaScript calculation engine integrated into WordPress to generate real-time financial reporting.",
-    image: "/project-images/portfolio-hero-day.png",
+    image: "/project-images/openanursery-co-uk-nursery-profit-calculation-updated-version.webp",
     tags: ["JavaScript", "WordPress", "Custom Math Logic"],
-    liveUrl: "https://example.com",
+    liveUrl: "#",
   },
 ];
 

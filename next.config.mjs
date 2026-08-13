@@ -234,6 +234,31 @@ const nextConfig = {
         destination: "/blog/build-agentic-web-experiences",
         permanent: true,
       },
+      {
+        source: '/blog/add-google-adsense-wordpress-without-plugins',
+        destination: '/blog/add-google-adsense-to-wordpress',
+        permanent: true,
+      },
+      {
+        source: '/blog/role-of-apis-in-web-development-shopify-case-study',
+        destination: '/blog/apis-in-web-development',
+        permanent: true,
+      },
+      {
+        source: '/tools/schema-generator',
+        destination: '/tools',
+        permanent: true,
+      },
+      {
+        source: '/tools/core-web-vitals',
+        destination: '/tools/core-web-vitals-in-2026',
+        permanent: true,
+      },
+      {
+        source: '/portfolio',
+        destination: '/work',
+        permanent: true,
+      },
     ];
   },
 };

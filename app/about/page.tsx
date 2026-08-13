@@ -185,7 +185,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <a
-                href="https://youtube.com/@ByteScriptMZA"
+                href="https://youtube.com/@mzadev"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline shrink-0"

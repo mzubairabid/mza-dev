@@ -50,12 +50,12 @@ export default function DisclaimerPage() {
         <p>
           Welcome to{" "}
           <Link
-            href="https://codeomist.com"
+            href="https://mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
           >
-            Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+            mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
           . Please read this disclaimer carefully before using any shared tutorials, interactive web tools, or technical guides on this platform.
         </p>
@@ -72,12 +72,12 @@ export default function DisclaimerPage() {
           <p>
             The information provided on{" "}
             <Link
-              href="https://codeomist.com"
+              href="https://mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
             >
-              Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+              mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>{" "}
             is for general informational and educational purposes only. This website is owned and operated by me, Zubair Abid. All content reflects my personal research, professional experience as a Web Developer, and my journey in the tech industry.
           </p>
@@ -152,10 +152,10 @@ export default function DisclaimerPage() {
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <span className="font-semibold text-foreground">Email:</span>
               <a
-                href="mailto:contact@codeomist.com"
+                href="mailto:contact@mzadev.com"
                 className="text-primary hover:underline font-mono"
               >
-                contact@codeomist.com
+                contact@mzadev.com
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function DisclaimerPage() {
                 href="/contact"
                 className="text-primary hover:underline font-mono"
               >
-                codeomist.com/contact
+                mzadev.com/contact
               </Link>
             </div>
           </div>

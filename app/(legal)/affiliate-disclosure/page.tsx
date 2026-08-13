@@ -56,12 +56,12 @@ export default function AffiliateDisclosurePage() {
           <p>
             Welcome to{" "}
             <Link
-              href="https://codeomist.com"
+              href="https://mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
             >
-              Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+              mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
             . As a solo developer and tech enthusiast, I believe in being 100% upfront with my readers. This disclosure is here to explain how I maintain this site and provide free high-quality content, tutorials, and interactive web tools for the developer community.
           </p>
@@ -75,12 +75,12 @@ export default function AffiliateDisclosurePage() {
           <p>
             On{" "}
             <Link
-              href="https://codeomist.com"
+              href="https://mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
             >
-              Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+              mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
             , you will find links to various third-party products and services (such as web hosting, themes, plugins, developer utilities, and tech gadgets). Some of these are “affiliate links.” This means if you click on a link and make a purchase, I may earn a small commission at no additional cost to you.
           </p>
@@ -104,12 +104,12 @@ export default function AffiliateDisclosurePage() {
           <p>
             My editorial integrity is not for sale. All reviews, recommendations, and coding guides on{" "}
             <Link
-              href="https://codeomist.com"
+              href="https://mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
             >
-              Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+              mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>{" "}
             are based on my personal experience, thorough research, or professional expertise as a developer. I only recommend tools and services that I personally use or trust to add real value to your projects. Whether I use an affiliate link or not, my opinion remains unbiased.
           </p>
@@ -148,10 +148,10 @@ export default function AffiliateDisclosurePage() {
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <span className="font-semibold text-foreground">Email:</span>
               <a
-                href="mailto:contact@codeomist.com"
+                href="mailto:contact@mzadev.com"
                 className="text-primary hover:underline transition-colors font-mono"
               >
-                contact@codeomist.com
+                contact@mzadev.com
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -161,7 +161,7 @@ export default function AffiliateDisclosurePage() {
                 href="/contact"
                 className="text-primary hover:underline transition-colors font-mono"
               >
-                codeomist.com/contact
+                mzadev.com/contact
               </Link>
             </div>
           </div>

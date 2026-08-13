@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
   const faqs = [
     {
       q: "How can I request the deletion of my personal data?",
-      a: "You can send an email directly to contact@codeomist.com with the subject 'Data Deletion Request', and your personal information (such as newsletter emails or comment data) will be permanently erased.",
+      a: "You can send an email directly to contact@mzadev.com with the subject 'Data Deletion Request', and your personal information (such as newsletter emails or comment data) will be permanently erased.",
     },
     {
       q: "Does Codeomist sell my personal data to third parties?",
@@ -50,12 +50,12 @@ export default function PrivacyPolicyPage() {
         <p>
           At{" "}
           <Link
-            href="https://codeomist.com"
+            href="https://mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
           >
-            Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+            mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
           , your privacy is one of my main priorities. As a solo developer, I am committed to protecting the personal information you share with me. This Privacy Policy document contains types of information that is collected and recorded by Codeomist and how I use it.
         </p>
@@ -191,10 +191,10 @@ export default function PrivacyPolicyPage() {
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <span className="font-semibold text-foreground">Email:</span>
               <a
-                href="mailto:contact@codeomist.com"
+                href="mailto:contact@mzadev.com"
                 className="text-primary hover:underline font-mono"
               >
-                contact@codeomist.com
+                contact@mzadev.com
               </a>
             </div>
             <div className="flex items-center gap-2">
@@ -204,7 +204,7 @@ export default function PrivacyPolicyPage() {
                 href="/contact"
                 className="text-primary hover:underline font-mono"
               >
-                codeomist.com/contact
+                mzadev.com/contact
               </Link>
             </div>
           </div>

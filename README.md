@@ -178,13 +178,62 @@ I share development, web, technology, and related content through my online plat
 
 ## Connect With Me
 
-* [GitHub](https://github.com/gadgetcrunchie?utm_source=chatgpt.com)
-* [LinkedIn](https://www.linkedin.com/in/mzadev/?utm_source=chatgpt.com)
-* [X / Twitter](https://x.com/mzadevhq?utm_source=chatgpt.com)
-* [instagram](https://www.instagram.com/mzadevhq/)
-* [Facebook](https://www.facebook.com/mzadev?utm_source=chatgpt.com)
-* [Dev.to](https://dev.to/mzadev?utm_source=chatgpt.com)
-* [YouTube](https://www.youtube.com/@mzadev?utm_source=chatgpt.com)
+* <a 
+  href="https://github.com/gadgetcrunchie" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  GitHub
+</a>
+* <a 
+  href="https://www.linkedin.com/in/mzadev/" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  LinkedIn
+</a>
+* <a 
+  href="https://x.com/mzadevhq" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  X / Twitter
+</a>
+* <a 
+  href="https://www.instagram.com/mzadevhq/" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  Instagram
+</a>
+* <a 
+  href="https://www.facebook.com/mzadev" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  Facebook
+</a>
+* <a 
+  href="https://dev.to/mzadev" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  Dev.to
+</a>
+* <a 
+  href="https://www.youtube.com/@mzadev" 
+  target="_blank" 
+  rel="noopener noreferrer nofollow"
+  className="hover:text-primary transition-colors"
+>
+  YouTube
+</a>
 
 ## Contact
 

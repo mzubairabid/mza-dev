@@ -7,6 +7,9 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Muhammad Zubair Abid - Full-Stack Developer & SEO Specialist",
   description: "Portfolio and technical insights by MZA.",
+  icons: {
+    icon: "/favicon.webp", // 👈 WebP file path from public folder
+  },
 
   // 1. Google Search Console Verification Code
   verification: {

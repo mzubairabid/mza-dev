@@ -34,7 +34,7 @@ export function Hero() {
           <FadeIn direction="up" delay={0.2}>
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
-                href="#work"
+                href="/work"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground hover:opacity-90 font-medium text-sm rounded-xl transition-all shadow-sm group"
               >
                 <span>View Selected Work</span>
@@ -42,7 +42,7 @@ export function Hero() {
               </Link>
 
               <Link
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-card text-foreground border border-border hover:bg-muted font-medium text-sm rounded-xl transition-all"
               >
                 Let&apos;s Talk

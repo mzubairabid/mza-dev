@@ -239,7 +239,7 @@ export default function ShopifyServicesPage() {
               Skip The Agency Overhead.
             </h3>
             <a
-              href="https://www.upwork.com"
+              href="https://www.upwork.com/freelancers/~018cd50705508ffb52?mp_source=share"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-primary hover:opacity-90 text-primary-foreground font-semibold text-xs sm:text-sm transition-all shadow-md shrink-0 inline-flex items-center gap-2"

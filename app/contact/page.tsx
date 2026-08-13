@@ -39,7 +39,7 @@ const GithubIcon = ({ className }: { className?: string }) => (
 export default function ContactPage() {
   const [copied, setCopied] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const email = "contact@gadgetcrunchie.com";
+  const email = "contact@mzadev.com";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -342,7 +342,7 @@ export default function ContactPage() {
                 >
                   <div className="flex items-center gap-2.5">
                     <YoutubeIcon className="w-4 h-4 text-red-600" />
-                    <span>ByteScript MZA</span>
+                    <span>MZA Dev</span>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100" />
                 </a>
@@ -355,7 +355,7 @@ export default function ContactPage() {
                 >
                   <div className="flex items-center gap-2.5">
                     <LinkedinIcon className="w-4 h-4 text-blue-600" />
-                    <span>Gadget Crunchie</span>
+                    <span>MZA Dev</span>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100" />
                 </a>
@@ -368,7 +368,7 @@ export default function ContactPage() {
                 >
                   <div className="flex items-center gap-2.5">
                     <GithubIcon className="w-4 h-4 text-zinc-800 dark:text-zinc-200" />
-                    <span>Gadget Crunchie</span>
+                    <span>MZA Dev</span>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100" />
                 </a>

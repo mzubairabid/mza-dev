@@ -57,7 +57,7 @@ export default function AboutHero() {
                 sizes="(max-width: 768px) 100vw, 384px"
                 className="object-cover object-top hover:scale-105 transition-transform duration-500 block"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
             </div>
 
             {/* Profile Details */}

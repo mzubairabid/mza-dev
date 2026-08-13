@@ -14,6 +14,8 @@ export interface NavItem {
 export type FooterLink = {
   label: string;
   href: string;
+  target?: string;
+  rel?: string;
 };
 
 // 2. Main Navigation Links
@@ -83,7 +85,22 @@ export const FOOTER_LEGAL_LINKS: readonly FooterLink[] = [
 ] as const;
 
 export const BOTTOM_BAR_SOCIALS: readonly FooterLink[] = [
-  { label: "GitHub", href: "https://github.com/gadgetcrunchie" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/mzadev/" },
-  { label: "YouTube", href: "https://www.youtube.com/@mzadev" },
+  { 
+    label: "GitHub", 
+    href: "https://github.com/gadgetcrunchie", 
+    target: "_blank", 
+    rel: "noopener noreferrer nofollow" 
+  },
+  { 
+    label: "LinkedIn", 
+    href: "https://www.linkedin.com/in/mzadev/", 
+    target: "_blank", 
+    rel: "noopener noreferrer nofollow" 
+  },
+  { 
+    label: "YouTube", 
+    href: "https://www.youtube.com/@mzadev", 
+    target: "_blank", 
+    rel: "noopener noreferrer nofollow" 
+  },
 ] as const;

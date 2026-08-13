@@ -18,7 +18,7 @@ export default function CopyrightPolicyPage() {
     },
     {
       q: "How do I report unauthorized use of Codeomist content?",
-      a: "If you find Codeomist's original articles, custom visual layouts, or interactive tool scripts republished on another platform without permission, please email contact@codeomist.com with the target link.",
+      a: "If you find Codeomist's original articles, custom visual layouts, or interactive tool scripts republished on another platform without permission, please email contact@mzadev.com with the target link.",
     },
     {
       q: "What happens if a DMCA notice is issued?",
@@ -50,12 +50,12 @@ export default function CopyrightPolicyPage() {
         <p>
           Welcome to{" "}
           <Link
-            href="https://codeomist.com"
+            href="https://mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
           >
-            Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+            mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
           . I take intellectual property rights seriously and am committed to protecting the original technical tutorials, custom web tools, and design assets published on this platform.
         </p>
@@ -72,12 +72,12 @@ export default function CopyrightPolicyPage() {
           <p>
             All content published on{" "}
             <Link
-              href="https://codeomist.com"
+              href="https://mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
             >
-              Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+              mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
             , including but not limited to text, specialized coding scripts (HTML, CSS, JS, React), custom-made graphic designs, web tools, website layouts, and video content from my YouTube channel (ByteScript MZA), is the exclusive intellectual property of Zubair Abid (the Founder & Solo Developer) unless otherwise explicitly stated.
           </p>
@@ -179,10 +179,10 @@ export default function CopyrightPolicyPage() {
               <Mail className="w-4 h-4 text-primary shrink-0" />
               <span className="font-semibold text-foreground">Email:</span>
               <a
-                href="mailto:contact@codeomist.com?subject=Copyright Inquiry"
+                href="mailto:contact@mzadev.com?subject=Copyright Inquiry"
                 className="text-primary hover:underline font-mono"
               >
-                contact@codeomist.com
+                contact@mzadev.com
               </a>
             </div>
             <div className="flex items-center gap-2">

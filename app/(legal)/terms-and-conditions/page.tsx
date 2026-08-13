@@ -50,16 +50,16 @@ export default function TermsAndConditionsPage() {
         <p>
           Welcome to{" "}
           <Link
-            href="https://codeomist.com"
+            href="https://mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
           >
-            Codeomist.com <ArrowUpRight className="w-3.5 h-3.5" />
+            mzadev.com <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
           ! These Terms and Conditions outline the rules and regulations for the use of my website, located at{" "}
           <Link href="/" className="text-primary hover:underline font-mono text-xs sm:text-sm">
-            https://codeomist.com
+            https://mzadev.com
           </Link>
           .
         </p>
