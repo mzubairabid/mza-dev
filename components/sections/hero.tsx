@@ -57,17 +57,17 @@ export function Hero() {
             <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
               {!imgError ? (
                 <Image
-                  src="/project-images/hero-section-index.webp"
-                  alt="Muhammad Zubair Abid"
-                  width={600}
-                  height={400}
-                  priority={true} // Explicitly true karein
-                  loading="eager" // Force explicit eager loading
-                  fetchPriority="high" // Direct browser high priority hint
-                  quality={80} // Size reduce karne ke liye slightly optimize quality
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
-                  onError={() => setImgError(true)}
-                />
+  src="/project-images/hero-section-index.webp"
+  alt="Muhammad Zubair Abid"
+  width={600}
+  height={400}
+  priority={true}
+  loading="eager"
+  fetchPriority="high"
+  quality={70} // 👈 70% quality (Size 30% kam hoga)
+  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" // 👈 Mobile load optimize hoga
+  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
+/>
               ) : (
                 <div className="flex flex-col items-center justify-center text-center p-8 space-y-3 min-h-75 bg-muted/30">
                   <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">
