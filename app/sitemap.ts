@@ -36,7 +36,7 @@ function getStaticPages(dir: string, baseRoute = ""): string[] {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mzadev.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mzadev.com";
 
   const rootAppDir = path.join(process.cwd(), "app");
   const srcAppDir = path.join(process.cwd(), "src", "app");
