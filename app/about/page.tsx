@@ -1,19 +1,30 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import heroImage from "@/public/project-images/author-mza.webp";
 import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
+
 import {
   CheckCircle2,
   Code2,
   Cpu,
   ArrowRight,
   ShieldCheck,
+  ChevronDown,
   ArrowUpRight,
   Sparkles,
 } from "lucide-react";
 
 export default function AboutPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  
+    const toggleFaq = (index: number) => {
+      setOpenFaq(openFaq === index ? null : index);
+    };
+
   const coreSkills = [
     "Next.js / React / TypeScript",
     "Tailwind CSS & Modern UI/UX",
@@ -68,9 +79,35 @@ export default function AboutPage() {
     },
   ];
 
+  const faqs = [
+    {
+      q: "Who is Muhammad Zubair Abid (MZA Dev)?",
+      a: "Muhammad Zubair Abid, known professionally as MZA Dev, is an independent Full-Stack Web Developer and Technical SEO Specialist with an Honors degree in Information Technology (completed in 2018). He specializes in Next.js, React, TypeScript, custom Shopify Liquid, and Core Web Vitals performance tuning.",
+    },
+    {
+      q: "What is Muhammad Zubair Abid's background and development experience?",
+      a: "His career began with enterprise software development and relational database management before shifting toward the modern JavaScript ecosystem. He manages the technology media platform Gadget Crunchie (launched in October 2022) and the technical YouTube channel ByteScript MZA.",
+    },
+    {
+      q: "Why hire an independent developer like MZA Dev instead of an agency?",
+      a: "Working with MZA Dev guarantees direct, high-level engineering without junior offshore handoffs. Every line of code, database query, speed optimization, and security check is handled directly by a senior full-stack engineer.",
+    },
+    {
+      q: "What core technologies and frameworks does MZA Dev specialize in?",
+      a: "MZA Dev specializes in Next.js (App Router), React, TypeScript, Tailwind CSS, Node.js, custom API integrations, custom Shopify Liquid theme development, WooCommerce speed optimization, and hardcoded JSON-LD structured schema.",
+    },
+  ];
+
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
-      
+      {/* Inject JSON-LD Schema */}
+            <FaqSchema 
+              faqList={faqs.map((item: { q: string; a: string }) => ({ 
+                question: item.q, 
+                answer: item.a 
+              }))} 
+            />
+
       {/* 1. Hero Section */} 
       <section className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 sm:p-10 md:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -91,7 +128,7 @@ export default function AboutPage() {
 
             <FadeIn direction="up" delay={0.3}>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                I specialize in engineering fast Next.js web applications, responsive custom user interfaces, and search-engine optimized storefronts built to scale.
+                I am Muhammad Zubair Abid (MZA Dev) specializing in engineering high-speed Next.js web applications, custom Shopify & WordPress architectures, and executing deep Core Web Vitals optimizations built to scale and rank on search engines.
               </p>
             </FadeIn>
 
@@ -304,6 +341,51 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+        {/* Header Section - Centered */}
+        <div className="w-full text-center space-y-3 max-w-3xl mx-auto">
+          <FadeIn direction="down" delay={0.3}>
+            <h2 className="text-3xl sm:text-5xl font-serif font-light text-foreground tracking-tight">
+              Frequently Asked Questions
+            </h2>
+          </FadeIn>
+
+          <FadeIn direction="up" delay={0.4}>
+            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+              Learn more about Muhammad Zubair Abid (MZA Dev), engineering workflow, technical background, and service guarantees.
+            </p>
+          </FadeIn>
+        </div>
+
+        {/* 2 Columns Grid */}
+        <FadeIn direction="up" delay={0.5}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start pt-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="border border-border/60 rounded-2xl bg-accent/20 overflow-hidden transition-all"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-muted-foreground shrink-0 transition-transform duration-300 ${
+                      openFaq === index ? "rotate-180 text-primary" : ""
+                    }`}
+                  />
+                </button>
+                {openFaq === index && (
+                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border/40 leading-relaxed font-normal">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </FadeIn>
+      </section>
       {/* 5. Call to Action Banner */}
       <FadeIn direction="up" delay={0.2}>
         <section className="rounded-3xl border border-border bg-card text-foreground p-8 sm:p-12 md:p-16 text-center space-y-6 shadow-xl">

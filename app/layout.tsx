@@ -59,7 +59,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col justify-between bg-background text-foreground antialiased">
+      <body className="min-h-screen flex flex-col justify-between bg-background text-foreground antialiased suppressHydrationWarning={true}">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

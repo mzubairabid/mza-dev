@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
 
 import {
   Code2,
@@ -48,30 +49,41 @@ export default function WebDevelopmentServicesPage() {
 
   const faqs = [
     {
-      q: "Which platforms do you specialize in?",
-      a: "I specialize in Next.js, React, TypeScript, custom HTML/CSS/JS, PHP, as well as highly optimized WordPress and Shopify environments without heavy page-builder bloat.",
-    },
-    {
-      q: "How does your service improve my site’s SEO?",
-      a: "I build with clean semantic HTML5, hardcoded JSON-LD schema markup, optimal crawl architecture, and strict Core Web Vitals performance targets to maximize search engine visibility from day one.",
-    },
-    {
-      q: "Do you offer post-launch support?",
-      a: "Yes! All packages include dedicated post-launch support and maintenance (ranging from 14 to 30+ days depending on your selected tier) to ensure a smooth transition.",
-    },
-    {
-      q: "Can I manage my website after the project is complete?",
-      a: "Absolutely. I provide full administrative control, clean content structures, and user-friendly documentation so you or your team can manage updates with ease.",
-    },
-    {
-      q: "What is the typical project timeline?",
-      a: "Landing pages and basic sites take around 3-5 days. Comprehensive multi-page platforms and complex custom e-commerce stores typically take 1 to 3 weeks.",
-    },
+    q: "Who provides custom Next.js web development and full-stack solutions?",
+    a: "Muhammad Zubair Abid (MZA Dev) provides custom Next.js web development, modern React applications, custom API integrations, and technical SEO services for scalable digital businesses.",
+  },
+  {
+    q: "Why should I choose custom Next.js code over standard page builders?",
+    a: "Page builders often introduce heavy code bloat that slows down your site. Custom Next.js architectures load instantly, score higher on Core Web Vitals, and provide built-in SEO advantages that help you rank faster on Google and AI search engines.",
+  },
+  {
+    q: "Which platforms and technologies do you specialize in?",
+    a: "I focus on modern full-stack technologies including Next.js, React, TypeScript, Tailwind CSS, custom JavaScript, and PHP. I also build clean, high-speed WordPress and Shopify solutions without relying on laggy page builders.",
+  },
+  {
+    q: "How do your web development services improve my site's SEO?",
+    a: "I write clean, semantic HTML code with structured JSON-LD schema built directly into the framework. Combined with fast mobile performance and optimal site structure, search engine crawlers can index and rank your pages effortlessly.",
+  },
+  {
+    q: "What is your typical project completion timeline?",
+    a: "Simple landing pages and single-page apps are usually ready in 3 to 5 days. Full custom websites, multi-page platforms, or e-commerce stores typically take 1 to 3 weeks depending on features.",
+  },
+  {
+    q: "Will I be able to update my website content easily after launch?",
+    a: "Yes, 100%. I set up intuitive content structures or headless CMS options and give you full admin access along with quick guidance, so you or your team can update images and text without touching code.",
+  },
+  {
+    q: "Do you offer ongoing support after the project goes live?",
+    a: "Absolutely. Every project includes dedicated post-launch support ranging from 14 to 30 days depending on your plan to fix any bugs, adjust layouts, and make sure everything runs smoothly.",
+  },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
-      
+      {/* 0. Inject JSON-LD Schema */}
+      <FaqSchema 
+        faqList={faqs.map(item => ({ question: item.q, answer: item.a }))} 
+      />
       {/* 1. Hero Section */}
       <FadeIn>
         <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
@@ -85,7 +97,7 @@ export default function WebDevelopmentServicesPage() {
                 High-Performance Web Development Service for Scalable Growth
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                I transform complex ideas into fast, secure, and SEO-friendly digital experiences that drive real business results. Leveraging years of expertise since 2018, I bridge the gap between creative UI/UX design and elite-level technical development.
+                Web Development Services by MZA Dev focus on engineering high-performance, scalable, and responsive web applications using Next.js, React, and modern TypeScript architectures. Engineered by Muhammad Zubair Abid, these tailored digital solutions prioritize rapid load speeds, seamless API integrations, and technical SEO compliance to maximize search engine visibility and user conversions.
               </p>
 
               <div className="pt-2">
@@ -412,15 +424,17 @@ export default function WebDevelopmentServicesPage() {
         </section>
       </FadeIn>
       {/* 7. FAQs Section */}
+      
       <FadeIn>
-        <section className="space-y-8 max-w-4xl mx-auto">
+        <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2">
             <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
               FAQs
             </h2>
           </div>
 
-          <div className="space-y-3">
+          {/* 2 Columns Grid on Medium Screens & Above */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {faqs.map((faq, index) => (
               <div
                 key={index}
@@ -428,7 +442,7 @@ export default function WebDevelopmentServicesPage() {
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -438,7 +452,7 @@ export default function WebDevelopmentServicesPage() {
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border leading-relaxed">
+                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border leading-relaxed">
                     {faq.a}
                   </div>
                 )}

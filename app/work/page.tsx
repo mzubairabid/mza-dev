@@ -68,7 +68,7 @@ export default function WorkPage() {
               </h1>
 
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                Fast code, clean SEO, and zero bloated templates. Explore a curated showcase of custom web applications, high-converting e-commerce builds, and localized enterprise web systems.
+                Fast code, clean SEO, and zero bloated templates. Explore MZA Dev's curated showcase of custom Next.js web applications, high-converting e-commerce builds, and performance-tuned enterprise systems.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
+
 import {
   Code2,
   Gauge,
@@ -118,50 +120,60 @@ export default function ServicesPage() {
 
   const faqs = [
     {
-      q: "What platforms do you specialize in for web development?",
-      a: "I specialize in Next.js, React, TypeScript, custom vanilla JS tools, as well as custom-coded WordPress and Shopify setups without heavy builder bloat.",
-    },
-    {
-      q: "Will my website be fully optimized for mobile devices and search engines?",
-      a: "Yes! Mobile-first responsive layouts, strict Core Web Vitals targets, structured JSON-LD schema, and semantic HTML are baked in by default.",
-    },
-    {
-      q: "Can you integrate advanced tracking and analytics into the website?",
-      a: "Absolutely. I configure complete GA4 properties, Google Search Console, GTM, and custom server-side conversion tracking to avoid loss from ad-blockers.",
-    },
-    {
-      q: "How long does it typically take to complete a custom web project?",
-      a: "Turnaround times vary: typical landing pages take 3-5 days, while complex full-stack web applications or e-commerce stores take 2-3 weeks.",
-    },
-    {
-      q: "Do you provide maintenance and post-launch technical support?",
-      a: "Yes, I offer ongoing technical maintenance, core updates, speed preservation checks, and priority emergency bug fixes.",
-    },
-    {
-      q: "What will you need from me during the process?",
-      a: "Clear business goals, asset links (logos/copy), access credentials (hosting/domain/APIs), and timely feedback on progress milestones.",
-    },
-    {
-      q: "How can I guarantee that our project together will be a success?",
-      a: "You work directly with me—the senior engineer—without middle-tier account managers. We follow clear milestone sign-offs and live staging tests.",
-    },
-    {
-      q: "How do I book you?",
-      a: "Click on 'Let's Discuss Your Project', fill out the quick contact inquiry, and I'll respond within 24 hours to set up our kick-off brief.",
-    },
-    {
-      q: "How much will this cost me?",
-      a: "Pricing depends strictly on scope, required integrations, and technical depth. I provide flat-rate, transparent estimates after our first brief.",
-    },
-    {
-      q: "Do you have payment plans?",
-      a: "Yes, I usually split projects into milestone payments (50% upfront to initiate development and 50% upon final testing/delivery).",
-    },
+    q: "Who provides high-performance web engineering and full-stack development services?",
+    a: "Muhammad Zubair Abid (MZA Dev) provides custom full-stack web engineering, Next.js applications, custom WordPress and Shopify development, server-side tracking, and technical SEO services.",
+  },
+  {
+    q: "What platforms do you specialize in for web development?",
+    a: "I specialize in Next.js, React, TypeScript, custom JavaScript, as well as lightweight, custom-coded WordPress and Shopify builds without relying on laggy page builders.",
+  },
+  {
+    q: "Will my website be fully optimized for mobile devices and search engines?",
+    a: "Yes, 100%. Mobile-first responsive layouts, strict Core Web Vitals targets, structured JSON-LD schema, and semantic HTML are baked directly into the codebase.",
+  },
+  {
+    q: "Can you integrate advanced analytics and server-side tracking?",
+    a: "Absolutely. I configure complete GA4 properties, Google Search Console, GTM, and custom server-side conversion tracking so you never lose data due to browser ad-blockers.",
+  },
+  {
+    q: "How long does it typically take to complete a custom web project?",
+    a: "Turnaround times depend on scope: single landing pages usually take 3 to 5 days, while complex full-stack web platforms or custom e-commerce stores take 2 to 3 weeks.",
+  },
+  {
+    q: "Do you offer post-launch support and ongoing maintenance?",
+    a: "Yes! Every project includes dedicated post-launch support. I also offer ongoing maintenance, core updates, performance audits, and emergency bug fixes.",
+  },
+  {
+    q: "What do you need from me to get started on the project?",
+    a: "I just need your core project objectives, existing content/assets (like logos and copy), access credentials (hosting/domain/APIs), and timely feedback on progress milestones.",
+  },
+  {
+    q: "How do you ensure project success and clear communication?",
+    a: "You work directly with me—the senior engineer—without account managers or delays. We work through clear milestone sign-offs, live staging links, and transparent updates.",
+  },
+  {
+    q: "How much will a custom web development project cost?",
+    a: "Pricing depends strictly on technical scope, feature complexity, and custom integrations. I provide transparent, fixed-rate proposals after reviewing your initial brief.",
+  },
+  {
+    q: "What are your payment terms?",
+    a: "Projects are typically structured on milestone payments—50% upfront to initiate core development and 50% upon final testing, review, and deployment.",
+  },
+  {
+    q: "How can I book a project with you?",
+    a: "Click 'Let's Discuss Your Project', fill out the quick contact form, and I will get back to you within 24 hours to set up our kick-off brief.",
+  },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-background text-foreground">
-      
+      {/* Inject JSON-LD Schema */}
+      <FaqSchema 
+        faqList={faqs.map((item: { q: string; a: string }) => ({ 
+          question: item.q, 
+          answer: item.a 
+        }))} 
+      />
       {/* 1. Hero Section */}
       <FadeIn>
         <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-10 md:p-12 shadow-sm">
@@ -172,10 +184,10 @@ export default function ServicesPage() {
                 Services
               </span>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-foreground tracking-tight leading-tight">
-                High-Performance Web Engineering That Drives Growth
+                High-Performance Web Development That Drives Growth
               </h1>
-              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                I build custom WordPress, Shopify, and hand-coded websites engineered to eliminate slow loading times, rank on Google, and convert cold traffic into customers. Clean architecture, server-level tracking, and zero framework bloat.
+              <p>
+                Web Engineering & Full-Stack Development Services by MZA Dev (Muhammad Zubair Abid) deliver custom WordPress, Shopify, Next.js, and hand-coded web applications engineered to eliminate slow loading times, rank on Google and AI search engines, and convert cold traffic into customers. Clean architecture, server-level tracking, and zero framework bloat.
               </p>
 
               <div className="pt-2">
@@ -336,25 +348,26 @@ export default function ServicesPage() {
       </FadeIn>      
       {/* 4. Frequently Asked Questions Accordion Section */}
       <FadeIn>
-        <section className="space-y-8 max-w-4xl mx-auto">
+        <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2">
             <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-xs sm:text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl mx-auto">
               Clear answers to common questions about my custom web development engineering, technical SEO frameworks, and project delivery timelines.
             </p>
           </div>
 
-          <div className="space-y-3">
+          {/* 2 Columns Grid on Medium Screens & Above */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="border border-border rounded-2xl bg-card overflow-hidden transition-all"
+                className="border border-border rounded-2xl bg-card overflow-hidden transition-all shadow-xs"
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -364,7 +377,7 @@ export default function ServicesPage() {
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border leading-relaxed">
+                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border/60 leading-relaxed font-normal">
                     {faq.a}
                   </div>
                 )}

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
+
 import {
   ShoppingBag,
   Zap,
@@ -95,22 +97,44 @@ export default function ShopifyServicesPage() {
 
   const faqs = [
     {
-      q: "Why should I work with you instead of a full-service agency?",
-      a: "You work directly with the senior developer building your project. No account managers, no communication delay, no junior interns, and zero agency overhead.",
-    },
-    {
-      q: "Will my store speed drop as I scale up?",
-      a: "No. Because I build with clean, custom Liquid and minimal app dependencies, your store scales smoothly without accumulating script bloat or layout shifts.",
-    },
-    {
-      q: "Do you include the technical SEO setup standard?",
-      a: "Yes! JSON-LD schema markup, clean semantic HTML5, Core Web Vitals targets, and index-ready structural optimizations are included by default.",
-    },
+    q: "Who provides custom Shopify store design and speed optimization services?",
+    a: "Muhammad Zubair Abid (MZA Dev) provides custom Shopify theme development, conversion-focused e-commerce design, custom Liquid coding, and technical e-commerce SEO services.",
+  },
+  {
+    q: "Why should I work with MZA Dev instead of a full-service agency?",
+    a: "You work directly with the senior developer building your project. That means no account managers, no communication delays, no junior interns touching your code, and zero agency overhead cost.",
+  },
+  {
+    q: "Will my Shopify store speed drop as I add more products and apps?",
+    a: "No. I build stores using custom Liquid code and minimal app dependencies. This keeps your shop clean and fast so it scales smoothly without script bloat or layout shifts.",
+  },
+  {
+    q: "Do you include technical e-commerce SEO setup with the store build?",
+    a: "Yes, absolutely! Structured JSON-LD product schema, clean HTML markup, Core Web Vitals targets, and index-ready sitemap optimizations are included by default.",
+  },
+  {
+    q: "Can you help migrate my existing store from WordPress/WooCommerce to Shopify?",
+    a: "Yes. I manage complete end-to-end migrations including product data, customer accounts, order history, design layouts, and 301 redirects to protect your Google SEO rankings.",
+  },
+  {
+    q: "Will I be able to manage products and orders myself after launch?",
+    a: "100%. I design user-friendly Shopify admin layouts and custom sections, allowing you to easily add new products, adjust banners, and manage inventory without touching any code.",
+  },
+  {
+    q: "What is the typical timeline to complete a custom Shopify store?",
+    a: "A standard custom Shopify setup or redesign takes around 1 to 2 weeks. Complex custom storefronts with custom Liquid features usually take 2 to 3 weeks.",
+  },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
-      
+      {/* 1. Inject JSON-LD Schema using FaqSchema */}
+      <FaqSchema 
+        faqList={faqs.map((item: { q: string; a: string }) => ({ 
+    question: item.q, 
+    answer: item.a 
+  }))} 
+      />
       {/* 1. Hero Section */}
       <FadeIn>
         <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
@@ -124,7 +148,7 @@ export default function ShopifyServicesPage() {
                 Build Fast Funnels.
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                I write clean code to build fast stores and grow your funnel sales. No slow themes, no heavy apps, and no agency loops. Just direct results.
+                Shopify Store Development Services by MZA Dev focus on engineering high-converting, lightning-fast e-commerce storefronts tailored for maximum sales. Engineered by Muhammad Zubair Abid, these solutions combine custom Liquid theme design, app bloat elimination, seamless payment integrations, and technical e-commerce SEO to scale your brand without performance compromises.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -322,14 +346,15 @@ export default function ShopifyServicesPage() {
       </FadeIn>
       {/* 6. FAQs Section */}
       <FadeIn>
-        <section className="space-y-8 max-w-4xl mx-auto">
+        <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2">
             <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
               FAQs
             </h2>
           </div>
 
-          <div className="space-y-3">
+          {/* 2 Columns Grid on Medium Screens & Above */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {faqs.map((faq, index) => (
               <div
                 key={index}
@@ -337,7 +362,7 @@ export default function ShopifyServicesPage() {
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -347,7 +372,7 @@ export default function ShopifyServicesPage() {
                   />
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border leading-relaxed">
+                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border leading-relaxed">
                     {faq.a}
                   </div>
                 )}

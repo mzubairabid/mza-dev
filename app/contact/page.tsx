@@ -73,7 +73,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-              Leveraging 7+ years of full-stack experience and a solid IT Honors foundation to deliver secure, scalable, and SEO-optimized digital solutions for your brand.
+              Leveraging 7+ years of full-stack engineering experience and an IT Honors degree, Muhammad Zubair Abid delivers secure, scalable, and Core Web Vitals-optimized web solutions for global brands.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">

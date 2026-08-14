@@ -23,12 +23,12 @@ export function Hero() {
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light text-foreground leading-tight block w-full">
-              Architecting fast, result-driven web systems.
+              Architecting High-Performance Web Systems & Custom Tools
             </h1>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed w-full">
-              I specialize in engineering high-performance Next.js web applications, custom CMS architectures, and executing deep Core Web Vitals optimizations.
+              Muhammad Zubair Abid (MZA Dev) engineers high-performance Next.js applications, custom CMS architectures, interactive web tools, and data-backed case studies, optimized for Core Web Vitals to rank on Google and AI search engines.
             </p>
           </FadeIn>
           <FadeIn direction="up" delay={0.2}>
@@ -57,17 +57,17 @@ export function Hero() {
             <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
               {!imgError ? (
                 <Image
-  src="/project-images/hero-section-index.webp"
-  alt="Muhammad Zubair Abid"
-  width={600}
-  height={400}
-  priority={true}
-  loading="eager"
-  fetchPriority="high"
-  quality={70} // 👈 70% quality (Size 30% kam hoga)
-  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" // 👈 Mobile load optimize hoga
-  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
-/>
+                  src="/project-images/hero-section-index.webp"
+                  alt="Muhammad Zubair Abid"
+                  width={600}
+                  height={400}
+                  priority={true}
+                  loading="eager"
+                  fetchPriority="high"
+                  quality={70} // 👈 70% quality (Size 30% kam hoga)
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" // 👈 Mobile load optimize hoga
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
+                />
               ) : (
                 <div className="flex flex-col items-center justify-center text-center p-8 space-y-3 min-h-75 bg-muted/30">
                   <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center">

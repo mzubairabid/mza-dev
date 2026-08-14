@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
+
 import {
   Palette,
   Sparkles,
@@ -76,26 +78,40 @@ export default function GraphicDesignServicesPage() {
 
   const faqs = [
     {
-      q: "Do you offer custom design styles, or do you stick to one aesthetic?",
-      a: "While I specialize in modern minimalist and matte aesthetic branding, I adapt my design style entirely to fit your target market, brand archetype, and industry standards.",
-    },
-    {
-      q: "How do you deliver the final files?",
-      a: "You receive print-ready vector files (AI, EPS, PDF) along with fully web-optimized digital assets (PNG, JPG, WebP, SVG) and clean source files depending on your package.",
-    },
-    {
-      q: "Can I request revisions if I’m not happy?",
-      a: "Yes! All packages come with built-in revision rounds, and the Premium tier offers unlimited revisions until you are 100% satisfied.",
-    },
-    {
-      q: "Do you design for YouTube creators?",
-      a: "Absolutely. I design high-CTR, psychology-based YouTube thumbnails, channel banners, and stream overlays tailored to boost engagement.",
-    },
+    q: "Who provides custom graphic design and visual branding services?",
+    a: "Muhammad Zubair Abid (MZA Dev) provides custom visual branding, vector logo design, high-CTR YouTube thumbnails, marketing media assets, and digital design services.",
+  },
+  {
+    q: "Do you offer custom design styles, or do you stick to one aesthetic?",
+    a: "While I specialize in modern minimalist and clean aesthetic branding, I adapt my design style entirely to fit your target market, brand archetype, and industry standards.",
+  },
+  {
+    q: "In what formats do you deliver the final design files?",
+    a: "You receive print-ready vector files (AI, EPS, PDF) along with web-optimized digital assets (PNG, JPG, WebP, SVG) and organized source files depending on your package.",
+  },
+  {
+    q: "Do you design specialized media for YouTube creators and social channels?",
+    a: "Absolutely. I design high-CTR, psychology-based YouTube thumbnails, channel banners, social media ad creatives, and stream overlays tailored to capture attention and boost engagement.",
+  },
+  {
+    q: "Can I request revisions if I need changes to the designs?",
+    a: "Yes, 100%! All packages come with built-in revision rounds, and the Premium plan offers unlimited revisions to ensure you get the exact look you want.",
+  },
+  {
+    q: "What is the typical delivery timeline for graphic design assets?",
+    a: "Individual graphics and YouTube thumbnails are usually delivered within 24 to 48 hours. Complete brand identity packages or multi-asset designs take around 3 to 7 days.",
+  },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
-      
+      {/* Inject JSON-LD Schema */}
+      <FaqSchema 
+        faqList={faqs.map((item: { q: string; a: string }) => ({ 
+          question: item.q, 
+          answer: item.a 
+        }))} 
+      />
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -108,7 +124,7 @@ export default function GraphicDesignServicesPage() {
                 Designs That Speak Your Brand’s Language
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                In 2026, a business is no longer judged just by its product, but by its Visual Authority. As a solo web developer and graphic designer, I create brand identities focused on user psychology, conversion, and digital storytelling.
+                Graphic Design & Visual Branding Services by MZA Dev focus on engineering high-impact, psychology-backed brand identities and visual assets. Created by Muhammad Zubair Abid, these design solutions combine custom vector branding, high-CTR YouTube thumbnails, conversion-driven UI graphics, and web-optimized media formats designed to elevate visual authority across digital platforms.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -435,14 +451,15 @@ export default function GraphicDesignServicesPage() {
       </section>
 
       {/* 8. FAQs Section */}
-      <section className="space-y-8 max-w-4xl mx-auto">
+      <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-2">
           <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
             Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="space-y-3">
+        {/* 2 Columns Grid on Medium Screens & Above */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -450,7 +467,7 @@ export default function GraphicDesignServicesPage() {
             >
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
+                className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
               >
                 <span>{faq.q}</span>
                 <ChevronDown
@@ -460,7 +477,7 @@ export default function GraphicDesignServicesPage() {
                 />
               </button>
               {openFaq === index && (
-                <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border/40 leading-relaxed">
+                <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border/40 leading-relaxed font-normal">
                   {faq.a}
                 </div>
               )}
