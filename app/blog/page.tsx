@@ -1,144 +1,143 @@
+// app/blog/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { Sidebar } from "@/components/Sidebar";
-import { getAllPosts } from "@/lib/blog-posts";
-import { FadeIn } from "@/components/animations/fade-in";
+import Sidebar from "@/components/Sidebar";
+import { getAllPosts, BlogPost } from "@/lib/blog-posts";
 
-function formatBlogDate(dateString: string): string {
-  if (!dateString) return "";
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
-
-export const metadata = {
-  title: "Blog & Insights | MZA Dev",
-  description: "Web development, SEO, React, and tech guides.",
-};
-
-type Props = {
+export default async function BlogPage({
+  searchParams,
+}: {
   searchParams: Promise<{ category?: string }>;
-};
+}) {
+  const { category } = await searchParams;
+  const allPosts: BlogPost[] = getAllPosts();
 
-export default async function BlogPage({ searchParams }: Props) {
-  const resolvedParams = await searchParams;
-  const selectedCategory = resolvedParams?.category;
+  // Dynamic category & counts calculation
+  const categoryCounts = allPosts.reduce<Record<string, number>>((acc, post) => {
+    if (post.category) {
+      acc[post.category] = (acc[post.category] || 0) + 1;
+    }
+    return acc;
+  }, {});
 
-  const allPosts = getAllPosts();
+  const categories = Object.entries(categoryCounts).map(([name, count]) => ({
+    name,
+    count,
+  }));
 
-  // Sidebar category selection ke mutabiq posts filter karein
-  const posts = selectedCategory
+  // Filtering posts based on active category
+  const filteredPosts = category
     ? allPosts.filter(
-        (post) =>
-          post.category?.toLowerCase() === selectedCategory.toLowerCase()
+        (post) => post.category?.toLowerCase() === category.toLowerCase()
       )
     : allPosts;
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <FadeIn>
-          <h1 className="text-3xl font-bold tracking-tight mb-2">
-            {selectedCategory ? `${selectedCategory} Articles` : "Blog & Articles"}
-          </h1>
-          </FadeIn>
-          <FadeIn>
-          <p className="text-muted-foreground text-base">
-            {selectedCategory
-              ? `Showing all posts under "${selectedCategory}" category.`
-              : "Latest tutorials on web development, SEO strategies, and modern frontend stack."}
-          </p>
-          </FadeIn>
-        </div>
+    <div className="w-full min-h-screen py-10 md:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
+          
+          {/* Main Content Area */}
+          <main className="flex-1 w-full min-w-0">
+            {/* Main Title */}
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground mb-6">
+              Blog
+            </h1>
 
-        {selectedCategory && (
-          <Link
-            href="/blog"
-            className="inline-flex items-center text-xs font-medium text-primary hover:underline"
-          >
-            ← View All Articles
-          </Link>
-        )}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Main Blog Cards */}
-        <main className="lg:col-span-8">
-          <FadeIn>
-          {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {posts.map((post) => (
-                <article
-                  key={post.slug}
-                  className="group flex flex-col rounded-lg border bg-card text-card-foreground overflow-hidden transition-all hover:shadow-md"
-                >
-                  {/* Image */}
-                  <div className="relative aspect-video w-full overflow-hidden bg-muted">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-1 flex-col justify-between p-4 space-y-3">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span className="rounded px-2 py-0.5 font-medium bg-secondary text-secondary-foreground">
-                          {post.category}
-                        </span>
-                        <span>{formatBlogDate(post.date)}</span>
-                      </div>
-
-                      <h2 className="text-base font-semibold group-hover:text-primary transition-colors line-clamp-2">
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                      </h2>
-
-                      <p className="text-xs text-muted-foreground line-clamp-3">
-                        {post.description}
-                      </p>
-                    </div>
-
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center text-xs font-medium text-primary hover:underline"
-                    >
-                      Read Article →
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            /* Empty State */
-            <div className="rounded-xl border border-dashed p-12 text-center">
-              <h3 className="text-lg font-semibold mb-1">No articles found</h3>
-              <p className="text-xs text-muted-foreground mb-4">
-                No posts found under "{selectedCategory}".
-              </p>
+            {/* Categories Badges with Counts */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {/* All Posts Badge */}
               <Link
                 href="/blog"
-                className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90"
+                className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                  !category
+                    ? "bg-primary text-primary-foreground font-semibold"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
               >
-                Clear Filter
+                All ({allPosts.length})
               </Link>
-            </div>
-          )}
-          </FadeIn>
-        </main>
 
-        {/* Sidebar */}
-        <aside className="lg:col-span-4">
-          <Sidebar />
-        </aside>
+              {/* Dynamic Category Badges */}
+              {categories.map((cat) => {
+                const isActive =
+                  category?.toLowerCase() === cat.name.toLowerCase();
+                return (
+                  <Link
+                    key={cat.name}
+                    href={`/blog?category=${encodeURIComponent(cat.name)}`}
+                    className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                      isActive
+                        ? "bg-primary text-primary-foreground font-semibold"
+                        : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    }`}
+                  >
+                    {cat.name} ({cat.count})
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Blog Cards Grid */}
+            {filteredPosts.length === 0 ? (
+              <div className="p-8 text-center rounded-2xl border bg-card text-muted-foreground">
+                Is category mein abhi koi post nahi hai.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {filteredPosts.map((post: BlogPost) => (
+                  <Link
+                    key={post.slug}
+                    href={`/${post.slug}`}
+                    className="group border border-border rounded-xl overflow-hidden hover:border-primary/50 transition-all flex flex-col bg-card"
+                  >
+                    {/* Thumbnail Image */}
+                    {post.image && (
+                      <div className="relative aspect-video w-full overflow-hidden bg-muted">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    )}
+
+                    {/* Card Content */}
+                    <div className="p-5 flex flex-col flex-1">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
+                        {post.category && (
+                          <span className="font-medium text-primary">
+                            {post.category}
+                          </span>
+                        )}
+                        {post.category && post.date && <span>•</span>}
+                        {post.date && <span>{post.date}</span>}
+                      </div>
+
+                      <h2 className="text-xl font-semibold group-hover:text-primary transition-colors mb-2 text-card-foreground">
+                        {post.title}
+                      </h2>
+
+                      {post.description && (
+                        <p className="text-sm text-muted-foreground line-clamp-2 mt-auto">
+                          {post.description}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </main>
+
+          {/* Sticky Sidebar */}
+          <aside className="w-full lg:w-80 shrink-0 lg:sticky lg:top-24">
+            <Sidebar />
+          </aside>
+
+        </div>
       </div>
     </div>
   );

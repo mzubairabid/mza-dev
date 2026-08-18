@@ -1,19 +1,14 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/fade-in";
 import FaqSchema from '@/components/FaqSchema';
+import { FaqSection } from "@/components/sections/faq-section";
 
 import {
   Code2,
-  Zap,
   Globe,
-  CheckCircle2,
-  ChevronDown,
   ArrowUpRight,
-  Sparkles,
   ShoppingBag,
   Search,
   ShieldCheck,
@@ -21,13 +16,13 @@ import {
   Star,
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Full-Stack Web Development (Next.js & React) | MZA Dev",
+  description:
+    "Custom, lightning-fast full-stack web applications built with Next.js, React, and TypeScript. Scalable code optimized for Core Web Vitals and search visibility.",
+};
+
 export default function WebDevelopmentServicesPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   const differentiators = [
     {
       title: "Engineering Excellence",
@@ -49,33 +44,33 @@ export default function WebDevelopmentServicesPage() {
 
   const faqs = [
     {
-    q: "Who provides custom Next.js web development and full-stack solutions?",
-    a: "Muhammad Zubair Abid (MZA Dev) provides custom Next.js web development, modern React applications, custom API integrations, and technical SEO services for scalable digital businesses.",
-  },
-  {
-    q: "Why should I choose custom Next.js code over standard page builders?",
-    a: "Page builders often introduce heavy code bloat that slows down your site. Custom Next.js architectures load instantly, score higher on Core Web Vitals, and provide built-in SEO advantages that help you rank faster on Google and AI search engines.",
-  },
-  {
-    q: "Which platforms and technologies do you specialize in?",
-    a: "I focus on modern full-stack technologies including Next.js, React, TypeScript, Tailwind CSS, custom JavaScript, and PHP. I also build clean, high-speed WordPress and Shopify solutions without relying on laggy page builders.",
-  },
-  {
-    q: "How do your web development services improve my site's SEO?",
-    a: "I write clean, semantic HTML code with structured JSON-LD schema built directly into the framework. Combined with fast mobile performance and optimal site structure, search engine crawlers can index and rank your pages effortlessly.",
-  },
-  {
-    q: "What is your typical project completion timeline?",
-    a: "Simple landing pages and single-page apps are usually ready in 3 to 5 days. Full custom websites, multi-page platforms, or e-commerce stores typically take 1 to 3 weeks depending on features.",
-  },
-  {
-    q: "Will I be able to update my website content easily after launch?",
-    a: "Yes, 100%. I set up intuitive content structures or headless CMS options and give you full admin access along with quick guidance, so you or your team can update images and text without touching code.",
-  },
-  {
-    q: "Do you offer ongoing support after the project goes live?",
-    a: "Absolutely. Every project includes dedicated post-launch support ranging from 14 to 30 days depending on your plan to fix any bugs, adjust layouts, and make sure everything runs smoothly.",
-  },
+      q: "Who provides custom Next.js web development and full-stack solutions?",
+      a: "Muhammad Zubair Abid (MZA Dev) provides custom Next.js web development, modern React applications, custom API integrations, and technical SEO services for scalable digital businesses.",
+    },
+    {
+      q: "Why should I choose custom Next.js code over standard page builders?",
+      a: "Page builders often introduce heavy code bloat that slows down your site. Custom Next.js architectures load instantly, score higher on Core Web Vitals, and provide built-in SEO advantages that help you rank faster on Google and AI search engines.",
+    },
+    {
+      q: "Which platforms and technologies do you specialize in?",
+      a: "I focus on modern full-stack technologies including Next.js, React, TypeScript, Tailwind CSS, custom JavaScript, and PHP. I also build clean, high-speed WordPress and Shopify solutions without relying on laggy page builders.",
+    },
+    {
+      q: "How do your web development services improve my site's SEO?",
+      a: "I write clean, semantic HTML code with structured JSON-LD schema built directly into the framework. Combined with fast mobile performance and optimal site structure, search engine crawlers can index and rank your pages effortlessly.",
+    },
+    {
+      q: "What is your typical project completion timeline?",
+      a: "Simple landing pages and single-page apps are usually ready in 3 to 5 days. Full custom websites, multi-page platforms, or e-commerce stores typically take 1 to 3 weeks depending on features.",
+    },
+    {
+      q: "Will I be able to update my website content easily after launch?",
+      a: "Yes, 100%. I set up intuitive content structures or headless CMS options and give you full admin access along with quick guidance, so you or your team can update images and text without touching code.",
+    },
+    {
+      q: "Do you offer ongoing support after the project goes live?",
+      a: "Absolutely. Every project includes dedicated post-launch support ranging from 14 to 30 days depending on your plan to fix any bugs, adjust layouts, and make sure everything runs smoothly.",
+    },
   ];
 
   return (
@@ -84,11 +79,11 @@ export default function WebDevelopmentServicesPage() {
       <FaqSchema 
         faqList={faqs.map(item => ({ question: item.q, answer: item.a }))} 
       />
-      {/* 1. Hero Section */}
+
+      {/* Hero Section */}
       <FadeIn>
         <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
                 Web Development Services
@@ -111,11 +106,10 @@ export default function WebDevelopmentServicesPage() {
               </div>
             </div>
 
-            {/* Hero Image Container */}
             <div className="lg:col-span-5 flex justify-center items-center w-full">
               <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
                 <Image
-                  src="/project-images/web-dev-services.webp"
+                  src="/project-images/web development.webp"
                   alt="High Performance Web Development Services"
                   width={360}
                   height={360}
@@ -124,11 +118,11 @@ export default function WebDevelopmentServicesPage() {
                 />
               </div>
             </div>
-
           </div>
         </section>
       </FadeIn>
-      {/* 2. Brand Positioning Section */}
+
+      {/* Brand Positioning */}
       <FadeIn>
         <section className="p-8 sm:p-12 rounded-3xl border border-border bg-card space-y-6">
           <div className="max-w-3xl space-y-4">
@@ -144,7 +138,8 @@ export default function WebDevelopmentServicesPage() {
           </div>
         </section>
       </FadeIn>
-      {/* 3. Specialized Capabilities Grid */}
+
+      {/* Capabilities Grid */}
       <FadeIn>
         <section className="space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -154,7 +149,6 @@ export default function WebDevelopmentServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Capability 1 */}
             <div className="p-6 rounded-2xl border border-border bg-card space-y-4 shadow-xs hover:border-primary/50 transition-all">
               <div className="p-3 w-fit rounded-xl bg-accent border border-border text-primary">
                 <Code2 className="w-8 h-8" />
@@ -167,7 +161,6 @@ export default function WebDevelopmentServicesPage() {
               </p>
             </div>
 
-            {/* Capability 2 */}
             <div className="p-6 rounded-2xl border border-border bg-card space-y-4 shadow-xs hover:border-primary/50 transition-all">
               <div className="p-3 w-fit rounded-xl bg-accent border border-border text-primary">
                 <Search className="w-8 h-8" />
@@ -180,7 +173,6 @@ export default function WebDevelopmentServicesPage() {
               </p>
             </div>
 
-            {/* Capability 3 */}
             <div className="p-6 rounded-2xl border border-border bg-card space-y-4 shadow-xs hover:border-primary/50 transition-all">
               <div className="p-3 w-fit rounded-xl bg-accent border border-border text-primary">
                 <ShoppingBag className="w-8 h-8" />
@@ -195,7 +187,8 @@ export default function WebDevelopmentServicesPage() {
           </div>
         </section>
       </FadeIn>
-      {/* 4. Portfolio Showcase Banner */}
+
+      {/* Portfolio Banner */}
       <FadeIn>
         <section className="p-8 sm:p-12 rounded-3xl border border-border bg-card flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="space-y-4 max-w-2xl">
@@ -218,7 +211,8 @@ export default function WebDevelopmentServicesPage() {
           </Link>
         </section>
       </FadeIn>
-      {/* 5. Why Gadget Crunchie Is Different */}
+
+      {/* Differentiators */}
       <FadeIn>
         <section className="space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-2">
@@ -245,7 +239,8 @@ export default function WebDevelopmentServicesPage() {
           </div>
         </section>
       </FadeIn>      
-      {/* 6. Pricing Packages Section */}
+
+      {/* Pricing Plans */}
       <FadeIn>
         <section className="space-y-10 pt-6">
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -260,9 +255,7 @@ export default function WebDevelopmentServicesPage() {
             </p>
           </div>
 
-          {/* 3 Best Pricing Cards Design */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-            
             {/* BASIC PLAN */}
             <div className="p-8 rounded-3xl border border-border bg-card space-y-6 flex flex-col justify-between hover:border-primary/30 transition-all shadow-xs">
               <div className="space-y-6">
@@ -314,7 +307,7 @@ export default function WebDevelopmentServicesPage() {
               </Link>
             </div>
 
-            {/* STANDARD PLAN (POPULAR HIGHLIGHT) */}
+            {/* STANDARD PLAN */}
             <div className="relative p-8 rounded-3xl border-2 border-primary bg-card space-y-6 flex flex-col justify-between shadow-xl scale-102">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-primary text-primary-foreground font-mono text-[10px] uppercase font-bold tracking-wider shadow-sm flex items-center gap-1">
                 <Star className="w-3 h-3 fill-current" /> Most Popular
@@ -419,47 +412,13 @@ export default function WebDevelopmentServicesPage() {
                 Select Premium
               </Link>
             </div>
-
           </div>
         </section>
       </FadeIn>
-      {/* 7. FAQs Section */}
-      
-      <FadeIn>
-        <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-              FAQs
-            </h2>
-          </div>
 
-          {/* 2 Columns Grid on Medium Screens & Above */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-border rounded-2xl bg-card overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                      openFaq === index ? "rotate-180 text-primary" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === index && (
-                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+      {/* 7. FAQs Section Component */}
+      <FadeIn>
+        <FaqSection faqs={faqs} />
       </FadeIn>
     </main>
   );

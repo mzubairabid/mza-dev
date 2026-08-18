@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, Check, X, ShieldCheck } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Web Development vs Website Builders 2026 | Comprehensive Guide",
   description: "Comparing website builder limitations with custom web development benefits in 2026. Discover why performance, E-E-A-T, and modern SEO matter for your business.",

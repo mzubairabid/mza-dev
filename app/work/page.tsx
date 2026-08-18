@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Metadata } from "next";
-import heroImage from "@/public/project-images/portfolio-hero-day.png";
+import heroImage from "@/public/project-images/web-dev-services.webp";
 import FeaturedProjects from "@/components/featuredprojects";
 import {
   ArrowUpRight,
@@ -90,7 +90,7 @@ export default function WorkPage() {
 
             {/* Hero Right Visual Image */}
             <div className="lg:col-span-5 flex justify-center items-center w-full">
-              <div className="relative w-full max-w-90 h-90 rounded-2xl overflow-hidden border border-border bg-muted shadow-xl p-2 flex items-center justify-center shrink-0">
+              <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
                 <Image
                   src={heroImage}
                   alt="M Zubair Abid - Developer Portfolio"

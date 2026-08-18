@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, Search, Zap, CheckCircle2, FileText, UserCheck } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "On-Page SEO Checklist 2026 | Technical & Content Framework",
   description: "Comprehensive 2026 On-Page SEO checklist. Master AI Overviews, INP speed metrics, answer-first frameworks, and E-E-A-T optimization.",

@@ -1,31 +1,26 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/fade-in";
-import FaqSchema from '@/components/FaqSchema';
+import FaqSchema from "@/components/FaqSchema";
+import { FaqSection } from "@/components/sections/faq-section";
 
 import {
   ShoppingBag,
-  Zap,
   Gauge,
   CheckCircle2,
-  ChevronDown,
   ArrowUpRight,
-  Sparkles,
   Layers,
-  BarChart3,
   ExternalLink,
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Custom Shopify Development & E-commerce Solutions | MZA Dev",
+  description:
+    "End-to-end Shopify store setup, liquid theme modifications, store performance tuning, and headless storefront integrations built to maximize sales.",
+};
+
 export default function ShopifyServicesPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   const whatIBuild = [
     {
       icon: <ShoppingBag className="w-8 h-8 text-primary" />,
@@ -97,49 +92,49 @@ export default function ShopifyServicesPage() {
 
   const faqs = [
     {
-    q: "Who provides custom Shopify store design and speed optimization services?",
-    a: "Muhammad Zubair Abid (MZA Dev) provides custom Shopify theme development, conversion-focused e-commerce design, custom Liquid coding, and technical e-commerce SEO services.",
-  },
-  {
-    q: "Why should I work with MZA Dev instead of a full-service agency?",
-    a: "You work directly with the senior developer building your project. That means no account managers, no communication delays, no junior interns touching your code, and zero agency overhead cost.",
-  },
-  {
-    q: "Will my Shopify store speed drop as I add more products and apps?",
-    a: "No. I build stores using custom Liquid code and minimal app dependencies. This keeps your shop clean and fast so it scales smoothly without script bloat or layout shifts.",
-  },
-  {
-    q: "Do you include technical e-commerce SEO setup with the store build?",
-    a: "Yes, absolutely! Structured JSON-LD product schema, clean HTML markup, Core Web Vitals targets, and index-ready sitemap optimizations are included by default.",
-  },
-  {
-    q: "Can you help migrate my existing store from WordPress/WooCommerce to Shopify?",
-    a: "Yes. I manage complete end-to-end migrations including product data, customer accounts, order history, design layouts, and 301 redirects to protect your Google SEO rankings.",
-  },
-  {
-    q: "Will I be able to manage products and orders myself after launch?",
-    a: "100%. I design user-friendly Shopify admin layouts and custom sections, allowing you to easily add new products, adjust banners, and manage inventory without touching any code.",
-  },
-  {
-    q: "What is the typical timeline to complete a custom Shopify store?",
-    a: "A standard custom Shopify setup or redesign takes around 1 to 2 weeks. Complex custom storefronts with custom Liquid features usually take 2 to 3 weeks.",
-  },
+      q: "Who provides custom Shopify store design and speed optimization services?",
+      a: "Muhammad Zubair Abid (MZA Dev) provides custom Shopify theme development, conversion-focused e-commerce design, custom Liquid coding, and technical e-commerce SEO services.",
+    },
+    {
+      q: "Why should I work with MZA Dev instead of a full-service agency?",
+      a: "You work directly with the senior developer building your project. That means no account managers, no communication delays, no junior interns touching your code, and zero agency overhead cost.",
+    },
+    {
+      q: "Will my Shopify store speed drop as I add more products and apps?",
+      a: "No. I build stores using custom Liquid code and minimal app dependencies. This keeps your shop clean and fast so it scales smoothly without script bloat or layout shifts.",
+    },
+    {
+      q: "Do you include technical e-commerce SEO setup with the store build?",
+      a: "Yes, absolutely! Structured JSON-LD product schema, clean HTML markup, Core Web Vitals targets, and index-ready sitemap optimizations are included by default.",
+    },
+    {
+      q: "Can you help migrate my existing store from WordPress/WooCommerce to Shopify?",
+      a: "Yes. I manage complete end-to-end migrations including product data, customer accounts, order history, design layouts, and 301 redirects to protect your Google SEO rankings.",
+    },
+    {
+      q: "Will I be able to manage products and orders myself after launch?",
+      a: "100%. I design user-friendly Shopify admin layouts and custom sections, allowing you to easily add new products, adjust banners, and manage inventory without touching any code.",
+    },
+    {
+      q: "What is the typical timeline to complete a custom Shopify store?",
+      a: "A standard custom Shopify setup or redesign takes around 1 to 2 weeks. Complex custom storefronts with custom Liquid features usually take 2 to 3 weeks.",
+    },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
       {/* 1. Inject JSON-LD Schema using FaqSchema */}
-      <FaqSchema 
-        faqList={faqs.map((item: { q: string; a: string }) => ({ 
-    question: item.q, 
-    answer: item.a 
-  }))} 
+      <FaqSchema
+        faqList={faqs.map((item: { q: string; a: string }) => ({
+          question: item.q,
+          answer: item.a,
+        }))}
       />
+
       {/* 1. Hero Section */}
       <FadeIn>
         <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
             <div className="lg:col-span-7 space-y-6">
               <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
                 Custom Shopify Developer Services
@@ -172,7 +167,7 @@ export default function ShopifyServicesPage() {
             <div className="lg:col-span-5 flex justify-center items-center w-full">
               <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
                 <Image
-                  src="/project-images/ai-robot.webp"
+                  src="/project-images/shopify-e-commerce.webp"
                   alt="Shopify Development & Funnel Engineering"
                   width={360}
                   height={360}
@@ -181,10 +176,10 @@ export default function ShopifyServicesPage() {
                 />
               </div>
             </div>
-
           </div>
         </section>
       </FadeIn>
+
       {/* 2. What I Build Section */}
       <FadeIn>
         <section className="space-y-8">
@@ -226,6 +221,7 @@ export default function ShopifyServicesPage() {
           </div>
         </section>
       </FadeIn>
+
       {/* 3. Solo Vs Agency Section */}
       <FadeIn>
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-10 md:p-12 space-y-8">
@@ -274,6 +270,7 @@ export default function ShopifyServicesPage() {
           </div>
         </section>
       </FadeIn>
+
       {/* 4. The Funnel Process Section */}
       <FadeIn>
         <section className="space-y-8">
@@ -306,6 +303,7 @@ export default function ShopifyServicesPage() {
           </div>
         </section>
       </FadeIn>
+
       {/* 5. Live Execution Proof Section */}
       <FadeIn>
         <section className="space-y-8">
@@ -344,43 +342,9 @@ export default function ShopifyServicesPage() {
           </div>
         </section>
       </FadeIn>
-      {/* 6. FAQs Section */}
-      <FadeIn>
-        <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-              FAQs
-            </h2>
-          </div>
 
-          {/* 2 Columns Grid on Medium Screens & Above */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-border rounded-2xl bg-card overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                      openFaq === index ? "rotate-180 text-primary" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === index && (
-                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </FadeIn>
+      {/* 6. FAQs Section */}
+      <FaqSection faqs={faqs} />
     </main>
   );
 }

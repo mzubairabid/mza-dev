@@ -1,7 +1,11 @@
 import { MetadataRoute } from "next";
 import { getAllPosts, BlogPost } from "@/lib/blog-posts";
+import { getAllPageSlugs } from "@/lib/pages"; // Custom MDX pages import
 import fs from "fs";
 import path from "path";
+
+// Un slugs ki list jinhein sitemap me include NAHI karna
+const EXCLUDED_SLUGS = ["my-first-page", "my-first-post"];
 
 // Auto-scan static pages & tools from app folder
 function getStaticPages(dir: string, baseRoute = ""): string[] {
@@ -52,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: route === "" ? ("daily" as const) : ("weekly" as const),
       priority: route === "" ? 1.0 : route.includes("/tools") || route.includes("/services") ? 0.9 : 0.8,
     })),
-    // Main Blog Listing Page (/blog) ko yahan manually include kar diya hai
+    // Main Blog Listing Page (/blog)
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date().toISOString().split("T")[0],
@@ -61,14 +65,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // 2. Dynamic Blog Posts (Fetched directly from lib/blog-posts.tsx)
+  // 2. Dynamic Blog Posts (Excluding Test Posts)
   const posts = getAllPosts();
-  const blogPosts = posts.map((post: BlogPost) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const blogPosts = posts
+    .filter((post: BlogPost) => !EXCLUDED_SLUGS.includes(post.slug))
+    .map((post: BlogPost) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
 
-  return [...staticPages, ...blogPosts];
+  // 3. Dynamic MDX Custom Pages (Excluding Test Pages)
+  const mdxPages = getAllPageSlugs();
+  const customPages = mdxPages
+    .filter((page) => !EXCLUDED_SLUGS.includes(page.slug))
+    .map((page) => ({
+      url: `${baseUrl}/${page.slug}`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+
+  return [...staticPages, ...blogPosts, ...customPages];
 }

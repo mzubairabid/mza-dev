@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Mail, ArrowUpRight, Check } from "lucide-react";
-import { getAllCategories, getAllPosts } from "@/lib/blog-posts";
+// Import updated functions from blog-data:
+import { getClientCategories, getClientPosts } from "@/lib/blog-data";
 import { AUTHOR_PROFILE } from "@/lib/author";
 
 function SidebarContent() {
@@ -16,9 +17,9 @@ function SidebarContent() {
     setMounted(true);
   }, []);
 
-  // Categories ko deterministically (alphabetically) sort kiya taake order static rahe
-  const categories = getAllCategories().sort((a, b) => a.name.localeCompare(b.name));
-  const recentPosts = getAllPosts().slice(0, 4);
+  // Updated function calls:
+  const categories = getClientCategories().sort((a, b) => a.name.localeCompare(b.name));
+  const recentPosts = getClientPosts().slice(0, 4);
   const searchParams = useSearchParams();
 
   // 2. Client-side mount hone ke baad hi URL searchParam execute hoga

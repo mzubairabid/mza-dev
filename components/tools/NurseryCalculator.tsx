@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { saveAs } from "file-saver";
+import { FadeIn } from "@/components/animations/fade-in";
+
 import {
   Plus,
   Trash2,
@@ -404,6 +406,7 @@ export default function NurseryCalculatorPage() {
       <div className="max-w-4xl mx-auto space-y-10">
 
         {/* 1. Header Section */}
+        <FadeIn direction="up" delay={0.2}>
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider">
             <TrendingUp className="w-3.5 h-3.5" /> Free UK Business Tool
@@ -415,8 +418,9 @@ export default function NurseryCalculatorPage() {
             Estimate your nursery's monthly revenue, staff costs, fixed overheads, and net profit based on standard UK Ofsted ratios.
           </p>
         </div>
-
+        </FadeIn>
         {/* 2. Calculator Tool Card */}
+        <FadeIn direction="down" delay={0.2}>
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl overflow-hidden p-6 sm:p-10">
           <div className="text-center border-b-4 border-amber-400 pb-5 mb-8">
             <h2 className="text-xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 flex items-center justify-center gap-3">
@@ -638,8 +642,9 @@ export default function NurseryCalculatorPage() {
             </div>
           )}
         </div>
-
+          </FadeIn>
         {/* 3. Educational Guide */}
+        <FadeIn direction="up" delay={0.2}>
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3">
             <BookOpen className="w-6 h-6 text-blue-600" /> How to Estimate Your Nursery Profit
@@ -671,8 +676,9 @@ export default function NurseryCalculatorPage() {
             </div>
           </div>
         </div>
-
+          </FadeIn>
         {/* 4. FAQ Accordion Section */}
+        <FadeIn direction="down" delay={0.3}>
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
             Frequently Asked Questions
@@ -696,7 +702,7 @@ export default function NurseryCalculatorPage() {
             ))}
           </div>
         </div>
-
+            </FadeIn>
       </div>
 
       {/* Email Modal */}

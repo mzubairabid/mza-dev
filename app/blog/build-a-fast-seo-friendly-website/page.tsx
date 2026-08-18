@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, Zap, Search, ShieldCheck, Layers, Cpu } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Build a Fast & SEO Friendly Website in 2026 | Ultimate Developer Guide",
   description: "Learn how to build a fast & SEO friendly website in 2026. Master INP metrics, modern tech stacks (Next.js/Astro), AVIF images, and AI Schema markup.",

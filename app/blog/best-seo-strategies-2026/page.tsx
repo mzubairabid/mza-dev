@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, Search, Server, Cpu, Activity, UserCheck, CheckCircle2 } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Best SEO Strategies 2026: Generative AI, GEO & E-E-A-T Guide",
   description: "Master modern SEO in 2026. Discover Generative Engine Optimization (GEO), Core Web Vitals 4.0, technical resiliency, and E-E-A-T strategies.",

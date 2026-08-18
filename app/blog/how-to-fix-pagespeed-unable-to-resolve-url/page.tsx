@@ -1,10 +1,7 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 import {
   Sparkles,
   Zap,

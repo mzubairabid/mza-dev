@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, Moon, Sun, Monitor, BatteryCharging, Eye, Palette } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Dark Mode vs Light Mode UX (2026) | Complete Strategy Guide",
   description: "Explore the technical & UX differences between Dark Mode and Light Mode. Learn about OLED battery savings, visual polarity, contrast rules, and developer best practices.",

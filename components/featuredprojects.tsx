@@ -12,14 +12,14 @@ interface Project {
   liveUrl?: string;
 }
 
-// Local Projects Array (Sanity ki jagah ab yeh use hoga)
+// Local Projects Array
 const featuredProjects: Project[] = [
   {
     id: "1",
     title: "German E-Commerce Store & PayPal Integration",
     category: "WooCommerce / Custom Dev",
     description: "Full store redesign with custom PayPal payment gateway integration and localized checkout flow.",
-    image: "/project-images/desi-shopzellingen-hero.webp", // public/project-images/ se apni image ka path dein
+    image: "/project-images/desi-shopzellingen-hero.webp",
     tags: ["WordPress", "WooCommerce", "PayPal API", "PHP"],
     liveUrl: "#",
   },
@@ -64,7 +64,7 @@ export default function FeaturedProjects() {
 
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {featuredProjects.map((project) => (
+        {featuredProjects.map((project, index) => (
           <div
             key={project.id}
             className="group rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/50 transition-all duration-300 shadow-sm flex flex-col justify-between"
@@ -76,6 +76,8 @@ export default function FeaturedProjects() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-mono text-foreground font-medium border border-border">

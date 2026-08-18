@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, TrendingUp, Zap, Cpu, Users, Mail, CheckCircle2, MessageSquare } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "How to Increase Website Traffic Without Ads in 2026 (Organic Growth)",
   description: "Learn how to build sustainable, long-term organic traffic in 2026 without spending on ads. Master SEO, performance, AI search, and email marketing.",

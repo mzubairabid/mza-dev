@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, HelpCircle, Code2, Zap, ShieldCheck, Cpu } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Custom Web Development for Small Businesses in 2026 | Full Guide",
   description: "Why custom web development outpaces templates in 2026. Explore Core Web Vitals, INP optimization, zero monthly fees, and AI integrations for small business growth.",

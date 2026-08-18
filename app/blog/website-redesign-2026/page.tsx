@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
 import { Sparkles, Video, HelpCircle, RefreshCw, Zap, ShieldCheck, AlertTriangle } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
   title: "Website Redesign 2026 | Ultimate Strategy & Performance Guide",
   description: "Why a website redesign in 2026 is a vital technical overhaul for AI search, Core Web Vitals, and CRO. Includes ROI metrics and developer roadmap.",

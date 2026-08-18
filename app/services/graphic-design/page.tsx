@@ -1,33 +1,26 @@
-"use client";
-
-import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { FadeIn } from "@/components/animations/fade-in";
-import FaqSchema from '@/components/FaqSchema';
+import FaqSchema from "@/components/FaqSchema";
+import { FaqSection } from "@/components/sections/faq-section";
 
 import {
-  Palette,
-  Sparkles,
   Zap,
-  CheckCircle2,
-  ChevronDown,
   ArrowUpRight,
-  ShieldCheck,
   Check,
   Star,
   Layout,
-  Layers,
   Monitor,
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Creative Graphic Design & Brand Visuals | MZA Dev",
+  description:
+    "Professional graphic design, UI/UX visual assets, brand identity, and media design tailored to elevate your digital presence and engage target audiences.",
+};
+
 export default function GraphicDesignServicesPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
   const servicesTable = [
     {
       service: "Premium Logo Design",
@@ -78,29 +71,29 @@ export default function GraphicDesignServicesPage() {
 
   const faqs = [
     {
-    q: "Who provides custom graphic design and visual branding services?",
-    a: "Muhammad Zubair Abid (MZA Dev) provides custom visual branding, vector logo design, high-CTR YouTube thumbnails, marketing media assets, and digital design services.",
-  },
-  {
-    q: "Do you offer custom design styles, or do you stick to one aesthetic?",
-    a: "While I specialize in modern minimalist and clean aesthetic branding, I adapt my design style entirely to fit your target market, brand archetype, and industry standards.",
-  },
-  {
-    q: "In what formats do you deliver the final design files?",
-    a: "You receive print-ready vector files (AI, EPS, PDF) along with web-optimized digital assets (PNG, JPG, WebP, SVG) and organized source files depending on your package.",
-  },
-  {
-    q: "Do you design specialized media for YouTube creators and social channels?",
-    a: "Absolutely. I design high-CTR, psychology-based YouTube thumbnails, channel banners, social media ad creatives, and stream overlays tailored to capture attention and boost engagement.",
-  },
-  {
-    q: "Can I request revisions if I need changes to the designs?",
-    a: "Yes, 100%! All packages come with built-in revision rounds, and the Premium plan offers unlimited revisions to ensure you get the exact look you want.",
-  },
-  {
-    q: "What is the typical delivery timeline for graphic design assets?",
-    a: "Individual graphics and YouTube thumbnails are usually delivered within 24 to 48 hours. Complete brand identity packages or multi-asset designs take around 3 to 7 days.",
-  },
+      q: "Who provides custom graphic design and visual branding services?",
+      a: "Muhammad Zubair Abid (MZA Dev) provides custom visual branding, vector logo design, high-CTR YouTube thumbnails, marketing media assets, and digital design services.",
+    },
+    {
+      q: "Do you offer custom design styles, or do you stick to one aesthetic?",
+      a: "While I specialize in modern minimalist and clean aesthetic branding, I adapt my design style entirely to fit your target market, brand archetype, and industry standards.",
+    },
+    {
+      q: "In what formats do you deliver the final design files?",
+      a: "You receive print-ready vector files (AI, EPS, PDF) along with web-optimized digital assets (PNG, JPG, WebP, SVG) and organized source files depending on your package.",
+    },
+    {
+      q: "Do you design specialized media for YouTube creators and social channels?",
+      a: "Absolutely. I design high-CTR, psychology-based YouTube thumbnails, channel banners, social media ad creatives, and stream overlays tailored to capture attention and boost engagement.",
+    },
+    {
+      q: "Can I request revisions if I need changes to the designs?",
+      a: "Yes, 100%! All packages come with built-in revision rounds, and the Premium plan offers unlimited revisions to ensure you get the exact look you want.",
+    },
+    {
+      q: "What is the typical delivery timeline for graphic design assets?",
+      a: "Individual graphics and YouTube thumbnails are usually delivered within 24 to 48 hours. Complete brand identity packages or multi-asset designs take around 3 to 7 days.",
+    },
   ];
 
   return (
@@ -112,11 +105,12 @@ export default function GraphicDesignServicesPage() {
           answer: item.a 
         }))} 
       />
+
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden rounded-3xl border border-border/70 bg-transparent p-6 sm:p-10 md:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-6">
-             <FadeIn>
+          <div className="lg:col-span-7 space-y-6">
+            <FadeIn>
               <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
                 Creative Graphic Design Services
               </span>
@@ -142,14 +136,15 @@ export default function GraphicDesignServicesPage() {
                   <span>Contact Me</span>
                 </Link>
               </div>
-              </FadeIn>
-            </div>
+            </FadeIn>
+          </div>
+
           {/* Hero Image Container */}
           <div className="lg:col-span-5 flex justify-center items-center w-full">
             <FadeIn>
               <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
                 <Image
-                  src="/project-images/ai-robot.webp"
+                  src="/project-images/graphic-design.webp"
                   alt="Creative Graphic Design Services"
                   width={360}
                   height={360}
@@ -159,7 +154,6 @@ export default function GraphicDesignServicesPage() {
               </div>
             </FadeIn>
           </div>
-
         </div>
       </section>
 
@@ -167,18 +161,18 @@ export default function GraphicDesignServicesPage() {
       <section className="p-8 sm:p-12 rounded-3xl border border-border/60 bg-accent/20 space-y-6">
         <div className="max-w-3xl space-y-4">
           <FadeIn>
-          <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
-            Minimalist Brand Identity
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            Why Visual Identity Matters in the Digital Economy
-          </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            The digital landscape is crowded. With the rise of AI-generated content, human-centric, purposeful design has become a premium asset. A strong visual identity helps your business stand out in today’s competitive world.
-          </p>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            I offer personalized creative graphic design services crafted to leave a lasting impression. From the “Matte Aesthetic” to high-end minimalist luxury, I ensure your brand doesn’t just exist—it dominates.
-          </p>
+            <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
+              Minimalist Brand Identity
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
+              Why Visual Identity Matters in the Digital Economy
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              The digital landscape is crowded. With the rise of AI-generated content, human-centric, purposeful design has become a premium asset. A strong visual identity helps your business stand out in today’s competitive world.
+            </p>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              I offer personalized creative graphic design services crafted to leave a lasting impression. From the “Matte Aesthetic” to high-end minimalist luxury, I ensure your brand doesn’t just exist—it dominates.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -187,12 +181,12 @@ export default function GraphicDesignServicesPage() {
       <section className="space-y-8">
         <div className="space-y-2 border-b border-border/60 pb-6">
           <FadeIn>
-          <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
-            The Developer-Designer Advantage
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            The Synergy of Design and Development
-          </h2>
+            <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
+              The Developer-Designer Advantage
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
+              The Synergy of Design and Development
+            </h2>
           </FadeIn>
         </div>
 
@@ -200,28 +194,31 @@ export default function GraphicDesignServicesPage() {
           <div className="p-6 rounded-2xl border border-border/60 bg-accent/20 space-y-3">
             <Zap className="w-6 h-6 text-primary" />
             <FadeIn>
-            <h3 className="text-base font-bold text-foreground">Performance First</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Website banners are optimized for modern WebP/SVG formats to keep your LCP score green and loading speeds fast.
-            </p></FadeIn>
+              <h3 className="text-base font-bold text-foreground">Performance First</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Website banners are optimized for modern WebP/SVG formats to keep your LCP score green and loading speeds fast.
+              </p>
+            </FadeIn>
           </div>
 
           <div className="p-6 rounded-2xl border border-border/60 bg-accent/20 space-y-3">
             <Layout className="w-6 h-6 text-primary" />
             <FadeIn>
-            <h3 className="text-base font-bold text-foreground">UI/UX Integration</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Icons and visual elements are designed around real user experience journeys that naturally guide eyes to your primary CTAs.
-            </p></FadeIn>
+              <h3 className="text-base font-bold text-foreground">UI/UX Integration</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Icons and visual elements are designed around real user experience journeys that naturally guide eyes to your primary CTAs.
+              </p>
+            </FadeIn>
           </div>
 
           <div className="p-6 rounded-2xl border border-border/60 bg-accent/20 space-y-3">
             <Monitor className="w-6 h-6 text-primary" />
             <FadeIn>
-            <h3 className="text-base font-bold text-foreground">Platform Consistency</h3>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Every design component is tested across mobile, tablet, and ultra-wide desktop displays for pristine visual clarity.
-            </p></FadeIn>
+              <h3 className="text-base font-bold text-foreground">Platform Consistency</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Every design component is tested across mobile, tablet, and ultra-wide desktop displays for pristine visual clarity.
+              </p>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -229,13 +226,14 @@ export default function GraphicDesignServicesPage() {
       {/* 4. Service Overview Table */}
       <section className="space-y-8">
         <div className="space-y-2 border-b border-border/60 pb-6">
-        <FadeIn>
-          <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
-            Overview
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            Graphic Design Services: What I Offer
-          </h2></FadeIn>
+          <FadeIn>
+            <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
+              Overview
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
+              Graphic Design Services: What I Offer
+            </h2>
+          </FadeIn>
         </div>
 
         <div className="overflow-x-auto rounded-2xl border border-border/60 bg-accent/10">
@@ -295,9 +293,7 @@ export default function GraphicDesignServicesPage() {
           </p>
         </div>
 
-        {/* 3 Pricing Cards Design */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          
           {/* BASIC PLAN */}
           <div className="p-8 rounded-3xl border border-border/60 bg-accent/20 space-y-6 flex flex-col justify-between hover:border-primary/40 transition-all">
             <div className="space-y-6">
@@ -430,7 +426,6 @@ export default function GraphicDesignServicesPage() {
               Select Premium
             </Link>
           </div>
-
         </div>
       </section>
 
@@ -450,41 +445,8 @@ export default function GraphicDesignServicesPage() {
         </p>
       </section>
 
-      {/* 8. FAQs Section */}
-      <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center space-y-2">
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            Frequently Asked Questions
-          </h2>
-        </div>
-
-        {/* 2 Columns Grid on Medium Screens & Above */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-border/60 rounded-2xl bg-accent/20 overflow-hidden transition-all"
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
-              >
-                <span>{faq.q}</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                    openFaq === index ? "rotate-180 text-primary" : ""
-                  }`}
-                />
-              </button>
-              {openFaq === index && (
-                <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border/40 leading-relaxed font-normal">
-                  {faq.a}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* 8. FAQs Section (Rendered via Client Component) */}
+      <FaqSection faqs={faqs} />
 
       {/* 9. Final CTA */}
       <section className="p-8 sm:p-12 rounded-3xl border border-border/60 bg-accent/30 text-center space-y-6">
@@ -504,7 +466,6 @@ export default function GraphicDesignServicesPage() {
           <ArrowUpRight className="w-4 h-4" />
         </Link>
       </section>
-
     </main>
   );
 }

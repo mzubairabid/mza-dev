@@ -1,10 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
 import Link from "next/link";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 import {
   Sparkles,
   Zap,
@@ -22,21 +19,11 @@ import {
   Terminal,
   Activity,
   Layers,
-  Copy,
-  Check,
 } from "lucide-react";
 
 const post = getPostBySlug("fix-inp-issue-on-wordpress")!;
 
 export default function FixInpWordPress2026PostPage() {
-  const [copiedSnippet, setCopiedSnippet] = useState<string | null>(null);
-
-  const handleCopy = (code: string, snippetId: string) => {
-    navigator.clipboard.writeText(code);
-    setCopiedSnippet(snippetId);
-    setTimeout(() => setCopiedSnippet(null), 2000);
-  };
-
   const codeSnippets = {
     observer: `const observer = new PerformanceObserver((list) => {
   for (const entry of list.getEntries()) {
@@ -147,55 +134,37 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
     },
   ];
 
-  const recommendedGuides = [
-    {
-      title: "Fix PageSpeed 'Unable to Resolve URL'",
-      desc: "Troubleshoot Cloudflare routing, stale AAAA IPv6 records, and SSL redirection loops.",
-      url: "/blog/fix-pagespeed-unable-to-resolve-url",
-    },
-    {
-      title: "The Role of APIs in Web Development: A Shopify Case Study",
-      desc: "Learn how decoupling storefronts with Next.js & APIs dropped load times from 8.3s to 1.1s.",
-      url: "/blog/role-of-apis-in-web-development-shopify-case-study",
-    },
-    {
-      title: "Add Google AdSense to WordPress Without Plugins",
-      desc: "Lock layout shifts and eliminate plugin bloat with direct hook insertions.",
-      url: "/blog/add-google-adsense-wordpress-without-plugins",
-    },
-  ];
-
   return (
     <BlogLayout post={post}>
       <div className="space-y-16">
-{/* 2. Key Target Metrics */}
-      <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
-          <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Good INP Target</div>
-          <div className="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400">
-            ≤ 200ms
+        {/* 2. Key Target Metrics */}
+        <section className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
+            <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Good INP Target</div>
+            <div className="text-3xl sm:text-4xl font-bold text-emerald-600 dark:text-emerald-400">
+              ≤ 200ms
+            </div>
+            <p className="text-xs text-muted-foreground">75th percentile of real user visits (CrUX)</p>
           </div>
-          <p className="text-xs text-muted-foreground">75th percentile of real user visits (CrUX)</p>
-        </div>
 
-        <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
-          <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Needs Improvement</div>
-          <div className="text-3xl sm:text-4xl font-bold text-amber-500">
-            201ms – 500ms
+          <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
+            <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Needs Improvement</div>
+            <div className="text-3xl sm:text-4xl font-bold text-amber-500">
+              201ms – 500ms
+            </div>
+            <p className="text-xs text-muted-foreground">Requires main-thread task fragmentation</p>
           </div>
-          <p className="text-xs text-muted-foreground">Requires main-thread task fragmentation</p>
-        </div>
 
-        <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
-          <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Poor INP Rating</div>
-          <div className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-400">
-            &gt; 500ms
+          <div className="p-6 rounded-2xl border border-border bg-card space-y-2">
+            <div className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Poor INP Rating</div>
+            <div className="text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-400">
+              &gt; 500ms
+            </div>
+            <p className="text-xs text-muted-foreground">Triggers negative SEO ranking signals</p>
           </div>
-          <p className="text-xs text-muted-foreground">Triggers negative SEO ranking signals</p>
-        </div>
-      </section>
+        </section>
+
         <div className="space-y-12 text-muted-foreground leading-relaxed text-base">
-          
           {/* Section 1: Overview */}
           <div className="space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight border-b border-border pb-3 flex items-center gap-2">
@@ -250,12 +219,6 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
 
             {/* Code Snippet 1 */}
             <div className="relative rounded-2xl border border-border bg-zinc-950 p-4 font-mono text-xs text-zinc-200 overflow-x-auto">
-              <button
-                onClick={() => handleCopy(codeSnippets.observer, "observer")}
-                className="absolute top-3 right-3 p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
-              >
-                {copiedSnippet === "observer" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              </button>
               <pre>{codeSnippets.observer}</pre>
             </div>
           </div>
@@ -273,12 +236,6 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
 
             {/* Code Snippet 2 */}
             <div className="relative rounded-2xl border border-border bg-zinc-950 p-4 font-mono text-xs text-zinc-200 overflow-x-auto">
-              <button
-                onClick={() => handleCopy(codeSnippets.phpDefer, "phpDefer")}
-                className="absolute top-3 right-3 p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
-              >
-                {copiedSnippet === "phpDefer" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              </button>
               <pre>{codeSnippets.phpDefer}</pre>
             </div>
           </div>
@@ -296,12 +253,6 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
 
             {/* Code Snippet 3 */}
             <div className="relative rounded-2xl border border-border bg-zinc-950 p-4 font-mono text-xs text-zinc-200 overflow-x-auto">
-              <button
-                onClick={() => handleCopy(codeSnippets.yieldScript, "yieldScript")}
-                className="absolute top-3 right-3 p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
-              >
-                {copiedSnippet === "yieldScript" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              </button>
               <pre>{codeSnippets.yieldScript}</pre>
             </div>
 
@@ -312,12 +263,6 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
 
             {/* Code Snippet 4 */}
             <div className="relative rounded-2xl border border-border bg-zinc-950 p-4 font-mono text-xs text-zinc-200 overflow-x-auto">
-              <button
-                onClick={() => handleCopy(codeSnippets.idleCallback, "idleCallback")}
-                className="absolute top-3 right-3 p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors"
-              >
-                {copiedSnippet === "idleCallback" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              </button>
               <pre>{codeSnippets.idleCallback}</pre>
             </div>
           </div>
@@ -385,40 +330,39 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
               </a>
             </div>
           </div>
-
         </div>
 
         {/* FaqAccordion Component */}
         <FaqAccordion faqs={faqList} />
 
-      {/* 5. Call to Action Banner */}
-      <section className="rounded-3xl border border-zinc-800 bg-zinc-900 text-white p-8 sm:p-12 md:p-16 text-center space-y-6 shadow-xl">
-        <div className="max-w-2xl mx-auto space-y-3">
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-light tracking-tight text-white leading-tight">
-            Need Help Passing INP & Core Web Vitals?
-          </h2>
-          <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl mx-auto">
-            Let's audit your main thread, refactor heavy scripts, and optimize your WordPress architecture for green scores.
-          </p>
-        </div>
+        {/* 5. Call to Action Banner */}
+        <section className="rounded-3xl border border-zinc-800 bg-zinc-900 text-white p-8 sm:p-12 md:p-16 text-center space-y-6 shadow-xl">
+          <div className="max-w-2xl mx-auto space-y-3">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-light tracking-tight text-white leading-tight">
+              Need Help Passing INP & Core Web Vitals?
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl mx-auto">
+              Let's audit your main thread, refactor heavy scripts, and optimize your WordPress architecture for green scores.
+            </p>
+          </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-          <Link
-            href="/contact"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2"
-          >
-            <span>Book Performance Audit</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2"
+            >
+              <span>Book Performance Audit</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
 
-          <Link
-            href="/work"
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl border border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-200 hover:text-white font-semibold text-sm transition-all flex items-center justify-center"
-          >
-            View Projects
-          </Link>
-        </div>
-      </section>
+            <Link
+              href="/work"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-xl border border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800 text-zinc-200 hover:text-white font-semibold text-sm transition-all flex items-center justify-center"
+            >
+              View Projects
+            </Link>
+          </div>
+        </section>
       </div>
     </BlogLayout>
   );

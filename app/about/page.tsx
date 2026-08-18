@@ -1,11 +1,10 @@
-"use client";
-
-import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "@/public/project-images/author-mza.webp";
+import type { Metadata } from "next";
+import heroImage from "@/public/project-images/about-web-development.webp";
 import { FadeIn } from "@/components/animations/fade-in";
-import FaqSchema from '@/components/FaqSchema';
+import FaqSchema from "@/components/FaqSchema";
+import { FaqSection } from "@/components/sections/faq-section";
 
 import {
   CheckCircle2,
@@ -18,13 +17,13 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export default function AboutPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  
-    const toggleFaq = (index: number) => {
-      setOpenFaq(openFaq === index ? null : index);
-    };
+export const metadata: Metadata = {
+  title: "About Muhammad Zubair Abid (MZA Dev) | Full-Stack Developer",
+  description:
+    "Learn more about Muhammad Zubair Abid (MZA Dev), an independent Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals.",
+};
 
+export default function AboutPage() {
   const coreSkills = [
     "Next.js / React / TypeScript",
     "Tailwind CSS & Modern UI/UX",
@@ -101,17 +100,16 @@ export default function AboutPage() {
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
       {/* Inject JSON-LD Schema */}
-            <FaqSchema 
-              faqList={faqs.map((item: { q: string; a: string }) => ({ 
-                question: item.q, 
-                answer: item.a 
-              }))} 
-            />
+      <FaqSchema
+        faqList={faqs.map((item) => ({
+          question: item.q,
+          answer: item.a,
+        }))}
+      />
 
-      {/* 1. Hero Section */} 
+      {/* 1. Hero Section */}
       <section className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 sm:p-10 md:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
           <div className="lg:col-span-7 space-y-6">
             <FadeIn direction="down" delay={0.1}>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-medium">
@@ -122,13 +120,17 @@ export default function AboutPage() {
 
             <FadeIn direction="up" delay={0.2}>
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-foreground tracking-tight leading-tight">
-                Crafting High-Performance <span className="text-primary font-normal">Digital Solutions</span>
+                Crafting High-Performance{" "}
+                <span className="text-primary font-normal">Digital Solutions</span>
               </h1>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.3}>
               <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-                I am Muhammad Zubair Abid (MZA Dev) specializing in engineering high-speed Next.js web applications, custom Shopify & WordPress architectures, and executing deep Core Web Vitals optimizations built to scale and rank on search engines.
+                I am Muhammad Zubair Abid (MZA Dev) specializing in engineering
+                high-speed Next.js web applications, custom Shopify & WordPress
+                architectures, and executing deep Core Web Vitals optimizations
+                built to scale and rank on search engines.
               </p>
             </FadeIn>
 
@@ -154,7 +156,7 @@ export default function AboutPage() {
           {/* Image Wrapper */}
           <div className="lg:col-span-5 flex justify-center items-center w-full">
             <FadeIn direction="left" delay={0.3}>
-              <div className="relative w-full max-w-90 h-90 rounded-2xl overflow-hidden border border-border bg-card shadow-xl p-2 flex items-center justify-center shrink-0">
+              <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
                 <Image
                   src={heroImage}
                   alt="Muhammad Zubair Abid"
@@ -166,7 +168,6 @@ export default function AboutPage() {
               </div>
             </FadeIn>
           </div>
-
         </div>
       </section>
 
@@ -181,25 +182,43 @@ export default function AboutPage() {
 
           <FadeIn direction="up" delay={0.2}>
             <p>
-              My journey into computer science began in 2018 after completing my Bachelor degree in Information Technology (Hons). Early in my career, I was given the technical responsibility of upgrading legacy enterprise desktop systems and converting complex relational database software under tight delivery deadlines. Working directly with raw data structures and performance constraints laid a strong engineering foundation for my career.
+              My journey into computer science began in 2018 after completing my
+              Bachelor degree in Information Technology (Hons). Early in my
+              career, I was given the technical responsibility of upgrading
+              legacy enterprise desktop systems and converting complex
+              relational database software under tight delivery deadlines.
+              Working directly with raw data structures and performance
+              constraints laid a strong engineering foundation for my career.
             </p>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.3}>
             <p>
-              Over the years, I shifted my focus toward the modern JavaScript web ecosystem. As a freelance full-stack developer, I specialized in building custom Next.js web applications, responsive Tailwind CSS layouts, custom Shopify themes, and optimizing WooCommerce stores for high traffic conversions.
+              Over the years, I shifted my focus toward the modern JavaScript web
+              ecosystem. As a freelance full-stack developer, I specialized in
+              building custom Next.js web applications, responsive Tailwind CSS
+              layouts, custom Shopify themes, and optimizing WooCommerce stores
+              for high traffic conversions.
             </p>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.4}>
             <p>
-              To test my technical SEO strategies and server performance configurations on live traffic, I launched my tech blog, Gadget Crunchie, in October 2022. Managing an independent publication provided real-world testing grounds for Google search algorithm updates, Core Web Vitals optimization, and structured schema implementation.
+              To test my technical SEO strategies and server performance
+              configurations on live traffic, I launched my tech blog, Gadget
+              Crunchie, in October 2022. Managing an independent publication
+              provided real-world testing grounds for Google search algorithm
+              updates, Core Web Vitals optimization, and structured schema
+              implementation.
             </p>
           </FadeIn>
 
           <FadeIn direction="up" delay={0.5}>
             <p>
-              I also run my technical YouTube channel, ByteScript MZA, where I publish step-by-step coding guides and tutorials to help other developers master full-stack web technologies and speed tuning techniques.
+              I also run my technical YouTube channel, ByteScript MZA, where I
+              publish step-by-step coding guides and tutorials to help other
+              developers master full-stack web technologies and speed tuning
+              techniques.
             </p>
           </FadeIn>
 
@@ -209,7 +228,7 @@ export default function AboutPage() {
               <div className="flex items-center gap-3">
                 <div className="p-2.5 bg-primary text-primary-foreground rounded-xl shrink-0">
                   <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
                 </div>
                 <div>
@@ -266,7 +285,10 @@ export default function AboutPage() {
                 <span>Why Work With an Independent Developer?</span>
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Agencies often delegate work to junior staff after a contract is signed. When you work with me, every single line of code, technical architecture decision, and security check is handled directly by an experienced full-stack developer.
+                Agencies often delegate work to junior staff after a contract is
+                signed. When you work with me, every single line of code, technical
+                architecture decision, and security check is handled directly by an
+                experienced full-stack developer.
               </p>
             </div>
           </FadeIn>
@@ -281,7 +303,8 @@ export default function AboutPage() {
               Specialized Web Solutions
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground">
-              Tailored engineering services designed to fix performance bottlenecks and grow business revenue.
+              Tailored engineering services designed to fix performance
+              bottlenecks and grow business revenue.
             </p>
           </div>
         </FadeIn>
@@ -289,9 +312,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {servicesBreakdown.map((service, index) => (
             <FadeIn key={index} direction="up" delay={0.2 + index * 0.1}>
-              <div
-                className="p-6 sm:p-8 rounded-2xl border border-border bg-muted/30 space-y-4 hover:border-primary/40 transition-all duration-300 h-full"
-              >
+              <div className="p-6 sm:p-8 rounded-2xl border border-border bg-muted/30 space-y-4 hover:border-primary/40 transition-all duration-300 h-full">
                 <div className="p-3 w-fit rounded-xl bg-primary/10 text-primary">
                   <Cpu className="w-6 h-6" />
                 </div>
@@ -315,7 +336,8 @@ export default function AboutPage() {
               Development Process & Workflow
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground">
-              A structured four-step engineering methodology to bring your custom project from idea to launch.
+              A structured four-step engineering methodology to bring your custom
+              project from idea to launch.
             </p>
           </div>
         </FadeIn>
@@ -323,9 +345,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {workflowSteps.map((item, index) => (
             <FadeIn key={index} direction="up" delay={0.2 + index * 0.1}>
-              <div
-                className="p-6 rounded-2xl border border-border bg-card space-y-3 relative h-full"
-              >
+              <div className="p-6 rounded-2xl border border-border bg-card space-y-3 relative h-full">
                 <div className="text-2xl font-mono font-extrabold text-primary">
                   {item.step}
                 </div>
@@ -341,52 +361,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-        {/* Header Section - Centered */}
-        <div className="w-full text-center space-y-3 max-w-3xl mx-auto">
-          <FadeIn direction="down" delay={0.3}>
-            <h2 className="text-3xl sm:text-5xl font-serif font-light text-foreground tracking-tight">
-              Frequently Asked Questions
-            </h2>
-          </FadeIn>
+      {/* 5. FAQ Section */}
+      <FaqSection faqs={faqs} />
 
-          <FadeIn direction="up" delay={0.4}>
-            <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-              Learn more about Muhammad Zubair Abid (MZA Dev), engineering workflow, technical background, and service guarantees.
-            </p>
-          </FadeIn>
-        </div>
-
-        {/* 2 Columns Grid */}
-        <FadeIn direction="up" delay={0.5}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start pt-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="border border-border/60 rounded-2xl bg-accent/20 overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-5 py-4 text-left font-medium text-sm sm:text-base text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                      openFaq === index ? "rotate-180 text-primary" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === index && (
-                  <div className="px-5 pb-5 pt-2 text-xs sm:text-sm text-muted-foreground/90 border-t border-border/40 leading-relaxed font-normal">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </FadeIn>
-      </section>
-      {/* 5. Call to Action Banner */}
+      {/* 6. Call to Action Banner */}
       <FadeIn direction="up" delay={0.2}>
         <section className="rounded-3xl border border-border bg-card text-foreground p-8 sm:p-12 md:p-16 text-center space-y-6 shadow-xl">
           <div className="max-w-2xl mx-auto space-y-3">
@@ -394,7 +372,9 @@ export default function AboutPage() {
               Ready to Build a High-Performance Website?
             </h2>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              Stop losing potential clients to slow loading speeds and unoptimized pages. Let us build a fast, secure, and search-optimized digital asset for your business.
+              Stop losing potential clients to slow loading speeds and unoptimized
+              pages. Let us build a fast, secure, and search-optimized digital
+              asset for your business.
             </p>
           </div>
 
@@ -416,7 +396,6 @@ export default function AboutPage() {
           </div>
         </section>
       </FadeIn>
-
     </main>
   );
 }

@@ -1,9 +1,6 @@
-"use client";
-
-import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { FadeIn } from "@/components/animations/fade-in";
-
+import type { Metadata } from "next";
 import {
   Wrench,
   Calculator,
@@ -15,8 +12,14 @@ import {
   Cpu,
   Code,
   Zap,
+  LucideIcon,
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Interactive Web Tools & Developer Utilities | MZA Dev",
+  description:
+    "Explore free custom-engineered web tools, live compilers, JSON-LD schema generators, and performance calculators engineered by Muhammad Zubair Abid (MZA Dev).",
+};
 interface ToolItem {
   id: string;
   title: string;
@@ -24,13 +27,18 @@ interface ToolItem {
   category: "Calculators" | "Web Utility" | "Compilers & Editors";
   status: "Live" | "In Development" | "Beta";
   href: string;
-  icon: any;
+  icon: LucideIcon;
   techStack: string[];
 }
 
-export default function ToolsDirectoryPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+interface PageProps {
+  searchParams: Promise<{ q?: string; category?: string }> | { q?: string; category?: string };
+}
+
+export default async function ToolsDirectoryPage({ searchParams }: PageProps) {
+  const resolvedParams = await searchParams;
+  const searchQuery = resolvedParams?.q || "";
+  const selectedCategory = resolvedParams?.category || "All";
 
   const tools: ToolItem[] = [
     {
@@ -126,32 +134,43 @@ export default function ToolsDirectoryPage() {
 
         {/* Filter & Search Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 p-4 rounded-2xl border border-border bg-card">
-          <div className="relative w-full md:w-72">
+          <form method="GET" className="relative w-full md:w-72">
             <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
+              name="q"
+              defaultValue={searchQuery}
               placeholder="Search tools..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all text-foreground"
             />
-          </div>
+            {selectedCategory !== "All" && (
+              <input type="hidden" name="category" value={selectedCategory} />
+            )}
+          </form>
 
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-blue-600 text-white shadow-sm"
-                    : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const queryParams = new URLSearchParams();
+              if (cat !== "All") queryParams.set("category", cat);
+              if (searchQuery) queryParams.set("q", searchQuery);
+              const queryString = queryParams.toString();
+              const href = queryString ? `?${queryString}` : "?";
+              const isActive = selectedCategory === cat;
+
+              return (
+                <Link
+                  key={cat}
+                  href={href}
+                  className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all ${
+                    isActive
+                      ? "bg-blue-600 text-white shadow-sm"
+                      : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {cat}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -159,7 +178,7 @@ export default function ToolsDirectoryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredTools.length > 0 ? (
             filteredTools.map((tool) => {
-              const Icon = tool.icon;
+              const IconComponent = tool.icon;
               return (
                 <div
                   key={tool.id}
@@ -168,7 +187,7 @@ export default function ToolsDirectoryPage() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="p-3 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
-                        <Icon className="w-5 h-5" />
+                        <IconComponent className="w-5 h-5" />
                       </div>
                       <span
                         className={`text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full border ${
@@ -204,7 +223,7 @@ export default function ToolsDirectoryPage() {
                     </div>
 
                     <Link
-                      href={tool.href as any}
+                      href={tool.href}
                       className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline pt-1"
                     >
                       <span>Launch Tool</span>
@@ -231,7 +250,7 @@ export default function ToolsDirectoryPage() {
               Need a Custom Interactive Tool or Calculator?
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              I design dynamic JavaScript tools tailored for your brand's business logic.
+              I design dynamic JavaScript tools tailored for your brand&apos;s business logic.
             </p>
           </div>
           <Link

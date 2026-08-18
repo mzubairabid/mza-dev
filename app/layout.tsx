@@ -21,6 +21,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Muhammad Zubair Abid - Full-Stack Developer & SEO Specialist",
   description: "Portfolio and technical insights by MZA.",
+  metadataBase: new URL("https://mzadev.com"),
   icons: {
     icon: "/favicon.webp", // 👈 WebP file path from public folder
   },

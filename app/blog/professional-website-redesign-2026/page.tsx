@@ -1,5 +1,3 @@
-import React from "react";
-import Link from "next/link";
 import {
   Sparkles,
   Video,
@@ -14,7 +12,7 @@ import {
 } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
-import { getPostBySlug } from "@/lib/blog-posts";
+import { getPostBySlug } from "@/lib/blog-data";
 
 export const metadata = {
   title: "Professional Website Redesign 2026: The Ultimate Strategy Guide",

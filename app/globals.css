@@ -303,3 +303,24 @@
     margin: 1.5em 0;
   }
 }
+
+/* Code Snippets & Syntax Highlighting Styles */
+[data-rehype-pretty-code-title] {
+  @apply rounded-t-xl border-x border-t border-border bg-slate-900 px-4 py-2 font-mono text-xs text-slate-300 font-semibold;
+}
+
+[data-rehype-pretty-code-title] + [data-rehype-pretty-code-fragment] div {
+  @apply rounded-t-none border-t-0;
+}
+
+[data-rehype-pretty-code-fragment] {
+  @apply relative my-6 overflow-hidden rounded-xl border border-border bg-slate-950 text-slate-50;
+}
+
+[data-rehype-pretty-code-fragment] pre {
+  @apply overflow-x-auto p-4 text-sm leading-relaxed;
+}
+
+[data-highlighted-line] {
+  @apply -mx-4 bg-slate-800/60 px-4 border-l-2 border-primary;
+}

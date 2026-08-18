@@ -13,7 +13,7 @@ export default function PersonSchema() {
     // ⬇️ YE SAMEAS ARRAY ADD KARNA HAI ⬇️
     "sameAs": [
       "https://github.com/gadgetcrunchie",
-      "https://www.linkedin.com/in/mzadev",
+      "https://www.linkedin.com/in/mzubairabid",
       "https://www.youtube.com/@Bmzadev",
       "https://gadgetcrunchie.com",
       "https://twitter.com/mzadev" // Agar ho toh add karein, warna remove kar dein
