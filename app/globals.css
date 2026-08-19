@@ -324,3 +324,14 @@
 [data-highlighted-line] {
   @apply -mx-4 bg-slate-800/60 px-4 border-l-2 border-primary;
 }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

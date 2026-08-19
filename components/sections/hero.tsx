@@ -53,8 +53,7 @@ export function Hero() {
 
         {/* Right Side: Image Showcase */}
         <div className="w-full md:w-1/2 flex justify-center md:justify-end shrink-0">
-          <FadeIn direction="left" delay={0.3}>
-            <div className="relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
+            <div className="animate-[slideInLeft_0.6s_ease-out_forwards] relative w-full max-w-120 rounded-2xl overflow-hidden border border-border bg-card shadow-xl">
               {!imgError ? (
                 <Image
                   src="/project-images/hero-section-index.webp"
@@ -64,7 +63,7 @@ export function Hero() {
                   priority={true}
                   loading="eager"
                   fetchPriority="high"
-                  quality={70} // 👈 70% quality (Size 30% kam hoga)
+                  quality={75} // 👈 70% quality (Size 30% kam hoga)
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" // 👈 Mobile load optimize hoga
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500 block"
                 />
@@ -80,7 +79,6 @@ export function Hero() {
               )}
               <div className="absolute inset-0 bg-linear-to-t from-background/30 via-transparent to-transparent pointer-events-none" />
             </div>
-          </FadeIn>
         </div>
 
       </div>
