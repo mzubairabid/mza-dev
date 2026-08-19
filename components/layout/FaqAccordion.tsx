@@ -29,8 +29,33 @@ export default function FaqAccordion({
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  // Google Rich Results (FAQ Schema Generation)
+  const faqSchema =
+    faqList.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqList.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.a,
+            },
+          })),
+        }
+      : null;
+
   return (
     <section className="space-y-6 my-10 max-w-4xl mx-auto border-t border-border pt-8">
+      {/* Dynamic Google FAQ Schema Script */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      
       {/* Title & Subtitle Header */}
       <div className="space-y-2">
         {/* Left-Aligned Heading with Icon */}
