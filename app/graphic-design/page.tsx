@@ -15,9 +15,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Creative Graphic Design & Brand Visuals | MZA Dev",
+  title: "Graphic Design & Brand Visuals | MZA Dev",
   description:
     "Professional graphic design, UI/UX visual assets, brand identity, and media design tailored to elevate your digital presence and engage target audiences.",
+    alternates: {
+    canonical: 'https://www.mzadev.com/graphic-design', 
+  },
 };
 
 export default function GraphicDesignServicesPage() {

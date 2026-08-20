@@ -32,8 +32,13 @@ export const NAV_LINKS: NavItem[] = [
       },
       {
         title: "Web Development",
-        href: "/services/web-development-service",
+        href: "/web-development-service",
         description: "Custom web applications built with Next.js & React.",
+      },
+      {
+        title: "Technical SEO",
+        href: "/technical-seo",
+        description: "Data-driven Technical SEO solutions.",
       },
       {
         title: "Graphic Design",
@@ -69,11 +74,11 @@ export const NAV_LINKS: NavItem[] = [
 
 // 3. Footer Links
 export const FOOTER_CATEGORIES: readonly FooterLink[] = [
-  { label: "Web Development", href: "/category/web-development" },
-  { label: "JavaScript & React", href: "/category/javascript" },
-  { label: "Next.js & Full-Stack", href: "/category/nextjs" },
+  { label: "Web Development", href: "/web-development-service" },
+  { label: "Html CSS JS", href: "/tools/live-html-css-js-editor-tester" },
+  { label: "Next.js & Full-Stack", href: "/tools/online-react-compiler-2026" },
   { label: "Developer Tools", href: "/tools" },
-  { label: "Coding Tutorials", href: "/category/tutorials" },
+  { label: "Coding", href: "/work" },
 ] as const;
 
 export const FOOTER_LEGAL_LINKS: readonly FooterLink[] = [
@@ -93,7 +98,7 @@ export const BOTTOM_BAR_SOCIALS: readonly FooterLink[] = [
   },
   { 
     label: "LinkedIn", 
-    href: "https://www.linkedin.com/in/mzadev/", 
+    href: "https://www.linkedin.com/in/mzubairabid/", 
     target: "_blank", 
     rel: "noopener noreferrer nofollow" 
   },

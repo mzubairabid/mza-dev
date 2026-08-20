@@ -335,3 +335,53 @@
     transform: translateX(0);
   }
 }
+
+/* FAQ Component Custom Utilities (Tailwind v4) */
+@utility faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  background-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+
+  & summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@utility faq-summary {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--accent);
+  }
+
+  @media (min-width: 640px) {
+    font-size: 1rem;
+  }
+}
+
+@utility faq-content {
+  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  border-top: 1px solid var(--border);
+  line-height: 1.625;
+  font-weight: 400;
+
+  @media (min-width: 640px) {
+    font-size: 0.875rem;
+  }
+}

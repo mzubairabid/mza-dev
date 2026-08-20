@@ -17,9 +17,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Full-Stack Web Development (Next.js & React) | MZA Dev",
+  title: "Full-Stack Web Development | MZA Dev",
   description:
     "Custom, lightning-fast full-stack web applications built with Next.js, React, and TypeScript. Scalable code optimized for Core Web Vitals and search visibility.",
+    alternates: {
+    canonical: 'https://www.mzadev.com/web-development-service', 
+  },
 };
 
 export default function WebDevelopmentServicesPage() {

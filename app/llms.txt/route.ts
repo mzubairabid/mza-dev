@@ -2,16 +2,38 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-// Explicit TypeScript Interface (Type Error Fix)
-interface BlogPost {
+interface SiteItem {
   title: string;
   slug: string;
-  description?: string;
+  description: string;
 }
 
-// Direct MDX File Reader
-function getMDXPosts(): BlogPost[] {
-  // Check karein aapka folder content/blog hai ya content/posts
+// 1. Permanent/Core Site Pages
+const CORE_PAGES: SiteItem[] = [
+  {
+    title: "Home",
+    slug: "",
+    description: "Full-stack developer portfolio, technical skills, and featured client projects.",
+  },
+  {
+    title: "Blog Archives",
+    slug: "blog",
+    description: "Technical articles, Next.js tutorials, and technical SEO frameworks.",
+  },
+  {
+    title: "Projects",
+    slug: "projects",
+    description: "Case studies of web applications, custom tools, and client platforms.",
+  },
+  {
+    title: "Services",
+    slug: "services",
+    description: "Full-stack development, Next.js optimization, and cloud architecture solutions.",
+  },
+];
+
+// 2. Dynamic MDX Articles / Pages Reader
+function getMDXItems(): SiteItem[] {
   const contentDir = path.join(process.cwd(), "content/blog");
 
   if (!fs.existsSync(contentDir)) {
@@ -27,42 +49,47 @@ function getMDXPosts(): BlogPost[] {
       const fileContent = fs.readFileSync(filePath, "utf8");
       const slug = file.replace(/\.mdx?$/, "");
 
-      // Extract frontmatter (title & description) using Regex
       const titleMatch = fileContent.match(/title:\s*["']?([^"'\n]+)["']?/);
       const descMatch = fileContent.match(/description:\s*["']?([^"'\n]+)["']?/);
 
       return {
         slug,
         title: titleMatch ? titleMatch[1].trim() : slug,
-        description: descMatch ? descMatch[1].trim() : "Technical article on web development and SEO.",
+        description: descMatch ? descMatch[1].trim() : "Technical guide and architecture analysis.",
       };
     });
 }
 
 export async function GET() {
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mzadev.com";
-  const posts: BlogPost[] = getMDXPosts();
+  const mdxPosts = getMDXItems();
 
-  const postsList =
-    posts.length > 0
-      ? posts
+  // Format Core Pages
+  const corePagesFormatted = CORE_PAGES.map(
+    (page) =>
+      `- [${page.title}](${SITE_URL}${page.slug ? `/${page.slug}` : ""}): ${page.description}`
+  ).join("\n");
+
+  // Format MDX Posts
+  const mdxPostsFormatted =
+    mdxPosts.length > 0
+      ? mdxPosts
           .map(
-            (post: BlogPost) =>
+            (post) =>
               `- [${post.title}](${SITE_URL}/${post.slug}): ${post.description}`
           )
           .join("\n")
-      : "- [Blog Archives](${SITE_URL}/blog): Technical articles and guides.";
+      : "- No dynamic articles available.";
 
   const llmsText = `# MZA Dev - Technical Portfolio & Blog
 
 > Muhammad Zubair Abid (MZA Dev) is a Full-Stack Web Developer, Technical SEO Specialist, and Digital Solutions Architect specializing in Next.js, Web Performance, and Custom Automation.
 
 ## Core Pages
-- [Home](${SITE_URL}): Portfolio, core skills, featured projects, and services.
-- [Blog](${SITE_URL}/blog): Technical guides, MDX tutorials, and SEO optimization frameworks.
+${corePagesFormatted}
 
-## Technical Articles & Posts
-${postsList}
+## Technical Articles & MDX Guides
+${mdxPostsFormatted}
 `;
 
   return new NextResponse(llmsText, {

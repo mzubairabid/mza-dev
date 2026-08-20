@@ -50,33 +50,38 @@ const nextConfig = {
       },
 
       // ====================================================
-      // 3. SERVICES & SUB-PAGES
-      // ====================================================
-      {
-        source: "/service/graphic-design",
-        destination: "/services/graphic-design",
-        permanent: true,
-      },
-      {
-        source: "/graphic-design",
-        destination: "/services/graphic-design",
-        permanent: true,
-      },
-      {
-        source: "/service/shopify-funnels",
-        destination: "/services/shopify-funnels",
-        permanent: true,
-      },
-      {
-        source: "/shopify-funnels",
-        destination: "/services/shopify-funnels",
-        permanent: true,
-      },
-      {
-        source: "/service/web-development",
-        destination: "/services/web-development-service",
-        permanent: true,
-      },
+// 3. SERVICES & SUB-PAGES (Clean URLs)
+// ====================================================
+{
+  source: "/services/graphic-design",
+  destination: "/graphic-design",
+  permanent: true,
+},
+{
+  source: "/service/graphic-design",
+  destination: "/graphic-design",
+  permanent: true,
+},
+{
+  source: "/services/shopify-funnels",
+  destination: "/shopify-funnels",
+  permanent: true,
+},
+{
+  source: "/service/shopify-funnels",
+  destination: "/shopify-funnels",
+  permanent: true,
+},
+{
+  source: "/services/web-development-service",
+  destination: "/web-development-service",
+  permanent: true,
+},
+{
+  source: "/service/web-development",
+  destination: "/web-development-service",
+  permanent: true,
+},
 
       // ====================================================
       // 4. TOOLS & SUB-PAGES
@@ -252,11 +257,6 @@ const nextConfig = {
       {
         source: '/tools/schema-generator',
         destination: '/tools',
-        permanent: true,
-      },
-      {
-        source: '/tools/core-web-vitals',
-        destination: '/tools/core-web-vitals-in-2026',
         permanent: true,
       },
       {

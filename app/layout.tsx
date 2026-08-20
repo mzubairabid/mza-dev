@@ -19,8 +19,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Zubair Abid - Full-Stack Developer & SEO Specialist",
-  description: "Portfolio and technical insights by MZA.",
+  title: "Full-Stack Developer & SEO Specialist | MZA Dev",
+  description: "Full-stack web developer and technical SEO specialist engineering fast, high-performing web applications, Next.js solutions, and digital growth.",
   metadataBase: new URL("https://mzadev.com"),
   icons: {
     icon: "/favicon.webp", // 👈 WebP file path from public folder
@@ -60,7 +60,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col justify-between bg-background text-foreground antialiased suppressHydrationWarning={true}">
+      <body className="min-h-screen flex flex-col justify-between bg-background text-foreground antialiased"  suppressHydrationWarning={true}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

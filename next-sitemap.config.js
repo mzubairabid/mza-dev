@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 const config = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://mzadev.com',
+  siteUrl: process.env.SITE_URL || 'https://www.mzadev.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   transformRobotsTxt: async (config, robotsTxt) => {

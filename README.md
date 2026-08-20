@@ -187,7 +187,7 @@ I share development, web, technology, and related content through my online plat
   GitHub
 </a>
 * <a 
-  href="https://www.linkedin.com/in/mzadev/" 
+  href="https://www.linkedin.com/in/mzubairabid/" 
   target="_blank" 
   rel="noopener noreferrer nofollow"
   className="hover:text-primary transition-colors"

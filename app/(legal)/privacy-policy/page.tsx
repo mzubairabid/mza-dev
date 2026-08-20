@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
         </h1>
         
         <p className="text-xs sm:text-sm text-muted-foreground font-mono">
-          Last Updated: March 25, 2026
+          Last Updated: August 20, 2026
         </p>
       </section>
 

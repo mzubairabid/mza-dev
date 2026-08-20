@@ -15,7 +15,7 @@ export function FaqSection({ faqs }: { faqs: FAQItem[] }) {
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
-
+  
   return (
     <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 pb-16">
       <div className="w-full">

@@ -1,9 +1,11 @@
 // components/mdx-components.tsx
 import Image from "next/image";
 import Link from "next/link";
-import { ComponentPropsWithoutRef } from "react";
+import React, { ComponentPropsWithoutRef } from "react";
 import { CodeBlock } from "@/components/code-block";
 import { Button } from "@/components/Button";
+import { FadeIn } from "@/components/animations/fade-in";
+import FaqSchema from '@/components/FaqSchema';
 
 export function Callout({
   children,
@@ -29,6 +31,15 @@ export const mdxComponents = {
   // Custom React Components
   Callout,
   Button,
+  FadeIn,
+  FaqSchema,
+
+  // HTML Details Override for Single-Open Accordion
+  details: ({ children, ...props }: ComponentPropsWithoutRef<"details">) => (
+    <details name="faq-accordion" {...props}>
+      {children}
+    </details>
+  ),
 
   // Code Block & Next Link
   pre: CodeBlock,
@@ -42,7 +53,7 @@ export const mdxComponents = {
     </Link>
   ),
 
-  // Next.js Image Integration (Hydration Safe Captions)
+  // Next.js Image Integration
   img: (props: ComponentPropsWithoutRef<"img">) => {
     const src = typeof props.src === "string" ? props.src : "";
     return (
@@ -63,7 +74,7 @@ export const mdxComponents = {
     );
   },
 
-  // hero section image
+  // Hero section image
   HeroImage: ({ src, alt }: { src: string; alt: string }) => (
     <img src={src} alt={alt} className="w-full h-full object-cover m-0" />
   ),
@@ -82,10 +93,17 @@ export const mdxComponents = {
     <h4 className="mt-4 mb-2 text-lg font-semibold tracking-tight">{children}</h4>
   ),
 
-  // Paragraph, Blockquote & Dividers
-  p: ({ children }: { children: React.ReactNode }) => (
-    <p className="my-4 leading-relaxed">{children}</p>
-  ),
+  // Safe Paragraph
+  p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
+    if (React.isValidElement(children)) {
+      return <>{children}</>;
+    }
+    return (
+      <p className="my-4 leading-relaxed" {...props}>
+        {children}
+      </p>
+    );
+  },
   blockquote: ({ children }: { children: React.ReactNode }) => (
     <blockquote className="my-6 border-l-4 border-primary pl-4 italic text-muted-foreground">
       {children}
@@ -108,7 +126,7 @@ export const mdxComponents = {
     </code>
   ),
 
-  // Markdown Table Layout (Auto Border & Hover Styles)
+  // Markdown Table Layout
   table: ({ children }: { children: React.ReactNode }) => (
     <div className="my-6 w-full overflow-y-auto rounded-lg border border-border">
       <table className="w-full text-sm text-left border-collapse">{children}</table>

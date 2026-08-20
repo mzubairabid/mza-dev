@@ -18,9 +18,15 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Muhammad Zubair Abid (MZA Dev) | Full-Stack Developer",
-  description:
-    "Learn more about Muhammad Zubair Abid (MZA Dev), an independent Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals.",
+  title: "About | Web Developer & SEO",
+  description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
+  openGraph: {
+    title: "About Muhammad Zubair Abid (MZA Dev)",
+    description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
+    url: "https://www.mzadev.com/about",
+    type: "website",
+    images: [{ url: "https://www.mzadev.com/public/project-images/about-web-development.webp", width: 1200, height: 630 }],
+  },
 };
 
 export default function AboutPage() {

@@ -15,9 +15,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Custom Shopify Development & E-commerce Solutions | MZA Dev",
+  title: "Custom Shopify Development & E-comm Solutions",
   description:
     "End-to-end Shopify store setup, liquid theme modifications, store performance tuning, and headless storefront integrations built to maximize sales.",
+    alternates: {
+    canonical: 'https://www.mzadev.com/shopify-funnels', 
+  },
 };
 
 export default function ShopifyServicesPage() {

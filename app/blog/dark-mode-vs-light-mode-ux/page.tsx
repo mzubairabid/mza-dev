@@ -1,10 +1,18 @@
+import type { Metadata } from "next";
 import { Sparkles, Video, HelpCircle, Moon, Sun, Monitor, BatteryCharging, Eye, Palette } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
-export const metadata = {
-  title: "Dark Mode vs Light Mode UX (2026) | Complete Strategy Guide",
-  description: "Explore the technical & UX differences between Dark Mode and Light Mode. Learn about OLED battery savings, visual polarity, contrast rules, and developer best practices.",
+export const metadata: Metadata = {
+  title: "Dark Mode vs Light Mode UX Guide | Developer Best Practices",
+  description: "Explore UX differences between Dark and Light Mode. Learn about OLED battery savings, visual polarity, contrast rules, and implementation.",
+  openGraph: {
+    title: "Dark Mode vs Light Mode UX Guide",
+    description: "Explore UX differences between Dark and Light Mode. Learn about OLED battery savings, visual polarity, contrast rules, and implementation.",
+    url: "https://www.mzadev.com/blog/dark-mode-vs-light-mode-ux",
+    type: "article",
+    images: [{ url: "https://www.mzadev.com/public/project-images/dark-mode-vs-light-mode-ux.webp", width: 1200, height: 630 }],
+  },
 };
 
 const post = getPostBySlug("dark-mode-vs-light-mode-ux")!;

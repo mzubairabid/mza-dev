@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
@@ -20,9 +21,16 @@ import {
   CheckCircle2
 } from "lucide-react";
 
-export const metadata = {
-  title: "Stunning Website Design and Development Services 2026",
-  description: "High-performance website design and development services for 2026. Custom WordPress, mobile-first UX, Shopify e-commerce, and SEO-first architecture by Gadget Crunchie.",
+export const metadata: Metadata = {
+  title: "Website Design & Development Services 2026 | MZA Dev",
+  description: "High-performance website design services. Custom Next.js, WordPress, mobile-first UX, Shopify e-commerce, and SEO-first architecture.",
+  openGraph: {
+    title: "Website Design & Development Services 2026 | MZA Dev",
+    description: "High-performance website design services. Custom Next.js, WordPress, mobile-first UX, Shopify e-commerce, and SEO-first architecture.",
+    url: "https://www.mzadev.com/blog/website-design-and-development-services",
+    type: "article",
+    images: [{ url: "https://www.mzadev.com/public/project-images/web-dev-services.webp", width: 1200, height: 630 }],
+  },
 };
 
 const post = getPostBySlug("website-design-and-development-services")!;

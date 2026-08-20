@@ -19,9 +19,12 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Custom Web Development & Technical SEO Services | MZA Dev",
+  title: "Services Web Development | MZA Dev",
   description:
     "Explore high-performance web development, headless e-commerce, custom web tools, and technical SEO services engineered by Muhammad Zubair Abid (MZA Dev).",
+    alternates: {
+    canonical: 'https://www.mzadev.com/services', 
+  },
 };
 
 // Safe Inline SVGs
@@ -190,7 +193,7 @@ export default function ServicesPage() {
 
               <div className="pt-2">
                 <Link
-                  href="/contact"
+                  href="/about"
                   className="px-6 py-3.5 rounded-xl bg-primary hover:opacity-90 text-primary-foreground font-semibold text-sm transition-all shadow-md inline-flex items-center gap-2"
                 >
                   <span>Let's Discuss Your Project</span>
