@@ -8,7 +8,11 @@ import {
   Code2, 
   ShoppingBag, 
   Globe, 
-  Palette, 
+  Palette,
+  Search,       // SEO ke liye
+  Layout,       // WordPress ke liye
+  Terminal,     // Live Code Editor ke liye
+  Cpu, 
   Calculator,
   Menu,
   X 
@@ -20,6 +24,10 @@ const getDropdownIcon = (href: string) => {
   if (href.includes("shopify")) return <ShoppingBag className="w-4 h-4" />;
   if (href.includes("web-development")) return <Globe className="w-4 h-4" />;
   if (href.includes("graphic-design")) return <Palette className="w-4 h-4" />;
+  if (href.includes("technical-seo")) return <Search className="w-4 h-4" />;
+  if (href.includes("wordpress")) return <Layout className="w-4 h-4" />;
+  if (href.includes("live-html-css-js")) return <Terminal className="w-4 h-4" />;
+  if (href.includes("react-compiler")) return <Cpu className="w-4 h-4" />;
   if (href.includes("calculator")) return <Calculator className="w-4 h-4" />;
   return <Code2 className="w-4 h-4" />;
 };

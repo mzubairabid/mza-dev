@@ -4,13 +4,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-  "dev": "next dev --turbopack",
-  "build": "next build && next-sitemap && node scripts/auto-index.mjs",
-  "start": "next start",
-  "lint": "eslint",
-  "format": "prettier --write \"**/*.{ts,tsx}\"",
-  "typecheck": "tsc --noEmit",
-  "doctor": "npx react-doctor@latest"
+    "dev": "next dev --turbopack",
+    "build": "next build && next-sitemap && node scripts/auto-index.mjs",
+    "start": "next start",
+    "lint": "eslint",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "doctor": "npx react-doctor@latest"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -38,6 +38,7 @@
     "react-dom": "^19.2.7",
     "rehype-pretty-code": "^0.14.5",
     "remark-gfm": "^4.0.1",
+    "resend": "^6.22.0",
     "shadcn": "^4.11.0",
     "shiki": "^4.4.3",
     "styled-components": "^6.4.4",

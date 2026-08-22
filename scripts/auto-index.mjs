@@ -7,26 +7,38 @@ const CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
 
 if (!CLIENT_EMAIL || !PRIVATE_KEY) {
-  console.log("⚠️ Google Indexing API credentials missing. Skipping auto-index.");
+  console.log("⚠️ Google Indexing credentials missing. Skipping auto-index.");
   process.exit(0);
 }
 
-// 1. Git commit diff se pichli push ki MDX files detect karna
+// 1. Git log se content folder ki .mdx files fetch karna
 function getChangedMdxFiles() {
   try {
-    const output = execSync("git diff HEAD~1 HEAD --name-only", { encoding: "utf8" });
-    const files = output.split("\n").filter((f) => f.endsWith(".mdx") || f.endsWith(".md"));
-    return files;
+    const gitLogOutput = execSync("git log -1 --name-only --pretty=format:''", {
+      encoding: "utf8",
+    });
+
+    const files = gitLogOutput
+      .split("\n")
+      .map((f) => f.trim())
+      .filter((f) => f.startsWith("content/") && (f.endsWith(".mdx") || f.endsWith(".md")));
+
+    return [...new Set(files)];
   } catch (err) {
-    console.log("Git diff fetch error. Continuing build process safely.");
+    console.log("⚠️ Git history parse error. Skipping auto-indexing.");
     return [];
   }
 }
 
-// 2. File path se clean URL banana
+// 2. Direct Slug URL Mapping Logic
 function fileToUrl(filePath) {
+  // e.g., content/blog/first-post.mdx -> first-post
+  // e.g., content/pages/about-us.mdx -> about-us
   const fileName = path.basename(filePath, path.extname(filePath));
-  if (fileName === "index") return SITE_URL;
+
+  if (fileName === "index" || fileName === "home") return SITE_URL;
+
+  // Direct root slug format: mzadev.com/slug
   return `${SITE_URL}/${fileName}`;
 }
 
@@ -34,11 +46,11 @@ async function runAutoIndex() {
   const changedFiles = getChangedMdxFiles();
 
   if (changedFiles.length === 0) {
-    console.log("ℹ️ No new or modified MDX files detected in this build.");
+    console.log("ℹ️ No new or modified MDX content files detected in this commit.");
     return;
   }
 
-  console.log(`🚀 Found ${changedFiles.length} changed MDX file(s). Requesting Google Instant Indexing...`);
+  console.log(`🚀 Found ${changedFiles.length} changed MDX file(s). Notifying Google...`);
 
   const auth = new google.auth.JWT(
     CLIENT_EMAIL,
@@ -62,7 +74,7 @@ async function runAutoIndex() {
       });
       console.log(`✅ Google Indexing API notified successfully for: ${url}`);
     } catch (error) {
-      console.error(`❌ Failed to send indexing request for ${url}:`, error?.message || error);
+      console.error(`❌ Failed indexing for ${url}:`, error?.message || error);
     }
   }
 }

@@ -26,14 +26,14 @@ export const NAV_LINKS: NavItem[] = [
     href: "/services",
     children: [
       {
+        title: "Graphic Design",
+        href: "/services/graphic-design",
+        description: "Brand identity, visual design & digital assets.",
+      },
+      {
         title: "Shopify Funnels",
         href: "/services/shopify-funnels",
         description: "High-converting Shopify landing pages & custom funnels.",
-      },
-      {
-        title: "Web Development",
-        href: "/web-development-service",
-        description: "Custom web applications built with Next.js & React.",
       },
       {
         title: "Technical SEO",
@@ -41,10 +41,16 @@ export const NAV_LINKS: NavItem[] = [
         description: "Data-driven Technical SEO solutions.",
       },
       {
-        title: "Graphic Design",
-        href: "/services/graphic-design",
-        description: "Brand identity, visual design & digital assets.",
+        title: "WordPress",
+        href: "/wordpress-development",
+        description: "Custom WordPress & WooCommerce Store.",
       },
+      {
+        title: "Web Development",
+        href: "/web-development-service",
+        description: "Custom web applications built with Next.js & React.",
+      },
+      
     ],
   },
   {

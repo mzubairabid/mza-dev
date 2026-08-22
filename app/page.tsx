@@ -38,7 +38,7 @@ export default function Home() {
       {/* 01 / HERO SECTION */}
       <Hero />
       <TrustBar />
-
+      
       {/* 02 / SELECTED WORK SECTION */}
       <Work />
 

@@ -9,22 +9,36 @@ interface FAQItem {
   a: string;
 }
 
-export function FaqSection({ faqs }: { faqs: FAQItem[] }) {
+interface FaqSectionProps {
+  faqs: FAQItem[];
+  sectionNumber?: string;
+  showNumber?: boolean; // Label dikhana hai ya nahi control karne ke liye
+}
+
+export function FaqSection({ 
+  faqs, 
+  sectionNumber = "07 / FAQs", 
+  showNumber = true 
+}: FaqSectionProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
   };
-  
+
   return (
     <section className="space-y-8 max-w-6xl mx-auto px-4 sm:px-6 pb-16">
-      <div className="w-full">
-        <FadeIn direction="up" delay={0.2}>
-          <span className="text-xs font-mono uppercase tracking-widest text-primary block mb-2">
-            07 / FAQs
-          </span>
-        </FadeIn>
-      </div>
+      {/* Label sirf tabhi show hoga jab showNumber true hoga */}
+      {showNumber && (
+        <div className="w-full">
+          <FadeIn direction="up" delay={0.2}>
+            <span className="text-xs font-mono uppercase tracking-widest text-primary block mb-2">
+              {sectionNumber}
+            </span>
+          </FadeIn>
+        </div>
+      )}
+
       <div className="text-center space-y-2">
         <FadeIn direction="down" delay={0.3}>
           <h2 className="text-3xl sm:text-5xl font-serif font-light text-foreground tracking-tight">

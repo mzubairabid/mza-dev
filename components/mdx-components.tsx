@@ -6,6 +6,7 @@ import { CodeBlock } from "@/components/code-block";
 import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/animations/fade-in";
 import FaqSchema from '@/components/FaqSchema';
+import TrustBar from "@/components/sections/trust-bar";
 
 export function Callout({
   children,
@@ -33,6 +34,7 @@ export const mdxComponents = {
   Button,
   FadeIn,
   FaqSchema,
+  TrustBar,
 
   // HTML Details Override for Single-Open Accordion
   details: ({ children, ...props }: ComponentPropsWithoutRef<"details">) => (

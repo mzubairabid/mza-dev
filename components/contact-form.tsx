@@ -15,6 +15,10 @@ import {
   LifeBuoy,
   MessageSquare,
   Sparkles,
+  Briefcase,
+  ExternalLink,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 
 // --- Custom Brand SVG Icons ---
@@ -38,7 +42,18 @@ const GithubIcon = ({ className }: { className?: string }) => (
 
 export function ContactFormContent() {
   const [copied, setCopied] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    service: "Shopify Development & Funnels",
+    budget: "$500 - $1,000",
+    message: "",
+  });
+  
   const email = "contact@mzadev.com";
 
   const handleCopy = () => {
@@ -47,14 +62,54 @@ export function ContactFormContent() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      // Build full structured message payload to keep route.ts clean
+      const fullMessagePayload = `Service Needed: ${formData.service}\nEstimated Budget: ${formData.budget}\n\nProject Details:\n${formData.message}`;
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: fullMessagePayload,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          service: "Shopify Development & Funnels",
+          budget: "$500 - $1,000",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setSubmitStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
+    <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-16 sm:space-y-20">
       
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-10 md:p-12">
@@ -83,6 +138,15 @@ export function ContactFormContent() {
                 >
                   <span>Get a Free Quote</span>
                   <ArrowUpRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.upwork.com/freelancers/~018cd50705508ffb52?mp_source=share"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3.5 rounded-xl bg-secondary hover:bg-muted text-secondary-foreground border border-border font-semibold text-sm transition-all inline-flex items-center gap-2"
+                >
+                  <span>Hire via Upwork</span>
+                  <ExternalLink className="w-4 h-4 text-emerald-500" />
                 </a>
               </div>
             </FadeIn>
@@ -141,7 +205,7 @@ export function ContactFormContent() {
                   className="text-xs font-mono text-primary flex items-center gap-1.5 hover:underline cursor-pointer"
                 >
                   {email}
-                  {copied ? <Check className="w-3.5 h-3.5 text-success" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
                 </button>
               </div>
             </FadeIn>
@@ -162,7 +226,7 @@ export function ContactFormContent() {
               <p className="text-xs text-muted-foreground leading-relaxed">
                 Need an update or a bug fix for a project we finished? I’ve got you covered. Priority Response for my active partners.
               </p>
-            </FadeIn>  
+            </FadeIn>   
           </div>
 
           {/* Start a Project Card */}
@@ -178,9 +242,9 @@ export function ContactFormContent() {
                 Project Strategy & Inquiries
               </p>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                Let’s discuss your project scope, SEO needs, or custom WordPress development directly.
+                Let’s discuss your project scope, SEO needs, or custom web engineering directly.
               </p>
-              <div className="inline-flex items-center gap-1.5 text-xs text-success font-medium">
+              <div className="inline-flex items-center gap-1.5 text-xs text-emerald-500 font-medium">
                 <Clock className="w-3.5 h-3.5" />
                 <span>Response Time: Within 24 Hours.</span>
               </div>
@@ -189,32 +253,43 @@ export function ContactFormContent() {
         </div>
       </section>
 
-      {/* 3. Interactive Contact Form & Direct Action Box */}
-      <section id="contact-form" className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        {/* Form Area */}
-        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl border border-border bg-card shadow-sm space-y-6">
+      {/* 3. Section 3 Grid: Contact Form (Left) & Cards Stacked (Right) */}
+      <section id="contact-form" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        {/* Left Side: Contact Form (Col Span 7) */}
+        <div className="lg:col-span-7 p-6 sm:p-10 md:p-12 rounded-3xl border border-border bg-card shadow-sm space-y-8">
           <FadeIn>
             <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-card-foreground">
+              <h2 className="text-2xl sm:text-3xl font-bold text-card-foreground">
                 Let’s Engineer Your Digital Success
               </h2>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                Ready to scale your business? Fill out the form below with your project details. Whether it’s a custom WordPress build or an SEO audit, I’ll get back to you with a tailored strategy within 24 hours.
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Ready to scale your business? Fill out the form below with your project details. Whether it’s Shopify funnels, custom WordPress, or a technical SEO audit, I’ll get back to you within 24 hours.
               </p>
             </div>
           </FadeIn>
-          {formSubmitted ? (
+
+          {submitStatus === "success" ? (
             <FadeIn>
-              <div className="p-4 rounded-xl bg-success/10 border border-success/30 text-success text-xs sm:text-sm flex items-center gap-2">
-                <Check className="w-5 h-5 shrink-0 text-success" />
-                <span>Thank you! Your message has been sent. I will get back to you within 24 hours.</span>
+              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm flex items-center gap-3">
+                <Check className="w-5 h-5 shrink-0 text-emerald-500" />
+                <span>Thank you! Your message has been sent successfully. I will get back to you within 24 hours.</span>
               </div>
             </FadeIn>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus === "error" && (
                 <FadeIn>
-                  <div className="space-y-1.5">
+                  <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-xs sm:text-sm flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <span>{errorMessage}</span>
+                  </div>
+                </FadeIn>
+              )}
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <FadeIn>
+                  <div className="space-y-2">
                     <label className="text-xs font-semibold text-foreground">
                       Your Name
                     </label>
@@ -222,10 +297,15 @@ export function ContactFormContent() {
                       type="text"
                       required
                       placeholder="John Doe"
-                      className="w-full px-4 py-2.5 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
                     />
                   </div>
-                  <div className="space-y-1.5">
+                </FadeIn>
+
+                <FadeIn>
+                  <div className="space-y-2">
                     <label className="text-xs font-semibold text-foreground">
                       Your Email
                     </label>
@@ -233,152 +313,244 @@ export function ContactFormContent() {
                       type="email"
                       required
                       placeholder="john@example.com"
-                      className="w-full px-4 py-2.5 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
                     />
                   </div>
                 </FadeIn>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FadeIn>
-                  <label className="text-xs font-semibold text-foreground">
-                    Project Type / Service
-                  </label>
-                  <select className="w-full px-4 py-2.5 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring">
-                    <option className="bg-popover text-popover-foreground">Custom Web Application (Next.js / React)</option>
-                    <option className="bg-popover text-popover-foreground">WordPress / WooCommerce Customization</option>
-                    <option className="bg-popover text-popover-foreground">Technical SEO Audit & Speed Tuning</option>
-                    <option className="bg-popover text-popover-foreground">Interactive Web Tool / Calculator</option>
-                    <option className="bg-popover text-popover-foreground">General Inquiry / Advisory</option>
-                  </select>
+                  <div className="space-y-2">
+                    <label className="text-xs font-semibold text-foreground">
+                      Service Needed
+                    </label>
+                    <select
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
+                    >
+                      <option value="Shopify Development & Funnels" className="bg-popover text-popover-foreground">Shopify Development & Funnels</option>
+                      <option value="WordPress & Custom Engineering" className="bg-popover text-popover-foreground">WordPress & Custom Engineering</option>
+                      <option value="Technical SEO & Core Web Vitals" className="bg-popover text-popover-foreground">Technical SEO & Core Web Vitals</option>
+                      <option value="Full-Stack Custom Web App (Next.js)" className="bg-popover text-popover-foreground">Full-Stack Custom Web App (Next.js)</option>
+                      <option value="Graphic Design & Brand Assets" className="bg-popover text-popover-foreground">Graphic Design & Brand Assets</option>
+                    </select>
+                  </div>
+                </FadeIn>
+
+                <FadeIn>
+                  <div className="space-y-2">
+                    <label className="text-xs font-semibold text-foreground">
+                      Estimated Budget
+                    </label>
+                    <select
+                      value={formData.budget}
+                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
+                    >
+                      <option value="<$500" className="bg-popover text-popover-foreground">&lt; $500</option>
+                      <option value="$500 - $1,000" className="bg-popover text-popover-foreground">$500 - $1,000</option>
+                      <option value="$1,000 - $2,500" className="bg-popover text-popover-foreground">$1,000 - $2,500</option>
+                      <option value="$2,500+" className="bg-popover text-popover-foreground">$2,500+</option>
+                    </select>
+                  </div>
                 </FadeIn>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <FadeIn>
                   <label className="text-xs font-semibold text-foreground">
                     Project Details
                   </label>
                   <textarea
-                    rows={4}
+                    rows={5}
                     required
-                    placeholder="Tell me about your project goals, timelines, or requirements..."
-                    className="w-full px-4 py-2.5 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring resize-none"
+                    placeholder="Tell me about your project goals, existing store bottlenecks, or launch timeline..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring resize-none"
                   />
                 </FadeIn>
               </div>
+
               <FadeIn>
                 <button
                   type="submit"
-                  className="w-full py-3 px-6 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </FadeIn>
             </form>
           )}
         </div>
 
-        {/* Right Side: Quick Action Box & Digital Presence */}
+        {/* Right Side Column (Col Span 5) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="p-6 border border-border rounded-3xl bg-accent/40 space-y-4">
-              <FadeIn>
-                <h3 className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
-                  Get in Touch Directly
-                </h3>
-              </FadeIn>
-              <div className="flex flex-col gap-3 pt-2">
-                <FadeIn>
-                  <a
-                    href={`mailto:${email}`}
-                    className="w-full inline-flex items-center justify-between px-5 py-4 bg-primary text-primary-foreground hover:bg-primary-hover font-medium text-xs sm:text-sm rounded-xl transition-all shadow-xs group"
-                  >
-                    <span className="flex items-center gap-2">
-                      <Mail className="w-4 h-4" />
-                      Start a Conversation
-                    </span>
-                    <ArrowUpRight className="w-4 h-4 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                </FadeIn>
-                <FadeIn>
-                  <button
-                    onClick={handleCopy}
-                    className="w-full inline-flex items-center justify-between px-5 py-4 bg-card hover:bg-muted text-card-foreground font-mono text-xs sm:text-sm rounded-xl border border-border transition-all cursor-pointer"
-                  >
-                    <span>{email}</span>
-                    {copied ? (
-                      <span className="text-success font-semibold flex items-center gap-1">
-                        <Check className="w-3.5 h-3.5" /> Copied
-                      </span>
-                    ) : (
-                      <span className="text-muted-foreground flex items-center gap-1">
-                        <Copy className="w-3.5 h-3.5" /> Copy
-                      </span>
-                    )}
-                  </button>
-                </FadeIn>  
-            </div>
-          </div>
+          
+          {/* Card 1: Upwork Escrow */}
+          <FadeIn>
+            <div className="p-6 rounded-3xl border border-border bg-card shadow-xs space-y-4">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-[11px] font-mono font-semibold text-emerald-500 uppercase tracking-wider">Available</span>
+                </div>
+                <span className="px-2 py-0.5 rounded-lg bg-accent text-primary text-[10px] font-mono font-bold border border-primary/20 shrink-0">
+                  TOP RATED PRO
+                </span>
+              </div>
 
-          {/* Digital Presence */}
-          <div className="p-6 border border-border rounded-3xl bg-card space-y-4">
-            <div className="space-y-1">
-              <FadeIn>
+              <div>
+                <h3 className="text-base font-bold text-foreground">Upwork Escrow</h3>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  Prefer client payment protection? Work with me directly through Upwork.
+                </p>
+              </div>
+
+              <a
+                href="https://www.upwork.com/freelancers/~018cd50705508ffb52?mp_source=share"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-semibold text-xs transition-all shadow-md flex items-center justify-center gap-2"
+              >
+                <span>Upwork Profile</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </FadeIn>
+
+          {/* Card 2: Direct Email Action Box */}
+          <FadeIn>
+            <div className="p-6 border border-border rounded-3xl bg-accent/40 space-y-4">
+              <h3 className="font-mono text-xs uppercase tracking-wider text-primary font-semibold">
+                Get in Touch Directly
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Direct email inquiry for priority strategy or project scope discussion.
+              </p>
+
+              <div className="flex flex-col gap-2.5">
+                <a
+                  href={`mailto:${email}`}
+                  className="w-full inline-flex items-center justify-between px-4 py-2.5 bg-primary text-primary-foreground hover:bg-primary-hover font-medium text-xs rounded-xl transition-all shadow-xs group"
+                >
+                  <span className="flex items-center gap-2">
+                    <Mail className="w-3.5 h-3.5" />
+                    Email Me
+                  </span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+
+                <button
+                  onClick={handleCopy}
+                  className="w-full inline-flex items-center justify-between px-4 py-2.5 bg-card hover:bg-muted text-card-foreground font-mono text-xs rounded-xl border border-border transition-all cursor-pointer"
+                >
+                  <span>{email}</span>
+                  {copied ? (
+                    <span className="text-emerald-500 font-semibold flex items-center gap-1">
+                      <Check className="w-3.5 h-3.5" /> Copied
+                    </span>
+                  ) : (
+                    <span className="text-muted-foreground flex items-center gap-1">
+                      <Copy className="w-3.5 h-3.5" /> Copy
+                    </span>
+                  )}
+                </button>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Card 3: Live Proof / Portfolio Case Studies */}
+          <FadeIn>
+            <div className="p-6 rounded-3xl border border-border bg-card space-y-3">
+              <div className="flex items-center gap-2 text-primary">
+                <Briefcase className="w-4 h-4" />
+                <span className="text-xs font-mono font-semibold uppercase tracking-wider">Live Proof</span>
+              </div>
+              <h4 className="text-base font-bold text-foreground">Inspect Case Studies</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Review real client builds, speed optimization reports, and Shopify conversion metrics.
+              </p>
+              <a 
+                href="/work" 
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline pt-1"
+              >
+                <span>Browse Portfolio (/work)</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </FadeIn>
+
+          {/* Card 4: Digital Presence Links */}
+          <FadeIn>
+            <div className="p-6 border border-border rounded-3xl bg-card space-y-4">
+              <div className="space-y-1">
                 <span className="text-xs font-mono uppercase tracking-wider text-primary font-semibold">
                   Digital Presence
                 </span>
-                <h4 className="text-lg font-bold text-card-foreground">
-                  Let’s Connect Online
+                <h4 className="text-base font-bold text-card-foreground">
+                  Connect Online
                 </h4>
-              </FadeIn>
-            </div>
+              </div>
 
-            <div className="space-y-2 pt-1">
-              <FadeIn>
+              <div className="space-y-2">
                 <a
                   href="https://youtube.com/@ByteScriptMZA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs sm:text-sm font-semibold text-secondary-foreground hover:border-primary transition-all group"
+                  className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     <YoutubeIcon className="w-4 h-4 text-red-600" />
                     <span>MZA Dev</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground" />
                 </a>
-              </FadeIn>
-              <FadeIn>
+
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs sm:text-sm font-semibold text-secondary-foreground hover:border-primary transition-all group"
+                  className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     <LinkedinIcon className="w-4 h-4 text-blue-600" />
                     <span>MZA Dev</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground" />
                 </a>
-              </FadeIn>
-              <FadeIn>      
+
                 <a
                   href="https://github.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs sm:text-sm font-semibold text-secondary-foreground hover:border-primary transition-all group"
+                  className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"
                 >
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     <GithubIcon className="w-4 h-4 text-foreground" />
                     <span>MZA Dev</span>
                   </div>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground" />
+                  <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground" />
                 </a>
-              </FadeIn>
+              </div>
             </div>
-          </div>
+          </FadeIn>
+
         </div>
       </section>
 

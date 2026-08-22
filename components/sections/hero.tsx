@@ -10,7 +10,7 @@ export function Hero() {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <section className="w-full py-12 md:py-20 px-6 md:px-12 max-w-6xl mx-auto">
+    <section className="w-full pt-12 pb-8 md:pt-20 md:pb-12 px-6 md:px-12 max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 w-full">
         
         {/* Left Side: Text Content */}
