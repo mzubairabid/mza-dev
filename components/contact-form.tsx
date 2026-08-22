@@ -296,7 +296,7 @@ export function ContactFormContent() {
                     <input
                       type="text"
                       required
-                      placeholder="John Doe"
+                      placeholder="MZA Dev"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
@@ -312,7 +312,7 @@ export function ContactFormContent() {
                     <input
                       type="email"
                       required
-                      placeholder="john@example.com"
+                      placeholder="mza@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-input bg-secondary text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-ring"
