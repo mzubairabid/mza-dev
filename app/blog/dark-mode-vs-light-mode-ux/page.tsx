@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Sparkles, Video, HelpCircle, Moon, Sun, Monitor, BatteryCharging, Eye, Palette } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
 export const metadata: Metadata = {
@@ -75,6 +77,9 @@ export default function DarkModeVsLightModePostPage() {
               </p>
             </div>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Mastering UI principles? Explore the <Link href="/blog/design-website-for-beginners" className="text-blue-500 underline font-medium">Website Design Blueprint for Beginners</Link> and <Link href="/blog/top-web-design-trends-for-2026" className="text-blue-500 underline font-medium">Top Web Design Trends for 2026</Link>.
+          </p>
         </section>
 
         {/* Comparison Table */}
@@ -171,15 +176,7 @@ export default function DarkModeVsLightModePostPage() {
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Developer Rules */}
         <section className="p-6 rounded-2xl bg-card border border-border space-y-3">

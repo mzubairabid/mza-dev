@@ -199,12 +199,12 @@ export default function AdSenseWordPressPostPage() {
                 </div>
                 <pre className="text-zinc-300">
                   {`add_action('wp_head', 'mza_add_adsense_code');
-function mza_add_adsense_code() {
-?>
-<!-- Replace with your actual Google AdSense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-<?php
-}`}
+                    function mza_add_adsense_code() {
+                    ?>
+                    <!-- Replace with your actual Google AdSense Script -->
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+                    <?php
+                    }`}
                 </pre>
               </div>
             </div>
@@ -251,7 +251,9 @@ function mza_add_adsense_code() {
                   and evaluate field data for 14 days.
                 </p>
               </div>
-
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+                      Keep your AdSense scripts fast by reading <Link href="/blog/fix-inp-issue-on-wordpress" className="text-blue-500 underline font-medium">How to Fix INP Issues on WordPress</Link> and resolving <Link href="/blog/how-to-fix-pagespeed-unable-to-resolve-url" className="text-blue-500 underline font-medium">PageSpeed Resolve Errors</Link>.
+                    </p>
               {/* YouTube Channel Promo Widget */}
               <div className="p-5 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/40 dark:bg-red-950/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">

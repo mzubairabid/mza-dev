@@ -161,6 +161,9 @@ export default function CoreWebVitalsPostPage() {
                   Preload your primary hero assets. Use <code className="font-mono text-xs bg-muted px-2 py-1 rounded text-foreground">&lt;link rel="preload"&gt;</code> for above-the-fold elements and inline critical CSS to eliminate render-blocking stylesheets.
                 </p>
               </div>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+                Experiencing main-thread delays? Learn <Link href="/blog/fix-inp-issue-on-wordpress" className="text-blue-500 underline font-medium">How to Fix INP Issues on WordPress</Link> or read our guide on <Link href="/blog/how-to-fix-pagespeed-unable-to-resolve-url" className="text-blue-500 underline font-medium">PageSpeed Resolve URL Errors</Link>.
+              </p>
             </div>
 
             {/* Section 2: WordPress Cleanups & Server Rules */}

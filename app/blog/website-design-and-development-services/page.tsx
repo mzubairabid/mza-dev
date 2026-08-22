@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
@@ -153,18 +154,13 @@ export default function WebsiteDesignAndDevelopmentServices2026PostPage() {
             </div>
 
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Explore our case study on <Link href="/blog/the-blueprint-respiro-premium-shopify-design" className="text-blue-500 underline font-medium">Premium Shopify Store Design</Link> or read about <Link href="/blog/custom-web-development-for-small-businesses" className="text-blue-500 underline font-medium">Custom Development for Growing Businesses</Link>.
+          </p>
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting technical content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* SEO First Development Section */}
         <section className="p-6 rounded-2xl border border-border bg-card space-y-4">

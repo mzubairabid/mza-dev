@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import HtmlCssJsEditorClient from "@/components/tools/html-css-js-editor-client";
 
 export const metadata: Metadata = {
-  title: "Online HTML CSS JS Editor & Tester | Free Real-Time Code Compiler",
+  title: "Free Online HTML CSS JS Code Editor & Live Tester",
   description:
-    "Test, debug, and preview your HTML, CSS, and JavaScript code instantly in your browser. Free online code compiler built for web developers and beginners.",
+    "Test and execute HTML, CSS, and JavaScript code online with real-time browser preview. Fast, free, and lightweight developer IDE.",
   keywords: [
     "HTML Editor",
     "CSS Sandbox",

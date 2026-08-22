@@ -1,5 +1,7 @@
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import { getPostBySlug } from "@/lib/blog-data";
 import {
   Sparkles,
@@ -127,7 +129,9 @@ export default function GoogleSeoUpdate2026PostPage() {
                 Google is actively penalizing generic content farms. This update prioritizes creators and technical authors who demonstrate firsthand experience—including real photos, original case studies, and transparent technical credentials.
               </p>
             </div>
-
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  Stay ahead of ranking changes by following our <Link href="/blog/best-seo-strategies-2026" className="text-blue-500 underline font-medium">Best SEO Strategies for 2026</Link> and optimizing <Link href="/blog/core-web-vitals-in-2026" className="text-blue-500 underline font-medium">Core Web Vitals</Link>.
+</p>
           </div>
         </section>
 
@@ -220,15 +224,7 @@ export default function GoogleSeoUpdate2026PostPage() {
         </div>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth technical insights and live optimization breakdowns. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Conclusion */}
         <section className="space-y-3">

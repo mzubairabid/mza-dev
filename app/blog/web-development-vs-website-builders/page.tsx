@@ -1,5 +1,7 @@
 import { Sparkles, Video, HelpCircle, Check, X, ShieldCheck } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
@@ -102,18 +104,13 @@ export default function WebDevVsBuildersPostPage() {
               </ul>
             </div>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  Deciding to switch platforms? Read our guide on <Link href="/blog/professional-website-redesign-2026" className="text-blue-500 underline font-medium">Planning a Professional Website Redesign</Link> without losing search rankings.
+</p>
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Hybrid Approach */}
         <section className="space-y-3">

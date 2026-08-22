@@ -109,6 +109,9 @@ export default function BlogPostPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Improve user interface accessibility with <Link href="/blog/dark-mode-vs-light-mode-ux" className="text-blue-500 underline font-medium">Dark Mode vs Light Mode UX</Link> and explore <Link href="/blog/design-website-for-beginners" className="text-blue-500 underline font-medium">Website Design for Beginners</Link>.
+          </p>
         </section>
 
         {/* 3. Main Content & Layout Showcases */}

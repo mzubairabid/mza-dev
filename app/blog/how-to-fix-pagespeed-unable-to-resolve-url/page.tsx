@@ -123,6 +123,9 @@ export default function PageSpeedUnableToResolveUrlPostPage() {
                   </tbody>
                 </table>
               </div>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+                For deeper optimization, review <Link href="/blog/fix-inp-issue-on-wordpress" className="text-blue-500 underline font-medium">Fixing INP Issues on WordPress</Link> and <Link href="/blog/build-a-fast-seo-friendly-website" className="text-blue-500 underline font-medium">Fast Website Building Best Practices</Link>.
+              </p>
             </div>
 
             {/* Step 2: IPv6 Stale Records */}

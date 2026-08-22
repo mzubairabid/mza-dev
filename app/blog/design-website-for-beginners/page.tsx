@@ -1,7 +1,9 @@
 import { Sparkles, Video, CheckCircle, HelpCircle, ExternalLink } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
+import YouTubeBanner from "@/components/YouTubeBanner";
 export const metadata = {
   title: "Design Website for Beginners | Complete Guide 2026",
   description: "Learn essential web design principles including visual hierarchy, reading psychology, color theory, and mobile-first layouts.",
@@ -82,6 +84,9 @@ export default function DesignWebsiteForBeginnersPage() {
           <p>
             This structure prevents chaotic interfaces and improves visual consistency. Poor color decisions damage credibility quickly, especially when contrast is weak or every section competes for attention. Strong color systems support Visual Hierarchy, highlight key actions, and reinforce brand identity. Designers should also test colors for Accessibility, ensuring buttons, text, and interactive elements remain readable across different devices and lighting conditions.
           </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Next step: learn implementation techniques with <Link href="/blog/modern-css-layouts-for-websites" className="text-blue-500 underline font-medium">Modern CSS Layouts</Link> and <Link href="/blog/dark-mode-vs-light-mode-ux" className="text-blue-500 underline font-medium">Dark Mode UX Practices</Link>.
+          </p>
         </section>
 
         {/* Section 4 */}
@@ -124,15 +129,7 @@ export default function DesignWebsiteForBeginnersPage() {
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Section 7 */}
         <section className="space-y-3">

@@ -10,6 +10,7 @@ import {
   Smartphone,
   ArrowRight,
 } from "lucide-react";
+import Link from "next/link";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
@@ -108,6 +109,9 @@ export default function ProfessionalWebsiteRedesignPostPage() {
               </p>
             </div>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Before redesigning, check modern design standards in <Link href="/blog/top-web-design-trends-for-2026" className="text-blue-500 underline font-medium">Top Web Design Trends for 2026</Link> and learn to <Link href="/blog/build-a-fast-seo-friendly-website" className="text-blue-500 underline font-medium">Build Fast SEO Websites</Link>.
+          </p>
         </section>
 
         {/* Section 3 */}

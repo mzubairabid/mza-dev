@@ -1,5 +1,7 @@
 import { Sparkles, HelpCircle, Code2, Zap, ShieldCheck, Cpu } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
@@ -66,6 +68,9 @@ export default function CustomWebDevForSmallBizPostPage() {
               <strong className="text-foreground">Security:</strong> Proprietary code is much harder to exploit than public templates.
             </div>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Evaluating platforms? See our breakdown on <Link href="/blog/web-development-vs-website-builders" className="text-blue-500 underline font-medium">Custom Development vs Website Builders</Link> and learn <Link href="/blog/website-design-and-development-services" className="text-blue-500 underline font-medium">How to Choose Development Services</Link>.
+          </p>
         </section>
 
         {/* Section 3: PageSpeed */}
@@ -118,6 +123,7 @@ export default function CustomWebDevForSmallBizPostPage() {
               </p>
             </div>
           </div>
+          <YouTubeBanner />
         </section>
 
         {/* Section 5: Case Study Highlights */}

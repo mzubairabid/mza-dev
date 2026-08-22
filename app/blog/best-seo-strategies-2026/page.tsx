@@ -1,5 +1,7 @@
 import { Sparkles, Video, HelpCircle, Search, Server, Cpu, Activity, UserCheck, CheckCircle2 } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
@@ -70,6 +72,9 @@ export default function BestSeoStrategies2026PostPage() {
               Major cloud disruptions (like wide-scale AWS outages) temporarily wipe out search rankings for affected sites. When your platform is unresponsive, freshness algorithms penalize your indexing indexation score. Implementing multi-region hosting redundancy is now a core technical SEO requirement.
             </p>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  To audit your technical performance, check our detailed guides on <Link href="/blog/core-web-vitals-in-2026" className="text-blue-500 underline font-medium">Core Web Vitals in 2026</Link> and the <Link href="/blog/on-page-seo-checklist-2026" className="text-blue-500 underline font-medium">On-Page SEO Checklist</Link>.
+</p>
         </section>
 
         {/* Section 3 */}
@@ -113,15 +118,7 @@ export default function BestSeoStrategies2026PostPage() {
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth technical breakdowns and web insights. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Section 5: E-E-A-T */}
         <section className="p-6 rounded-2xl bg-card border border-border space-y-4">

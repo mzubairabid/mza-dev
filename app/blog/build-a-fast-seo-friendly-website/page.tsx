@@ -1,5 +1,7 @@
 import { Sparkles, Video, HelpCircle, Zap, Search, ShieldCheck, Layers, Cpu } from "lucide-react";
 import BlogLayout from "@/components/layout/blog-layout";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
 export const metadata = {
@@ -101,6 +103,9 @@ export default function BuildFastSeoWebsitePostPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  Comparing development choices? Check our analysis on <Link href="/blog/custom-web-development-for-small-businesses" className="text-blue-500 underline font-medium">Custom Web Development vs Templates</Link> or review <Link href="/blog/top-web-development-frameworks" className="text-blue-500 underline font-medium">Top Web Development Frameworks</Link>.
+</p>
         </section>
 
         {/* Technical Steps */}
@@ -154,15 +159,7 @@ export default function BuildFastSeoWebsitePostPage() {
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Essential Tools Table */}
         <section className="space-y-4">

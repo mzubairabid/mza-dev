@@ -151,6 +151,9 @@ export default function BlueprintRespiroPortfolioPage() {
                 brand—faster load times, zero template artifacts, and a visual language
                 that commands immediate authority.
               </p>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+                Learn more about modern design choices in <Link href="/blog/top-web-design-trends-for-2026" className="text-blue-500 underline font-medium">Top Web Design Trends for 2026</Link> and <Link href="/blog/custom-web-development-for-small-businesses" className="text-blue-500 underline font-medium">Custom Web Development</Link>.
+              </p>
             </div>
 
             {/* 02 — The Solution */}

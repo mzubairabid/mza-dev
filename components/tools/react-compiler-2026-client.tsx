@@ -363,6 +363,12 @@ export default function ReactCompilerPage() {
           <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
             To make the most of this environment, it helps to understand how the internal file structure handles your inputs. Standard setups look for a core entry point where components are rendered into a root DOM element. This editor handles that architecture behind the scenes, mapping your code directly into a responsive preview panel. You can easily manage component states, pass props, and even integrate lifecycle patterns smoothly. The live console utility tracking under the output screen catches syntax issues immediately, which makes it incredibly simple to isolate breaking changes or test conditional state rendering logically.
           </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            For quick testing without opening an IDE, use our free <Link href="/tools/live-html-css-js-editor-tester" className="text-blue-500 underline font-medium">Live HTML CSS JS Editor Tester</Link>.
+          </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            To estimate plant profit margins and operational costs, use our free <Link href="/tools/nursery-calculator" className="text-blue-500 underline font-medium">Nursery Profitability & Earnings Calculator</Link>.
+          </p>
         </div>
 
         <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">

@@ -1,4 +1,6 @@
 import { Sparkles, Video, HelpCircle, Search, Zap, CheckCircle2, FileText, UserCheck } from "lucide-react";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
@@ -107,6 +109,9 @@ export default function OnPageSeoChecklistPostPage() {
             <li><strong>INP (Interaction to Next Paint):</strong> Keep it under 200ms by minimizing heavy main-thread JavaScript execution.</li>
             <li><strong>Image Formats:</strong> Use modern WebP or AVIF formats. Keep individual image sizes strictly under 100KB.</li>
           </ul>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  For traffic expansion strategies, see our guide on <Link href="/blog/increase-website-traffic-without-ads-2026" className="text-blue-500 underline font-medium">Increasing Organic Website Traffic Without Ads</Link> and review the latest <Link href="/blog/google-seo-update-2026" className="text-blue-500 underline font-medium">Google SEO Update</Link>.
+</p>
         </section>
 
         {/* Section 4 */}
@@ -150,15 +155,7 @@ export default function OnPageSeoChecklistPostPage() {
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">Watch Video & Learn More</h4>
-            <p className="text-xs text-muted-foreground">
-              Don’t miss out! Check out my latest YouTube video for in-depth insights and exciting content. Click here to watch <strong>ByteScript MZA</strong> now!
-            </p>
-          </div>
-        </div>
+        <YouTubeBanner />
 
         {/* Section 7 */}
         <section className="space-y-3">

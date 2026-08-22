@@ -1,5 +1,7 @@
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
+import Link from "next/link";
+import YouTubeBanner from "@/components/YouTubeBanner";
 import { getPostBySlug } from "@/lib/blog-data";
 import {
   Sparkles,
@@ -75,6 +77,9 @@ export default function BuildAgenticWebExperiencesPostPage() {
           <p className="text-xs text-muted-foreground pt-2">
             This performance focus is a core part of my <strong>Full-Stack Developer Portfolio</strong>, where I demonstrate how to balance AI complexity with blazing-fast load times.
           </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+            Power your AI apps with headless architecture by reading <Link href="/blog/apis-in-web-development" className="text-blue-500 underline font-medium">The Role of APIs in Web Development</Link>.
+          </p>
         </section>
 
         {/* Agent-Side Rendering (ASR) */}
@@ -109,6 +114,7 @@ export default function BuildAgenticWebExperiencesPostPage() {
           <p>
             The shift from static pages to Generative UI means developers build <em>“possibilities”</em> rather than fixed wireframes. For instance, if an e-commerce agent detects a user searching for specialized enterprise solutions, it instantly synthesizes a bespoke dashboard layout with tailored interactive components in milliseconds.
           </p>
+          <YouTubeBanner />
         </section>
 
         {/* Performance Optimization */}

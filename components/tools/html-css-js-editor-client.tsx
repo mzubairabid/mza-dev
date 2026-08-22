@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
@@ -447,7 +448,14 @@ export default function HtmlCssJsEditorClient() {
                 Keep a close watch on the active warning container above. The built-in validation engine alerts you about bracket mismatches and syntax faults so you can self-correct immediately.
               </p>
             </div>
+            
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            For quick testing without opening an IDE, use our free <Link href="/tools/online-react-compiler-2026" className="text-blue-500 underline font-medium">React Complier</Link>.
+          </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            To estimate plant profit margins and operational costs, use our free <Link href="/tools/nursery-calculator" className="text-blue-500 underline font-medium">Nursery Profitability & Earnings Calculator</Link>.
+          </p>
         </section>
       </FadeIn>
 

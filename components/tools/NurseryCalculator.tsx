@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React, { useState } from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
@@ -675,6 +675,12 @@ export default function NurseryCalculatorPage() {
               <p className="text-xs text-slate-500 dark:text-slate-400">Download formatted PDF or Word copies.</p>
             </div>
           </div>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            For quick testing without opening an IDE, use our free <Link href="/tools/online-react-compiler-2026" className="text-blue-500 underline font-medium">React Complier</Link>.
+          </p>
+          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+            For quick testing without opening an IDE, use our free <Link href="/tools/live-html-css-js-editor-tester" className="text-blue-500 underline font-medium">Live HTML CSS JS Editor Tester</Link>.
+          </p>
         </div>
           </FadeIn>
         {/* 4. FAQ Accordion Section */}
@@ -720,6 +726,7 @@ export default function NurseryCalculatorPage() {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <Mail className="w-5 h-5 text-blue-600" /> Export Financial Report
               </h3>
+              
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 Enter your email address to attach your details to the downloaded <strong>{downloadType.toUpperCase()}</strong> file.
               </p>

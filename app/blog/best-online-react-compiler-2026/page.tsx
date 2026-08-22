@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import BlogLayout from "@/components/layout/blog-layout";
 import FaqAccordion from "@/components/layout/FaqAccordion";
 import { getPostBySlug } from "@/lib/blog-data";
@@ -6,6 +7,7 @@ import {
   Sparkles,
   Video,
   HelpCircle,
+  ArrowRight,
   Code,
   Cpu,
 } from "lucide-react";
@@ -101,18 +103,9 @@ export default function ReactCompilerPostPage() {
               you see your UI update in real-time as you type.
             </li>
           </ul>
-
-          {/* Section 1 supporting screenshot */}
-          <div className="relative w-full h-55 sm:h-90 rounded-xl overflow-hidden border border-border">
-            <Image
-              src="/project-images/online-react-compiler.webp"
-              alt="Online React IDE showing code editor, file explorer, and live preview panels"
-              fill
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-            />
-          </div>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+  Want to integrate AI workflows into your frontend? Read about <Link href="/blog/build-agentic-web-experiences" className="text-blue-500 underline font-medium">Building Agentic Web Experiences</Link> and explore <Link href="/blog/top-web-development-frameworks" className="text-blue-500 underline font-medium">Modern JS Frameworks</Link>.
+</p>
         </section>
 
         {/* Section 2 */}
@@ -163,6 +156,11 @@ export default function ReactCompilerPostPage() {
               </p>
             </div>
           </div>
+
+          <p  className="text-muted-foreground mt-1">
+            Testing React components requires quick execution without local setup. You can use our <Link href="/tools/online-react-compiler-2026" className="text-blue-500 underline font-medium">Online React Compiler</Link> to write and preview your code instantly.
+          </p>
+
         </section>
 
         {/* Tools Comparison Table */}
@@ -182,15 +180,7 @@ export default function ReactCompilerPostPage() {
               <tbody className="divide-y divide-border text-muted-foreground">
                 <tr>
                   <td className="p-3 font-bold text-primary">
-                    <span className="flex items-center gap-2">
-                      <Image
-                        src="/logos/codesandbox.svg"
-                        alt="CodeSandbox logo"
-                        width={18}
-                        height={18}
-                      />
-                      CodeSandbox
-                    </span>
+                    CodeSandbox
                   </td>
                   <td className="p-3">
                     Full VS Code experience, GitHub sync, live collaboration.
@@ -201,15 +191,7 @@ export default function ReactCompilerPostPage() {
                 </tr>
                 <tr>
                   <td className="p-3 font-bold text-primary">
-                    <span className="flex items-center gap-2">
-                      <Image
-                        src="/logos/stackblitz.svg"
-                        alt="StackBlitz logo"
-                        width={18}
-                        height={18}
-                      />
-                      StackBlitz
-                    </span>
+                    StackBlitz
                   </td>
                   <td className="p-3">
                     WebContainer technology (runs Node.js in browser) for
@@ -219,15 +201,7 @@ export default function ReactCompilerPostPage() {
                 </tr>
                 <tr>
                   <td className="p-3 font-bold text-primary">
-                    <span className="flex items-center gap-2">
-                      <Image
-                        src="/logos/codepen.svg"
-                        alt="CodePen logo"
-                        width={18}
-                        height={18}
-                      />
-                      CodePen
-                    </span>
+                    CodePen
                   </td>
                   <td className="p-3">
                     Simple interface with a massive community for UI snippets.
@@ -238,15 +212,7 @@ export default function ReactCompilerPostPage() {
                 </tr>
                 <tr>
                   <td className="p-3 font-bold text-primary">
-                    <span className="flex items-center gap-2">
-                      <Image
-                        src="/logos/replit.svg"
-                        alt="Replit logo"
-                        width={18}
-                        height={18}
-                      />
-                      Replit
-                    </span>
+                    Replit
                   </td>
                   <td className="p-3">
                     AI-powered coding assistance and easy deployment.
@@ -286,17 +252,6 @@ export default function ReactCompilerPostPage() {
             </li>
           </ol>
 
-          {/* Step-by-step supporting screenshot */}
-          <div className="relative w-full h-55 sm:h-90 rounded-xl overflow-hidden border border-border">
-            <Image
-              src="/blog/react-setup-steps.webp"
-              alt="Step-by-step setup of a new React project template in an online IDE"
-              fill
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-            />
-          </div>
         </section>
 
         {/* Section 4 */}
@@ -312,46 +267,36 @@ export default function ReactCompilerPostPage() {
             browser tab, offering speed that is virtually indistinguishable from a
             local machine.
           </p>
-
-          {/* Side-by-side comparison screenshots */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="relative h-50 sm:h-65 rounded-xl overflow-hidden border border-border">
-              <Image
-                src="/blog/codesandbox-ui.webp"
-                alt="CodeSandbox interface overview"
-                fill
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 384px"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative h-50 sm:h-65 rounded-xl overflow-hidden border border-border">
-              <Image
-                src="/blog/stackblitz-ui.webp"
-                alt="StackBlitz interface overview"
-                fill
-                loading="lazy"
-                sizes="(max-width: 768px) 100vw, 384px"
-                className="object-cover"
-              />
-            </div>
-          </div>
+          
         </section>
 
         {/* Video Callout Box */}
-        <div className="p-5 rounded-2xl bg-primary/10 border border-primary/20 flex items-start gap-4">
-          <Video className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <h4 className="font-bold text-foreground text-sm">
-              Subscribe to ByteScript MZA
-            </h4>
-            <p className="text-xs text-muted-foreground">
-              Want to build real-world web development projects, optimize page
-              speed, and master modern JavaScript workflows? Subscribe to my
-              YouTube channel for technical tutorials!
-            </p>
-          </div>
-        </div>
+        <div className="p-5 rounded-2xl border border-red-200 dark:border-red-900/40 bg-red-50/40 dark:bg-red-950/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 bg-red-600 text-white rounded-xl shrink-0">
+                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-foreground">
+                      Watch Behind-The-Scenes Breakdowns
+                    </h4>
+                    <p className="text-xs text-muted-foreground">
+                      Subscribe to ByteScript MZA on YouTube for full-stack e-commerce tutorials.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="https://youtube.com/@ByteScriptMZA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:underline shrink-0"
+                >
+                  <span>Watch ByteScript MZA</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
 
         {/* Essential Resources */}
         <div className="p-6 rounded-2xl bg-card border border-border space-y-4">

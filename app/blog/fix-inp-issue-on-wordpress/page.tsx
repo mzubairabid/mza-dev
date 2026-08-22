@@ -193,6 +193,9 @@ document.addEventListener('DOMContentLoaded', () => runNext([...inits]));`,
                 </div>
               </div>
             </div>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mt-6">
+              Optimize total WordPress revenue and performance: learn to <Link href="/blog/add-google-adsense-to-wordpress" className="text-blue-500 underline font-medium">Add Google AdSense to WordPress</Link> and check our <Link href="/blog/core-web-vitals-in-2026" className="text-blue-500 underline font-medium">Core Web Vitals Guide</Link>.
+            </p>
           </div>
 
           {/* Section 2: Diagnosing INP */}
