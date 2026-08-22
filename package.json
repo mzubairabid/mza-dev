@@ -5,8 +5,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && next-sitemap && node scripts/auto-index.mjs",
+    "build": "next build",
     "start": "next start",
+    "auto-index": "node scripts/auto-index.mjs",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
