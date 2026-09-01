@@ -11,7 +11,7 @@ const nextConfig = {
   },
 
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion", "radix-ui"],
+    optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 
   async redirects() {
