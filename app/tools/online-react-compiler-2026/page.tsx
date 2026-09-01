@@ -3,13 +3,13 @@ import ReactCompilerPage from "@/components/tools/react-compiler-2026-client"; /
 
 // 1. Technical SEO & Metadata Configuration
 export const metadata: Metadata = {
-  title: "Free Online React Compiler | Write, Test & Debug React JS Online",
+  title: "Free Online React Compiler & JSX Editor",
   description:
-    "Instant browser-based React JS compiler. Test functional components, hooks, state, and UI logic in real-time with zero Node.js setup.",
+    "Write, compile, and test React code live in your browser with our online JSX editor.",
   openGraph: {
-    title: "Free Online React Compiler | Write, Test & Debug React JS Online",
+    title: "Free Online React Compiler & JSX Editor",
     description:
-      "Instant browser-based React JS compiler. Test functional components, hooks, state, and UI logic in real-time with zero Node.js setup.",
+      "Write, compile, and test React code live in your browser with our online JSX editor.",
     type: "website",
   },
 };

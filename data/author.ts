@@ -9,11 +9,11 @@ export const author = {
 } as const;
 
 export const website = {
-  name: "Gadget Crunchie",
+  name: "MZA Dev",
   tagline: "Web Development, SEO & Tech Reviews",
-  baseUrl: "https://gadgetcrunchie.com",
+  baseUrl: "https://mzadev.com",
   logo: "/project-images/logo-gadget-Crunchie.webp",
-  email: "hello@gadgetcrunchie.com",
+  email: "contact@mzadev.com",
 } as const;
 
 export const blogCtas = [

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Explore a curated showcase of custom web applications, high-converting e-commerce builds, and localized enterprise web systems.",
   alternates: {
-    canonical: 'https://www.mzadev.com/work', 
+    canonical: 'https://mzadev.com/work', 
   },
 };
 

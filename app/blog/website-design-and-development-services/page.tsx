@@ -25,12 +25,15 @@ import {
 export const metadata: Metadata = {
   title: "Website Design & Development Services 2026 | MZA Dev",
   description: "High-performance website design services. Custom Next.js, WordPress, mobile-first UX, Shopify e-commerce, and SEO-first architecture.",
+  alternates: {
+    canonical: "https://mzadev.com/blog/website-design-and-development-services",
+  },
   openGraph: {
     title: "Website Design & Development Services 2026 | MZA Dev",
     description: "High-performance website design services. Custom Next.js, WordPress, mobile-first UX, Shopify e-commerce, and SEO-first architecture.",
-    url: "https://www.mzadev.com/blog/website-design-and-development-services",
+    url: "https://mzadev.com/blog/website-design-and-development-services",
     type: "article",
-    images: [{ url: "https://www.mzadev.com/public/project-images/web-dev-services.webp", width: 1200, height: 630 }],
+    images: [{ url: "https://mzadev.com/public/project-images/web-dev-services.webp", width: 1200, height: 630 }],
   },
 };
 

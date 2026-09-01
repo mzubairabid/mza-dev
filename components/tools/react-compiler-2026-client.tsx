@@ -202,37 +202,74 @@ export default function ReactCompilerPage() {
 
   const faqs = [
     {
-      q: "What version of React does this compiler run?",
-      a: "The tool runs a stable modern version of React 18, allowing you to use functional components, hooks, and modern JavaScript syntax without complex setups.",
-    },
-    {
-      q: "Can I import external NPM packages here?",
-      a: "Standard ES6 dynamic imports are isolated, but core hooks and basic React components are supported out-of-the-box.",
-    },
-    {
-      q: "Do I need to install Node.js to use this tool?",
-      a: "No installation is required. Everything compiles natively inside your browser using Babel standalone engine.",
-    },
-    {
-      q: "How do I preview my visual changes?",
-      a: "Changes render automatically in real time in the Live Output Preview frame, or you can click 'Run Code Instant' to force a full refresh.",
-    },
+    q: "What version of React does this online compiler run?",
+    a: "This react js editor online runs React 18. Functional components, hooks like useState and useEffect, and modern JavaScript syntax such as arrow functions and destructuring all work the same way they would in a local project."
+  },
+  {
+    q: "Can I import external NPM packages into this tool?",
+    a: "Not directly. This compiler loads React and ReactDOM from a CDN and compiles your JSX in the browser using Babel, so packages that depend on a bundler like Webpack won't work here. Core React features and plain JavaScript are fully supported it's built for testing components, not managing dependencies."
+  },
+  {
+    q: "Do I need to install Node.js to use this react compiler online?",
+    a: "No. That's the main reason to run React online this way. There's no npm install, no create-react-app, and no local dev server. Your JSX compiles directly in your browser tab, so you can test an idea the moment you have it."
+  },
+  {
+    q: "How is this different from CodeSandbox or StackBlitz?",
+    a: "Those tools are built for full projects multiple files, routing, package management, shareable links. This editor is deliberately smaller in scope: one file, instant compile, no account required. If you just need to check how a single component behaves, this opens faster and gets out of your way."
+  },
+  {
+    q: "How do I preview my changes?",
+    a: "Your code recompiles and re-renders automatically as you type. If the preview ever looks out of sync with your latest changes, running the code manually forces a clean re-mount."
+  },
+  {
+    q: "Why does my code fail without showing anything in the preview?",
+    a: "Runtime and syntax errors are caught and displayed in the console box below the editor instead of failing silently. This mirrors how a browser console flags issues, so you always know what broke and roughly where."
+  },
+  {
+    q: "Can I save or export the code I write?",
+    a: "Yes. You can download your component as a file, or copy it directly to your clipboard and paste it into your own create-react-app, Vite, or Next.js project."
+  },
+  {
+    q: "Is this better for beginners or experienced developers?",
+    a: "Both, for different reasons. Beginners use it to practice JSX syntax and hooks without fighting a local setup first. Experienced developers use it to sanity-check a snippet or reproduce a bug in isolation without touching their actual codebase."
+  },
   ];
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-16 bg-transparent text-foreground">
-      {/* 1. Hero Intro Section */}
-      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-accent/20 p-6 sm:p-10 md:p-12 space-y-6">
-        <span className="text-xs font-mono uppercase tracking-widest text-primary font-semibold block">
-          Interactive Web Tool
-        </span>
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-light text-foreground tracking-tight leading-tight">
-          Free Online React Compiler: Write, Test, and Debug Code Instantly
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-4xl">
-          Testing React components should not require a heavy local configuration or spinning up a local development server every single time you want to try out a quick snippet. This free online React compiler provides a streamlined, browser-based editor built specifically for running React code in real time. Whether you are learning functional components, working with state, hooks, or testing complex UI rendering, this space gives you a responsive ecosystem to test your ideas instantly. As a dedicated web developer, I built this space to be as lightweight and direct as possible, stripping away all unnecessary elements so you can focus entirely on the code.
-        </p>
-      </section>
+      {/* 1. Hero Section & Intro */}
+<section className="space-y-6">
+  <div className="space-y-4">
+    <h1 className="text-3xl sm:text-5xl font-serif font-light text-foreground tracking-tight">
+      Free Online React Compiler & JSX Editor
+    </h1>
+    <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
+      Write, Test, and Debug Code Instantly
+    </h2>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      Every time you want to test a small piece of React code, the usual routine slows you down. Install dependencies, spin up create-react-app or Vite, wait for the dev server, and only then write the actual component you wanted to test. For a two-minute idea, that's a lot of setup for very little payoff.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      This online react compiler skips all of that. Write or paste your component, and it compiles and renders right in your browser. No terminal commands. No package.json. No local environment to configure or break.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      It's built for the moments when you just need to see jsx online and check that it behaves the way you expect verifying a state update, testing conditional rendering, or checking a hook before you commit it to a real project. Think of it as a react js editor online for fast, disposable experiments. It won't replace your full dev setup, but it will save you the ten minutes you'd otherwise spend just getting to the point where you can start typing.
+    </p>
+  </div>
+
+  <div className="p-6 sm:p-8 rounded-3xl border border-border/60 bg-accent/20 space-y-3">
+    <h3 className="text-lg sm:text-xl font-medium text-foreground">
+      Why developers use this tool:
+    </h3>
+    <ul className="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1.5 pl-2">
+      <li><strong className="text-foreground">No installation</strong> works directly in your browser, nothing to download</li>
+      <li><strong className="text-foreground">Instant feedback</strong> code compiles and renders as you type</li>
+      <li><strong className="text-foreground">Built-in error console</strong> runtime and syntax errors show up immediately, with line numbers</li>
+      <li><strong className="text-foreground">One-click export</strong> download your component as a file or copy it to your clipboard</li>
+      <li><strong className="text-foreground">Zero clutter</strong> one editor, one live preview, nothing else competing for your attention</li>
+    </ul>
+  </div>
+</section>
 
       {/* 2. Interactive Tool Component */}
       <section className="space-y-6">
@@ -345,95 +382,146 @@ export default function ReactCompilerPage() {
         </div>
       </section>
 
+{/* 2. Who This Tool Is For Section */}
+<section className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
+  <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
+    Who This Tool Is For
+  </h2>
+  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+    This react online workspace tends to get used in a few specific situations:
+  </p>
+  <ul className="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-2 pl-2">
+    <li><strong className="text-foreground">Prototyping state and hooks</strong> try out useState, useEffect, or a custom hook idea in isolation before wiring it into a bigger component</li>
+    <li><strong className="text-foreground">Testing UI logic</strong> check how conditional rendering, list mapping, or prop-driven layouts behave without scrolling through an unrelated codebase</li>
+    <li><strong className="text-foreground">Debugging a broken component</strong> paste in code that's misbehaving and use the live console to pinpoint exactly what's throwing the error</li>
+    <li><strong className="text-foreground">Practicing React and JSX syntax</strong> useful if you're still learning, since you get instant feedback without setup friction getting in the way</li>
+    <li><strong className="text-foreground">Sharing a quick reproduction</strong> copy a component out in one click when you need to show a teammate or a forum exactly what's going wrong</li>
+  </ul>
+</section>
+
       {/* 3. Detailed Explanatory Sections */}
-      <section className="space-y-8">
-        <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
-            Why I Created This Minimalist React Environment
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Many online code environments are either cluttered with intrusive advertisements or feel too heavy for everyday quick tests. When you are writing code, distractions cost time and break focus. This environment solves that issue by offering a clean, full-width canvas split perfectly between your codebase and your live visual output. The underlying compilation layer handles rendering seamlessly, giving you immediate visual feedback. It is designed to act as your digital scratchpad, helping you iterate fast, debug errors right as they occur, and test standalone interfaces before shipping them to a production environment.
-          </p>
-        </div>
+<section className="space-y-8">
+  <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
+    <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
+      Why I Created This Minimalist React Environment
+    </h2>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      Most online code playgrounds try to do everything at once. Multi-file projects. Package managers. Live collaboration. Ads squeezed into every open corner of the layout. That's genuinely useful if you're building a real application but it's overkill if you just want to check whether one component renders correctly.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium">
+      I wanted something closer to a scratchpad:
+    </p>
+    <ul className="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1 pl-2">
+      <li>One editor, one live preview nothing else fighting for your attention</li>
+      <li>A full-width layout so you can actually see your code and your output at the same time</li>
+      <li>Instant compilation, so you get visual feedback the moment you stop typing</li>
+      <li>No sign-up, no saved projects, no clutter open it, use it, close it</li>
+    </ul>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-2">
+      This is meant to work like a digital notepad for React: iterate fast, catch errors as they happen, and test a standalone component before you drop it into a production codebase.
+    </p>
+  </div>
 
-        <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
-            Understanding Core React Structures Within the Tool
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            To make the most of this environment, it helps to understand how the internal file structure handles your inputs. Standard setups look for a core entry point where components are rendered into a root DOM element. This editor handles that architecture behind the scenes, mapping your code directly into a responsive preview panel. You can easily manage component states, pass props, and even integrate lifecycle patterns smoothly. The live console utility tracking under the output screen catches syntax issues immediately, which makes it incredibly simple to isolate breaking changes or test conditional state rendering logically.
-          </p>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            For quick testing without opening an IDE, use our free <Link href="/tools/live-html-css-js-editor-tester" className="text-blue-500 underline font-medium">Live HTML CSS JS Editor Tester</Link>.
-          </p>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            To estimate plant profit margins and operational costs, use our free <Link href="/tools/nursery-calculator" className="text-blue-500 underline font-medium">Nursery Profitability & Earnings Calculator</Link>.
-          </p>
-        </div>
+  <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
+    <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
+      Understanding Core React Structures Within the Tool
+    </h2>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      It helps to know roughly what's happening behind the scenes when you use this editor, especially if you're used to a normal React online workflow with a build tool.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      In a typical local setup, your project looks for one core entry point, then renders your top-level component into a root DOM element. This tool follows that same basic pattern, just without any of the build configuration:
+    </p>
+    <ul className="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1 pl-2">
+      <li>Your code is treated as a single component, expected to be named App</li>
+      <li>It gets mapped directly into a live preview panel instead of a separate browser tab</li>
+      <li>Component state, props, and basic lifecycle patterns all behave exactly as they would locally</li>
+      <li>A live console sits below the output and catches syntax or runtime issues the moment they happen</li>
+    </ul>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-2">
+      That last point matters more than it sounds. Instead of digging through browser dev tools to find out why nothing rendered, the error shows up right next to your code, so you can isolate the broken line and fix it without leaving the page.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-2">
+      For quick testing without opening an IDE, use our free <Link href="/tools/live-html-css-js-editor-tester" className="text-blue-500 underline font-medium">Live HTML CSS JS Editor Tester</Link>.
+    </p>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      To estimate plant profit margins and operational costs, use our free <Link href="/tools/nursery-calculator" className="text-blue-500 underline font-medium">Nursery Profitability & Earnings Calculator</Link>.
+    </p>
+  </div>
 
-        <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
-            How to Maximize Your Workflow
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Using this compiler efficiently comes down to a few basic practices. You can drop your custom functional components directly into the primary workspace, manage your style rules within the attached CSS files, and watch the layout update live on the right screen. If you encounter rendering errors, check the live preview logs instantly to pinpoint the line that broke. This setup eliminates the need to continuously refresh a tab or inspect a local browser console, keeping your entire creation and debugging cycle contained in one centralized interface.
-          </p>
-        </div>
-      </section>
+  <div className="p-8 sm:p-10 rounded-3xl border border-border/60 bg-accent/20 space-y-4">
+    <h2 className="text-2xl sm:text-3xl font-serif font-light text-foreground tracking-tight">
+      How to Maximize Your Workflow
+    </h2>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      A few basic habits make this compiler noticeably faster to work with:
+    </p>
+    <ul className="list-disc list-inside text-xs sm:text-sm text-muted-foreground space-y-1 pl-2">
+      <li>Keep your component named App that's what the preview looks for when it mounts</li>
+      <li>Use inline styles or a style object, since there's no separate stylesheet loaded into the preview</li>
+      <li>Check the console box first if something looks off it usually points straight to the broken line</li>
+      <li>Use the manual "run" option if the live preview ever feels out of sync with your latest edit</li>
+      <li>Copy or download your code before closing the tab, since nothing is saved automatically</li>
+    </ul>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-2">
+      Followed consistently, this keeps your entire test-and-debug cycle in one place. No refreshing tabs, no switching between your editor and a separate browser console you write, you see the result, you fix what's broken, and you move on.
+    </p>
+  </div>
+</section>
 
-      {/* 4. FAQs Section */}
-      <section className="space-y-8 max-w-4xl mx-auto">
-        <div className="text-center space-y-2">
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            Frequently Asked Questions
-          </h2>
-        </div>
+{/* 4. FAQs Section */}
+<section className="space-y-8 max-w-4xl mx-auto">
+  <div className="text-center space-y-2">
+    <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
+      Frequently Asked Questions
+    </h2>
+  </div>
 
-        <div className="space-y-3">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border border-border/60 rounded-2xl bg-accent/20 overflow-hidden transition-all"
-            >
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
-              >
-                <span>{faq.q}</span>
-                <ChevronDown
-                  className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-300 ${
-                    openFaq === index ? "rotate-180 text-primary" : ""
-                  }`}
-                />
-              </button>
-              {openFaq === index && (
-                <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border/40 leading-relaxed">
-                  {faq.a}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 5. CTA Section */}
-      <section className="p-8 sm:p-12 rounded-3xl border border-border/60 bg-accent/30 text-center space-y-6">
-        <div className="max-w-2xl mx-auto space-y-3">
-          <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
-            Looking for Custom Web Architecture?
-          </h2>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            Building a fast, custom web application requires more than just templates—it takes clean code and precise execution. If you need help developing a scalable website, optimizing your site's performance, or integrating secure workflows into your platform, you do not have to figure it out alone. Let an experienced full-stack developer handle the heavy lifting for you. Take a look at my Case Studies to see how I solve complex web problems, or to discuss your project.
-          </p>
-        </div>
-        <Link
-          href="/contact"
-          className="px-8 py-3.5 rounded-xl bg-primary hover:opacity-90 text-primary-foreground font-semibold text-xs sm:text-sm transition-all shadow-md inline-flex items-center gap-2"
+  <div className="space-y-3">
+    {faqs.map((faq, index) => (
+      <div
+        key={index}
+        className="border border-border/60 rounded-2xl bg-accent/20 overflow-hidden transition-all"
+      >
+        <button
+          onClick={() => toggleFaq(index)}
+          className="w-full px-6 py-4 text-left font-medium text-xs sm:text-sm text-foreground flex items-center justify-between gap-4 cursor-pointer hover:bg-accent/50 transition-colors"
         >
-          <span>Contact Me Directly</span>
-          <ArrowUpRight className="w-4 h-4" />
-        </Link>
-      </section>
+          <span>{faq.q}</span>
+          <ChevronDown
+            className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-300 ${
+              openFaq === index ? "rotate-180 text-primary" : ""
+            }`}
+          />
+        </button>
+        {openFaq === index && (
+          <div className="px-6 pb-4 pt-1 text-xs text-muted-foreground border-t border-border/40 leading-relaxed">
+            {faq.a}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* 5. CTA Section */}
+<section className="p-8 sm:p-12 rounded-3xl border border-border/60 bg-accent/30 text-center space-y-6">
+  <div className="max-w-2xl mx-auto space-y-3">
+    <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
+      Looking for Custom Web Architecture?
+    </h2>
+    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+      Building a fast, custom web application takes more than a template it takes clean code and careful execution. If you need help building a scalable website, improving site performance, or setting up secure workflows for your platform, you don't have to work it out on your own. Take a look at my case studies to see how I've solved similar problems, or reach out directly to talk through your project.
+    </p>
+  </div>
+  <Link
+    href="/contact"
+    className="px-8 py-3.5 rounded-xl bg-primary hover:opacity-90 text-primary-foreground font-semibold text-xs sm:text-sm transition-all shadow-md inline-flex items-center gap-2"
+  >
+    <span>Contact Me Directly</span>
+    <ArrowUpRight className="w-4 h-4" />
+  </Link>
+  </section>
     </main>
   );
 }

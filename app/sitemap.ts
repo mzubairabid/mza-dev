@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts = posts
     .filter((post: BlogPost) => !EXCLUDED_SLUGS.includes(post.slug))
     .map((post: BlogPost) => ({
-      url: `${baseUrl}/${post.slug}`, // Fixed: Removed /blog/ prefix so posts link directly to mzadev.com/post-slug
+      url: `${baseUrl}/blog/${post.slug}`,
       lastModified: post.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
       changeFrequency: "monthly" as const,
       priority: 0.7,

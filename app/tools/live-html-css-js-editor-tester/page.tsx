@@ -12,14 +12,17 @@ export const metadata: Metadata = {
     "Online Code Tester",
     "Real-time HTML Compiler",
   ],
+  alternates: {
+    canonical: "https://mzadev.com/tools/live-html-css-js-editor-tester",
+  },
   openGraph: {
     title: "Online HTML CSS JS Editor & Tester | Free Real-Time Code Compiler",
     description: "Run and test front-end code instantly with zero latency.",
-    url: "https://www.mzadev.com/tools/live-html-css-js-editor-tester",
+    url: "https://mzadev.com/tools/live-html-css-js-editor-tester",
     type: "website",
     images: [
       {
-        url: "https://www.mzadev.com//project-images/html-css-js-code-editor-2026.webp", // Public folder me rakhi og-image ka exact URL
+        url: "https://mzadev.com/project-images/html-css-js-code-editor-2026.webp", // Public folder me rakhi og-image ka exact URL
         width: 1200,
         height: 630,
         alt: "Online HTML CSS JS Editor & Tester",

@@ -21,6 +21,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://www.mzadev.com/sitemap.xml', // site URL
+    sitemap: 'https://mzadev.com/sitemap.xml', // site URL
   };
 }

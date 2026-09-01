@@ -20,12 +20,15 @@ import {
 export const metadata: Metadata = {
   title: "About | Web Developer & SEO",
   description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
+  alternates: {
+    canonical: "https://mzadev.com/about",
+  },
   openGraph: {
     title: "About Muhammad Zubair Abid (MZA Dev)",
     description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
-    url: "https://www.mzadev.com/about",
+    url: "https://mzadev.com/about",
     type: "website",
-    images: [{ url: "https://www.mzadev.com/public/project-images/about-web-development.webp", width: 1200, height: 630 }],
+    images: [{ url: "https://mzadev.com/public/project-images/about-web-development.webp", width: 1200, height: 630 }],
   },
 };
 

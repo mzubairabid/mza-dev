@@ -20,17 +20,17 @@ export const metadata: Metadata = {
   description:
     "Explore free custom-engineered web tools, live compilers, JSON-LD schema generators, and performance calculators engineered by Muhammad Zubair Abid (MZA Dev).",
   alternates: {
-    canonical: "https://www.mzadev.com/tools",
+    canonical: "https://mzadev.com/tools",
   },
   openGraph: {
     title: "Interactive Web Tools & Developer Utilities | MZA Dev",
     description:
       "Explore free custom-engineered web tools, live compilers, JSON-LD schema generators, and performance calculators engineered by Muhammad Zubair Abid (MZA Dev).",
-    url: "https://www.mzadev.com/tools",
+    url: "https://mzadev.com/tools",
     type: "website",
     images: [
       {
-        url: "https://www.mzadev.com/og-image.jpg", // Tools hub page ki default OG image URL
+        url: "https://mzadev.com/og-image.jpg", // Tools hub page ki default OG image URL
         width: 1200,
         height: 630,
         alt: "MZA Dev Interactive Web Tools",

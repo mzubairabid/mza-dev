@@ -176,7 +176,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: "top-web-development-frameworks",
-    title: "Top Web Development Frameworks Compared (Next.js, Remix, Astro)",
+    title: "Best Frontend Frameworks 2026: Next.js 16, Svelte 5 & Nuxt",
     description: "Choose the right frontend stack based on rendering performance, SEO, and developer workflow.",
     category: "JavaScript & React",
     date: "2025-03-26",

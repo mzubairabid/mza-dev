@@ -44,6 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${post.title} | MZA Dev`,
       description: post.description || "",
+      alternates: {
+        canonical: `https://mzadev.com/blog/${post.slug}`,
+      },
       openGraph: {
         title: post.title,
         description: post.description || "",
@@ -60,9 +63,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${page.title} | MZA Dev`,
       description: page.description || "",
+      alternates: {
+        canonical: `https://mzadev.com/${page.slug}`,
+      },
       openGraph: {
         title: page.title,
         description: page.description || "",
+        url: `https://mzadev.com/${page.slug}`,
       },
     };
   }
