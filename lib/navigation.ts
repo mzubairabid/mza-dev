@@ -74,7 +74,22 @@ export const NAV_LINKS: NavItem[] = [
       },
     ],
   },
-  { label: "Work", href: "/work" },
+  {
+    label: "Work",
+    href: "/work",
+    children: [
+      {
+        title: "German Desi Shop",
+        href: "/german-desi-shop-zellingen-2025",
+        description: "WooCommerce store redesign & custom PayPal gateway fix.",
+      },
+      {
+        title: "Karachi Mart",
+        href: "/karachi-mart-2026",
+        description: "A high-performance local grocery store e-commerce frontend.",
+      },
+    ],
+  },
   { label: "Blog", href: "/blog" },
 ];
 

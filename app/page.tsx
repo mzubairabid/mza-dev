@@ -2,6 +2,7 @@ import React from "react";
 // Sections Imports
 import { Hero } from "@/components/sections/hero";
 import TrustBar from "@/components/sections/trust-bar";
+import HomeMarketplaceSection from "@/components/sections/HomeMarketplaceSection";
 import { Work } from "@/components/sections/work";
 import { Capabilities } from "@/components/sections/capabilities";
 import { Approach } from "@/components/sections/approach";
@@ -51,6 +52,7 @@ export default function Home() {
       {/* 05 / TECH STACK SECTION */}
       <Stack />
 
+      <HomeMarketplaceSection />
       {/* 06 / ABOUT SECTION */}
       <About />
 

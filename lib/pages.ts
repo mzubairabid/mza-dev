@@ -9,6 +9,8 @@ export type PageData = {
   slug: string;
   title: string;
   description?: string;
+  image?: string;         // <--- Yeh add karein
+  overviewText?: string;
   content: string;
 };
 
@@ -24,6 +26,8 @@ export function getPageBySlug(slug: string): PageData | null {
       slug,
       title: data.title || slug,
       description: data.description || "",
+      image: data.image || "",                 // <--- Yahan data map karein
+      overviewText: data.overviewText || "",
       content,
     };
   } catch (error) {

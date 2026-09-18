@@ -16,15 +16,24 @@ interface Project {
 const featuredProjects: Project[] = [
   {
     id: "1",
-    title: "German E-Commerce Store & PayPal Integration",
+    title: "German Desi Shop Zellingen",
     category: "WooCommerce / Custom Dev",
     description: "Full store redesign with custom PayPal payment gateway integration and localized checkout flow.",
-    image: "/project-images/desi-shopzellingen-hero.webp",
+    image: "/project-images/desi-shop-zellingen-2025.webp",
     tags: ["WordPress", "WooCommerce", "PayPal API", "PHP"],
-    liveUrl: "#",
+    liveUrl: "/german-desi-shop-zellingen-2025",
   },
   {
     id: "2",
+    title: "Modern HVAC Service Platform",
+    category: "WordPress / Kadence Theme",
+    description: "High-performance business website built for a US-based HVAC client. Designed with clean American English typography, fast load optimization, and responsive Kadence layouts.",
+    image: "/project-images/modern-hvac-experts-california.webp", 
+    tags: ["WordPress", "Kadence Theme", "Elementor", "Responsive UI"],
+    liveUrl: "#",
+  },
+  {
+    id: "3",
     title: "Enterprise Electronic Security Platform",
     category: "Web System & SEO",
     description: "12-page web platform deployed in Dubai featuring localized Arabic content and rapid Google indexing architecture.",
@@ -33,13 +42,22 @@ const featuredProjects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "3",
+    id: "4",
     title: "Custom Interactive Financial Engine",
     category: "JavaScript / Custom Tools",
     description: "Custom vanilla JavaScript calculation engine integrated into WordPress to generate real-time financial reporting.",
     image: "/project-images/openanursery-co-uk-nursery-profit-calculation-updated-version.webp",
     tags: ["JavaScript", "WordPress", "Custom Math Logic"],
     liveUrl: "#",
+  },
+  {
+    id: "5",
+    title: "Karachi Mart Grocery Store",
+    category: "JavaScript / Custom Tools",
+    description: "Explore Karachi Mart, a high-performance local grocery store frontend built with HTML, CSS, and JavaScript. Designed for speed, area-based filtering, and seamless UX.",
+    image: "/project-images/karachi-mart-hero-section.webp",
+    tags: ["JavaScript", "Html", "Css"],
+    liveUrl: "/karachi-mart-2026",
   },
 ];
 

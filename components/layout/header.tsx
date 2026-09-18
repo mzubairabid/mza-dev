@@ -9,11 +9,13 @@ import {
   ShoppingBag, 
   Globe, 
   Palette,
-  Search,       // SEO ke liye
-  Layout,       // WordPress ke liye
-  Terminal,     // Live Code Editor ke liye
+  Search, 
+  Layout, 
+  Terminal, 
   Cpu, 
   Calculator,
+  Briefcase, // Karachi Mart / Work ke liye icon
+  ShoppingCart,
   Menu,
   X 
 } from "lucide-react";
@@ -29,12 +31,13 @@ const getDropdownIcon = (href: string) => {
   if (href.includes("live-html-css-js")) return <Terminal className="w-4 h-4" />;
   if (href.includes("react-compiler")) return <Cpu className="w-4 h-4" />;
   if (href.includes("calculator")) return <Calculator className="w-4 h-4" />;
+  if (href.includes("karachi-mart") || href.includes("work")) return <ShoppingCart className="w-4 h-4" />;
   return <Code2 className="w-4 h-4" />;
 };
 
 export function Header() {
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isToolsOpen, setIsToolsOpen] = useState(false);
+  // Fix: Ab har menu item ke liye dynamic hover state track ho gi (Services, Tools, Work sab ke liye alag)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   // Mobile Menu States
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -50,20 +53,20 @@ export function Header() {
         
         {/* Brand Logo */}
         <Link href="/" className="inline-flex items-center">
-      <Image
-        src="/project-images/mza-dev-logo.webp"
-        alt="MZA DEV Logo"
-        width={200} // High resolution aspect ratio hold karne ke liye
-        height={50} // Aspect ratio baseline
-        priority // Header logo immediate load hone ke liye (LCP boost)
-        className="w-auto h-[25] sm:h-[30] object-contain transition-opacity hover:opacity-90"
-      />
-    </Link>
+          <Image
+            src="/project-images/mza-dev-logo.webp"
+            alt="MZA DEV Logo"
+            width={200}
+            height={50}
+            priority
+            className="w-auto h-6.25 sm:h-7.5 object-contain transition-opacity hover:opacity-90"
+          />
+        </Link>
 
         {/* Desktop Navigation Links from NAV_LINKS */}
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground font-medium">
           {NAV_LINKS.map((item) => {
-            // Case 1: Simple Links (About, Work, Blog)
+            // Case 1: Simple Links (About, Blog) jo baghair children ke hain
             if (!item.children) {
               return (
                 <Link
@@ -76,17 +79,15 @@ export function Header() {
               );
             }
 
-            // Case 2: Dropdown Links (Services or Tools)
-            const isServices = item.label.toLowerCase() === "services";
-            const isOpen = isServices ? isServicesOpen : isToolsOpen;
-            const setIsOpen = isServices ? setIsServicesOpen : setIsToolsOpen;
+            // Case 2: Dropdown Links (Services, Tools, Work - Ab sab ke liye dynamically kaam karega)
+            const isOpen = openDropdown === item.label;
 
             return (
               <div
                 key={item.label}
                 className="relative group py-2 cursor-pointer"
-                onMouseEnter={() => setIsOpen(true)}
-                onMouseLeave={() => setIsOpen(false)}
+                onMouseEnter={() => setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
                 <div className="flex items-center gap-1 hover:text-foreground transition-colors">
                   <Link href={item.href}>{item.label}</Link>
@@ -152,11 +153,10 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer (Dynamically loaded from NAV_LINKS) */}
+      {/* Mobile Menu Drawer */}
       {isMobileMenuOpen && (
         <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-md px-6 py-4 space-y-3">
           {NAV_LINKS.map((item) => {
-            // Case 1: Simple Links for Mobile
             if (!item.children) {
               return (
                 <Link
@@ -170,7 +170,6 @@ export function Header() {
               );
             }
 
-            // Case 2: Dropdown / Accordion Links for Mobile
             const isExpanded = mobileExpanded === item.label;
 
             return (

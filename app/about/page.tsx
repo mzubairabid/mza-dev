@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import heroImage from "@/public/project-images/about-web-development.webp";
+import AboutMarketplaceSection from "@/components/sections/AboutMarketplaceSection";
 import { FadeIn } from "@/components/animations/fade-in";
 import FaqSchema from "@/components/FaqSchema";
 import { FaqSection } from "@/components/sections/faq-section";
@@ -230,7 +231,7 @@ export default function AboutPage() {
               techniques.
             </p>
           </FadeIn>
-
+          
           {/* YouTube Section */}
           <FadeIn direction="up" delay={0.6}>
             <div className="p-5 rounded-2xl border border-border bg-muted/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -303,7 +304,8 @@ export default function AboutPage() {
           </FadeIn>
         </div>
       </section>
-
+      
+      <AboutMarketplaceSection />
       {/* 3. Specialized Custom Web Services Grid */}
       <section className="space-y-8">
         <FadeIn direction="up" delay={0.1}>

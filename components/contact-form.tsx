@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import heroImage from "@/public/project-images/contact.webp";
 import { FadeIn } from "@/components/animations/fade-in";
+import ContactMarketplaceSection from "@/components/sections/ContactMarketplaceSection";
 import {
   Mail,
   Copy,

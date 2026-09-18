@@ -7,6 +7,17 @@ import { Button } from "@/components/Button";
 import { FadeIn } from "@/components/animations/fade-in";
 import FaqSchema from '@/components/FaqSchema';
 import TrustBar from "@/components/sections/trust-bar";
+import ServicesMarketplaceSection from "@/components/sections/ServicesMarketplaceSection";
+import ProjectHero from "@/components/projects/karachi-mart/hero-section";
+import ProjectFeatures from "@/components/projects/karachi-mart/features";
+import ProjectTechStack from "@/components/projects/karachi-mart/tech-stack";
+import ProjectCTA from "@/components/projects/karachi-mart/cta";
+import Categories from "@/components/projects/karachi-mart/Categories";
+import Products from "@/components/projects/karachi-mart/Products";
+import GermanDesiHero from "@/components/projects/german-desi/hero-section";
+import GermanDesiFeatures from "@/components/projects/german-desi/features";
+import GermanDesiTechStack from "@/components/projects/german-desi/tech-stack";
+import GermanDesiCTA from "@/components/projects/german-desi/cta";
 
 export function Callout({
   children,
@@ -35,6 +46,17 @@ export const mdxComponents = {
   FadeIn,
   FaqSchema,
   TrustBar,
+  ServicesMarketplaceSection,
+  ProjectHero,
+  ProjectFeatures,
+  ProjectTechStack,
+  ProjectCTA,
+  Products,
+  Categories,
+  GermanDesiHero,
+  GermanDesiFeatures,
+  GermanDesiTechStack,
+  GermanDesiCTA,
 
   // HTML Details Override for Single-Open Accordion
   details: ({ children, ...props }: ComponentPropsWithoutRef<"details">) => (
@@ -95,11 +117,29 @@ export const mdxComponents = {
     <h4 className="mt-4 mb-2 text-lg font-semibold tracking-tight">{children}</h4>
   ),
 
-  // Safe Paragraph
+  // Safe Paragraph Component
   p: ({ children, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => {
-    if (React.isValidElement(children)) {
-      return <>{children}</>;
+    let hasBlockElement = false;
+
+    // Check karein ke kahin paragraph ke andar koi block element (div, p, section, etc.) toh nahi hai
+    React.Children.forEach(children, (child) => {
+      if (React.isValidElement(child)) {
+        const type = child.type;
+        if (
+          typeof type === "string" &&
+          ["div", "p", "section", "article", "ul", "ol", "table", "pre"].includes(type)
+        ) {
+          hasBlockElement = true;
+        }
+      }
+    });
+
+    // Agar block element mil gaya, toh div return karo taake <p> ke andar <p>/<div> ka HTML rule break na ho
+    if (hasBlockElement) {
+      return <div {...props}>{children}</div>;
     }
+
+    // Normal text ke liye standard paragraph return karo
     return (
       <p className="my-4 leading-relaxed" {...props}>
         {children}

@@ -25,10 +25,33 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.webp", // 👈 WebP file path from public folder
   },
+  
+  // 🟢 Homepage ki default OpenGraph image ke liye yeh add karein:
+  openGraph: {
+    title: "Full-Stack Developer & SEO Specialist | MZA Dev",
+    description: "Full-stack web developer and technical SEO specialist engineering fast, high-performing web applications, Next.js solutions, and digital growth.",
+    url: "https://mzadev.com",
+    siteName: "MZA Dev",
+    type: "website",
+    images: [
+      {
+        url: "/project-images/mza-dev-og.webp", // 👈 Aapki homepage ki image ka path (public folder mein honi chahiye)
+        width: 1200,
+        height: 630,
+        alt: "MZA Dev — Full-Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Full-Stack Developer & SEO Specialist | MZA Dev",
+    description: "Full-stack web developer and technical SEO specialist engineering fast, high-performing web applications, Next.js solutions, and digital growth.",
+    images: ["/project-images/mza-dev-og.webp"],
+  },
 
-  // 1. Google Search Console Verification Code
+  // Google Search Console Verification Code
   verification: {
-    google: "MdNjiJrq6RgpQg24D5pfbwXpR1qP0RRSRaABJOVUS60", // Yahan GSC ka HTML tag code daalein
+    google: "MdNjiJrq6RgpQg24D5pfbwXpR1qP0RRSRaABJOVUS60",
   },
 };
 
