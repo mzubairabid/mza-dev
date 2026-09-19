@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { PAGE_SEO } from "@/lib/seo";
 import heroImage from "@/public/project-images/about-web-development.webp";
 import AboutMarketplaceSection from "@/components/sections/AboutMarketplaceSection";
 import { FadeIn } from "@/components/animations/fade-in";
@@ -18,20 +19,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "About | Web Developer & SEO",
-  description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
-  alternates: {
-    canonical: "https://mzadev.com/about",
-  },
-  openGraph: {
-    title: "About Muhammad Zubair Abid (MZA Dev)",
-    description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
-    url: "https://mzadev.com/about",
-    type: "website",
-    images: [{ url: "https://mzadev.com/public/project-images/about-web-development.webp", width: 1200, height: 630 }],
-  },
-};
+export const metadata = PAGE_SEO.about;
 
 export default function AboutPage() {
   const coreSkills = [

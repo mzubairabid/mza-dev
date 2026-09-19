@@ -1,13 +1,8 @@
 import { Metadata } from "next";
+import { PAGE_SEO } from "@/lib/seo";
 import { ContactFormContent } from "@/components/contact-form";
 
-export const metadata: Metadata = {
-  title: "Contact | Full-Stack Developer",
-  description: "Get in touch with Muhammad Zubair Abid for custom web development, Next.js applications, WordPress solutions, and technical SEO audits.",
-  alternates: {
-    canonical: 'https://mzadev.com/contact', 
-  },
-};
+export const metadata = PAGE_SEO.about;
 
 export default function ContactPage() {
   return <ContactFormContent />;

@@ -60,6 +60,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Custom MDX Page Metadata Check
   const page = getPageBySlug(slug);
   if (page) {
+    // 🟢 Saare MDX pages ke liye dedicated OG images ki mapping dictionary
+    const customOgImages: Record<string, string> = {
+      "services": "/project-images/services-og.webp",
+      "web-development-service": "/project-images/services-og.webp",
+      "wordpress-development": "/project-images/services-og.webp",
+      "technical-seo": "/project-images/services-og.webp",
+      "shopify-funnels": "/project-images/services-og.webp",
+      "german-desi-shop-zellingen-2025": "/project-images/services-og.webp",
+      "karachi-mart-2026": "/project-images/services-og.webp",
+    };
+
+    // Agar mapping mein image mil jaye toh woh lo, warna default logo
+    const ogImage = customOgImages[page.slug] || "/mza-dev-og-logo.png";
+
     return {
       title: `${page.title} | MZA Dev`,
       description: page.description || "",
@@ -70,6 +84,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: page.title,
         description: page.description || "",
         url: `https://mzadev.com/${page.slug}`,
+        images: [
+          {
+            url: `https://mzadev.com${ogImage}`,
+            width: 1200,
+            height: 630,
+            alt: page.title,
+          },
+        ],
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: page.title,
+        description: page.description || "",
+        images: [`https://mzadev.com${ogImage}`],
       },
     };
   }
