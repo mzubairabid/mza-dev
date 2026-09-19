@@ -12,7 +12,7 @@ export function makeMetadata({
   path?: string;
   image?: string;
 }): Metadata {
-  const imageUrl = image ? `${site.baseUrl}${image}` : `${site.baseUrl}/default-og-image.webp`;
+  const imageUrl = image ? `${site.baseUrl}${image}` : `${site.baseUrl}/mza-dev-og.webp`;
   return {
     title,
     description,
