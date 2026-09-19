@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from 'next/image';
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { 
   ChevronDown, 
   Code2, 
@@ -55,12 +56,12 @@ export function Header() {
         {/* Brand Logo */}
         <Link href="/" className="inline-flex items-center">
           <Image
-            src="/project-images/mza-dev-logo.webp"
+            src="/project-images/mza-dev-logo-2026.webp"
             alt="MZA DEV Logo"
-            width={200}
-            height={50}
+            width={400}
+            height={150}
             priority
-            className="w-auto h-6.25 sm:h-7.5 object-contain transition-opacity hover:opacity-90"
+            className="w-auto h-7 sm:h-8 object-contain transition-opacity hover:opacity-90"
           />
         </Link>
 
@@ -132,6 +133,7 @@ export function Header() {
 
         {/* Right Section: Action Button & Mobile Hamburger Trigger */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link
             href="/contact"
             className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-xs font-medium hover:opacity-90 transition-opacity"
