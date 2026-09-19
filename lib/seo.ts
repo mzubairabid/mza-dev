@@ -43,12 +43,18 @@ export const PAGE_SEO = {
     title: "About Me — Full-Stack Developer & Designer",
     description: "Full-Stack Web Developer and Technical SEO Specialist specializing in Next.js, React, and Core Web Vitals optimization.",
     path: "/about",
-    image: "/project-images/about-web-development.webp",
+    image: "/project-images/about-og.webp",
   }),
   contact: makeMetadata({
     title: "Contact | Hire Full-Stack Developer",
     description: "Get in touch with Muhammad Zubair Abid for custom web development, Next.js applications, WordPress solutions, and technical SEO audits.",
     path: "/contact",
-    image: "/project-images/contact.webp",
+    image: "/project-images/contact-og.webp",
+  }),
+  services: makeMetadata({
+    title: "Services Web Development | MZA Dev",
+    description: "Explore high-performance web development, Next.js web applications, MERN full-stack engineering, custom WordPress architectures, and technical SEO services engineered by Muhammad Zubair Abid (MZA Dev).",
+    path: "/services",
+    image: "/project-images/services-og.webp",
   }),
 };
