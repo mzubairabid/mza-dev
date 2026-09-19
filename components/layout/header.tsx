@@ -32,6 +32,7 @@ const getDropdownIcon = (href: string) => {
   if (href.includes("react-compiler")) return <Cpu className="w-4 h-4" />;
   if (href.includes("calculator")) return <Calculator className="w-4 h-4" />;
   if (href.includes("karachi-mart") || href.includes("work")) return <ShoppingCart className="w-4 h-4" />;
+  if (href.includes("farah-brand") || href.includes("work")) return <ShoppingBag className="w-4 h-4" />;
   return <Code2 className="w-4 h-4" />;
 };
 

@@ -18,6 +18,12 @@ import GermanDesiHero from "@/components/projects/german-desi/hero-section";
 import GermanDesiFeatures from "@/components/projects/german-desi/features";
 import GermanDesiTechStack from "@/components/projects/german-desi/tech-stack";
 import GermanDesiCTA from "@/components/projects/german-desi/cta";
+import FarahHero from "@/components/projects/farah-brand/ProjectHero";
+import FarahFeatures from "@/components/projects/farah-brand/ProjectFeatures";
+import FarahProducts from "@/components/projects/farah-brand/Products";
+import FarahCategories from "@/components/projects/farah-brand/Categories";
+import FarahTechStack from "@/components/projects/farah-brand/FarahTechStack";
+import FarahCTA from "@/components/projects/farah-brand/ProjectCTA";
 
 export function Callout({
   children,
@@ -57,6 +63,12 @@ export const mdxComponents = {
   GermanDesiFeatures,
   GermanDesiTechStack,
   GermanDesiCTA,
+  FarahHero,
+  FarahFeatures,
+  FarahProducts,
+  FarahCategories,
+  FarahTechStack,
+  FarahCTA,
 
   // HTML Details Override for Single-Open Accordion
   details: ({ children, ...props }: ComponentPropsWithoutRef<"details">) => (

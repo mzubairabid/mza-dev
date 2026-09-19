@@ -84,6 +84,11 @@ export const NAV_LINKS: NavItem[] = [
         description: "WooCommerce store redesign & custom PayPal gateway fix.",
       },
       {
+        title: "Farah Brand",
+        href: "/farah-brand",
+        description: "Handmade traditional frocks & katan silk for girls up to 15 years.",
+      },
+      {
         title: "Karachi Mart",
         href: "/karachi-mart-2026",
         description: "A high-performance local grocery store e-commerce frontend.",

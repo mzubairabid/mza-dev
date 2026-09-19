@@ -69,6 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "shopify-funnels": "/project-images/services-og.webp",
       "german-desi-shop-zellingen-2025": "/project-images/services-og.webp",
       "karachi-mart-2026": "/project-images/services-og.webp",
+      "farah-brand": "/project-images/farah-brand-og.webp",
     };
 
     // Agar mapping mein image mil jaye toh woh lo, warna default logo

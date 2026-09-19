@@ -52,6 +52,15 @@ const featuredProjects: Project[] = [
   },
   {
     id: "5",
+    title: "Farah Brand Website",
+    category: "WordPress / UI/UX Design",
+    description: "Explore Farah Brand, a custom business and e-commerce platform designed and developed on WordPress, optimized for seamless user experience, responsive UI, and fast performance.",
+    image: "/project-images/farah-brand-2026.webp", // Yahan aap apni hero image ka path de dein
+    tags: ["WordPress", "UI/UX Design", "WooCommerce", "Elementor"],
+    liveUrl: "/farah-brand",
+  },
+  {
+    id: "6",
     title: "Karachi Mart Grocery Store",
     category: "JavaScript / Custom Tools",
     description: "Explore Karachi Mart, a high-performance local grocery store frontend built with HTML, CSS, and JavaScript. Designed for speed, area-based filtering, and seamless UX.",
