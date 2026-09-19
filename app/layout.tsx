@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Full-Stack Developer & SEO Specialist | MZA Dev",
     description: "Full-stack web developer and technical SEO specialist engineering fast, high-performing web applications, Next.js solutions, and digital growth.",
-    images: ["/project-images/mza-dev-og.webp"],
+    images: ["/project-images/mza-dev-og-logo.png"],
   },
 
   // Google Search Console Verification Code
