@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/project-images/mza-dev-og.webp", // 👈 Aapki homepage ki image ka path (public folder mein honi chahiye)
+        url: "/project-images/mza-dev-og-logo.png", // 👈 Aapki homepage ki image ka path (public folder mein honi chahiye)
         width: 1200,
         height: 630,
         alt: "MZA Dev — Full-Stack Developer",
