@@ -118,7 +118,7 @@ export const FOOTER_LEGAL_LINKS: readonly FooterLink[] = [
 export const BOTTOM_BAR_SOCIALS: readonly FooterLink[] = [
   { 
     label: "GitHub", 
-    href: "https://github.com/gadgetcrunchie", 
+    href: "https://github.com/mzubairabid", 
     target: "_blank", 
     rel: "noopener noreferrer nofollow" 
   },
