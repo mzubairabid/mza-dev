@@ -7,7 +7,8 @@ import AboutMarketplaceSection from "@/components/sections/AboutMarketplaceSecti
 import { FadeIn } from "@/components/animations/fade-in";
 import FaqSchema from "@/components/FaqSchema";
 import { FaqSection } from "@/components/sections/faq-section";
-
+import Breadcrumbs from "@/components/Breadcrumbs";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import {
   CheckCircle2,
   Code2,
@@ -19,7 +20,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const metadata = PAGE_SEO.about;
+export const metadata: Metadata = PAGE_SEO.about;
 
 export default function AboutPage() {
   const coreSkills = [
@@ -96,6 +97,10 @@ export default function AboutPage() {
   ];
 
   return (
+    <>
+      <div className="container mx-auto px-4 pt-6 max-w-6xl">
+        <Breadcrumbs items={[{ name: "About", href: "/about" }]} />
+      </div>
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20">
       {/* Inject JSON-LD Schema */}
       <FaqSchema
@@ -106,7 +111,21 @@ export default function AboutPage() {
       />
 
       {/* 1. Hero Section */}
+      <ParticlesBackground className="opacity-60" 
+        icons={[
+      "/icons/nextjs.svg",
+      "/icons/react.svg",
+      "/icons/typescript.svg",
+      "/icons/javascript.svg",
+      "/icons/html5.svg",
+      "/icons/css3.svg",
+      "/icons/wordpress.svg",
+      "/icons/shopify.svg",
+      "/icons/github.svg",
+    ]}
+      />
       <section className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 sm:p-10 md:p-12">
+      <ParticlesBackground className="opacity-60" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-6">
             <FadeIn direction="down" delay={0.1}>
@@ -396,5 +415,6 @@ export default function AboutPage() {
         </section>
       </FadeIn>
     </main>
+    </>
   );
 }

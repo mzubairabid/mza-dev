@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import heroImage from "@/public/project-images/contact.webp";
 import { FadeIn } from "@/components/animations/fade-in";
+import ParticlesBackground from "@/components/ParticlesBackground";
 import ContactMarketplaceSection from "@/components/sections/ContactMarketplaceSection";
 import {
   Mail,
@@ -111,9 +112,34 @@ export function ContactFormContent() {
 
   return (
     <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-16 sm:space-y-20">
-      
+      <ParticlesBackground className="opacity-60" 
+        icons={[
+      "/icons/nextjs.svg",
+      "/icons/react.svg",
+      "/icons/typescript.svg",
+      "/icons/javascript.svg",
+      "/icons/html5.svg",
+      "/icons/css3.svg",
+      "/icons/wordpress.svg",
+      "/icons/shopify.svg",
+      "/icons/github.svg",
+    ]}
+      />
       {/* 1. Hero Section */}
       <section className="relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-10 md:p-12">
+        <ParticlesBackground className="opacity-60" 
+          icons={[
+      "/icons/nextjs.svg",
+      "/icons/react.svg",
+      "/icons/typescript.svg",
+      "/icons/javascript.svg",
+      "/icons/html5.svg",
+      "/icons/css3.svg",
+      "/icons/wordpress.svg",
+      "/icons/shopify.svg",
+      "/icons/github.svg",
+    ]}
+    />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
           {/* Hero Left Content */}
@@ -511,7 +537,7 @@ export function ContactFormContent() {
 
               <div className="space-y-2">
                 <a
-                  href="https://youtube.com/@ByteScriptMZA"
+                  href="https://youtube.com/@mzadev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"
@@ -524,7 +550,7 @@ export function ContactFormContent() {
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/mzubairabid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"
@@ -537,7 +563,7 @@ export function ContactFormContent() {
                 </a>
 
                 <a
-                  href="https://github.com"
+                  href="https://github.com/mzubairabid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl border border-border bg-secondary flex items-center justify-between text-xs font-semibold text-secondary-foreground hover:border-primary transition-all group"

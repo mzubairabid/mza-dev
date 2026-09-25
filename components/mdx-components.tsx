@@ -112,8 +112,9 @@ export const mdxComponents = {
 
   // Hero section image
   HeroImage: ({ src, alt }: { src: string; alt: string }) => (
-    <img src={src} alt={alt} className="w-full h-full object-cover m-0" />
-  ),
+  <Image src={src} alt={alt} width={1200} height={630} priority
+    className="w-full h-full object-cover m-0" />
+),
   
   // Typography & Headings
   h1: ({ children }: { children: React.ReactNode }) => (

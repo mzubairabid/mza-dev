@@ -61,7 +61,7 @@ function getMDXItems(): SiteItem[] {
 }
 
 export async function GET() {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mzadev.com";
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mzadev.com";
   const mdxPosts = getMDXItems();
 
   // Format Core Pages

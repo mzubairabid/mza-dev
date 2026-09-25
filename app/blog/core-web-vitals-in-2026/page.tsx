@@ -218,7 +218,7 @@ add_action('wp_enqueue_scripts', 'remove_unused_assets', 100);`}
                   </div>
                 </div>
                 <a
-                  href="https://youtube.com/@ByteScriptMZA"
+                  href="https://youtube.com/@mzadev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:underline shrink-0"

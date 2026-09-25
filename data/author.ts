@@ -11,7 +11,7 @@ export const author = {
 export const website = {
   name: "MZA Dev",
   tagline: "Web Development, SEO & Tech Reviews",
-  baseUrl: "https://mzadev.com",
+  baseUrl: "https://www.mzadev.com",
   logo: "/project-images/logo-gadget-Crunchie.webp",
   email: "contact@mzadev.com",
 } as const;

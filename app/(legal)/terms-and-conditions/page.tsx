@@ -50,7 +50,7 @@ export default function TermsAndConditionsPage() {
         <p>
           Welcome to{" "}
           <Link
-            href="https://mzadev.com"
+            href="https://www.mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
@@ -59,7 +59,7 @@ export default function TermsAndConditionsPage() {
           </Link>
           ! These Terms and Conditions outline the rules and regulations for the use of my website, located at{" "}
           <Link href="/" className="text-primary hover:underline font-mono text-xs sm:text-sm">
-            https://mzadev.com
+            https://www.mzadev.com
           </Link>
           .
         </p>

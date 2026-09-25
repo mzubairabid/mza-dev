@@ -56,7 +56,7 @@ export default function AffiliateDisclosurePage() {
           <p>
             Welcome to{" "}
             <Link
-              href="https://mzadev.com"
+              href="https://www.mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
@@ -75,7 +75,7 @@ export default function AffiliateDisclosurePage() {
           <p>
             On{" "}
             <Link
-              href="https://mzadev.com"
+              href="https://www.mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
@@ -104,7 +104,7 @@ export default function AffiliateDisclosurePage() {
           <p>
             My editorial integrity is not for sale. All reviews, recommendations, and coding guides on{" "}
             <Link
-              href="https://mzadev.com"
+              href="https://www.mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"

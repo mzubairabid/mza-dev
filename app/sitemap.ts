@@ -1,27 +1,42 @@
-import { MetadataRoute } from "next";
+// app/sitemap.ts
+import type { MetadataRoute } from "next";
 import { getAllPosts, BlogPost } from "@/lib/blog-posts";
-import { getAllPageSlugs } from "@/lib/pages"; // Custom MDX pages import
+import { getAllPageSlugs } from "@/lib/pages";
 import fs from "fs";
 import path from "path";
 
-// Un slugs ki list jinhein sitemap me include NAHI karna
+// Build ke waqt ek dafa ban jaye (fs sirf build par kaam karta hai)
+export const dynamic = "force-static";
+
+// Final domain: sirf WWW
+const BASE_URL = "https://www.mzadev.com";
+
+// Test / draft slugs jo sitemap me nahi chahiye
 const EXCLUDED_SLUGS = ["my-first-page", "my-first-post"];
 
-// Auto-scan static pages & tools from app folder
+// Wo routes jo redirect hote hain ya index nahi hone chahiye.
+// next.config.mjs ke redirects() me jo "source" hai, agar us ka folder
+// app/ me abhi bhi mojood hai to use yahan likhein.
+const EXCLUDED_ROUTES = new Set<string>([
+  "/services/graphic-design",
+  "/services/shopify-funnels",
+  "/services/web-development-service",
+  "/cart",
+]);
+
+// app/ folder se static pages auto-scan
 function getStaticPages(dir: string, baseRoute = ""): string[] {
   let routes: string[] = [];
   if (!fs.existsSync(dir)) return routes;
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  for (const entry of entries) {
-    // Hidden folders, APIs, Dynamic routes, aur Blog folder ko scan se exclude kiya hai
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (
       entry.name.startsWith("_") ||
       entry.name.startsWith(".") ||
+      entry.name.startsWith("[") ||
+      entry.name.startsWith("@") ||
       entry.name === "api" ||
-      entry.name === "blog" || // Blog folder skip ho ga taake duplicate routes na banein
-      entry.name.startsWith("[")
+      entry.name === "blog"
     ) {
       continue;
     }
@@ -29,65 +44,51 @@ function getStaticPages(dir: string, baseRoute = ""): string[] {
     const fullPath = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      const routeSegment = entry.name.startsWith("(") && entry.name.endsWith(")") ? "" : `/${entry.name}`;
-      routes = routes.concat(getStaticPages(fullPath, `${baseRoute}${routeSegment}`));
-    } else if (entry.name === "page.tsx" || entry.name === "page.js" || entry.name === "page.jsx") {
-      routes.push(baseRoute === "" ? "" : baseRoute);
+      const isGroup = entry.name.startsWith("(") && entry.name.endsWith(")");
+      const segment = isGroup ? "" : `/${entry.name}`;
+      routes = routes.concat(getStaticPages(fullPath, `${baseRoute}${segment}`));
+    } else if (/^page\.(tsx|ts|jsx|js|mdx)$/.test(entry.name)) {
+      routes.push(baseRoute);
     }
   }
 
-  return Array.from(new Set(routes));
+  return routes;
 }
 
+const toDate = (d?: string) => {
+  if (!d) return undefined;
+  const date = new Date(d);
+  return isNaN(date.getTime()) ? undefined : date.toISOString().split("T")[0];
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Enforce Clean Non-WWW Canonical Base URL
-  const rawBaseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mzadev.com";
-  const baseUrl = rawBaseUrl.replace("https://www.mzadev.com", "https://mzadev.com").replace(/\/$/, "");
-
-  const rootAppDir = path.join(process.cwd(), "app");
   const srcAppDir = path.join(process.cwd(), "src", "app");
-  const targetAppDir = fs.existsSync(srcAppDir) ? srcAppDir : rootAppDir;
+  const appDir = fs.existsSync(srcAppDir) ? srcAppDir : path.join(process.cwd(), "app");
 
-  // 1. Static Pages & Tools (Auto Scanned)
-  const autoScannedRoutes = getStaticPages(targetAppDir);
+  // Map = duplicate URLs khud hi khatam
+  const entries = new Map<string, MetadataRoute.Sitemap[number]>();
+  const add = (route: string, lastModified?: string) => {
+    const clean = route === "/" ? "" : route.replace(/\/$/, "");
+    if (EXCLUDED_ROUTES.has(clean)) return;
+    const url = `${BASE_URL}${clean}`;
+    if (!entries.has(url)) entries.set(url, { url, ...(lastModified && { lastModified }) });
+  };
 
-  const staticPages = [
-    ...autoScannedRoutes.map((route) => ({
-      url: `${baseUrl}${route}`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: route === "" ? ("daily" as const) : ("weekly" as const),
-      priority: route === "" ? 1.0 : route.includes("/tools") || route.includes("/services") ? 0.9 : 0.8,
-    })),
-    // Main Blog Listing Page (/blog)
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "daily" as const,
-      priority: 0.8,
-    },
-  ];
+  // 1. Static pages & tools
+  getStaticPages(appDir).forEach((route) => add(route));
 
-  // 2. Dynamic Blog Posts (Excluding Test Posts)
-  const posts = getAllPosts();
-  const blogPosts = posts
+  // 2. Blog listing
+  add("/blog");
+
+  // 3. Blog posts
+  getAllPosts()
     .filter((post: BlogPost) => !EXCLUDED_SLUGS.includes(post.slug))
-    .map((post: BlogPost) => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: post.date ? new Date(post.date).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    }));
+    .forEach((post: BlogPost) => add(`/blog/${post.slug}`, toDate(post.date)));
 
-  // 3. Dynamic MDX Custom Pages (Excluding Test Pages)
-  const mdxPages = getAllPageSlugs();
-  const customPages = mdxPages
+  // 4. MDX custom pages
+  getAllPageSlugs()
     .filter((page) => !EXCLUDED_SLUGS.includes(page.slug))
-    .map((page) => ({
-      url: `${baseUrl}/${page.slug}`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    }));
+    .forEach((page) => add(`/${page.slug}`));
 
-  return [...staticPages, ...blogPosts, ...customPages];
+  return Array.from(entries.values());
 }

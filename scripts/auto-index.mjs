@@ -2,7 +2,7 @@ import { google } from "googleapis";
 import { execSync } from "child_process";
 import path from "path";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://mzadev.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mzadev.com";
 const CLIENT_EMAIL = process.env.GOOGLE_CLIENT_EMAIL;
 const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
 

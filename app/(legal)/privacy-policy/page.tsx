@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
         <p>
           At{" "}
           <Link
-            href="https://mzadev.com"
+            href="https://www.mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"

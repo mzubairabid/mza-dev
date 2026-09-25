@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://mzadev.com
-
-# Sitemaps
-Sitemap: https://mzadev.com/sitemap.xml

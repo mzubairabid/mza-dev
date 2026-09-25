@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ReactCompilerPage from "@/components/tools/react-compiler-2026-client"; // Apne folder path ke mutabiq adjust karein
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // 1. Technical SEO & Metadata Configuration
 export const metadata: Metadata = {
@@ -20,6 +21,14 @@ export const dynamic = "force-static";
 export default function Page() {
   return (
     <>
+    <div className="container mx-auto px-4 pt-6 max-w-6xl">
+    <Breadcrumbs
+  items={[
+    { name: "Tools", href: "/tools" },
+    { name: "Online React Compiler", href: "/tools/online-react-compiler-2026" },
+  ]}
+/>
+</div>
       {/* 3. JSON-LD SoftwareApplication Schema for Search Engines */}
       <script
         type="application/ld+json"

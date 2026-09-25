@@ -50,7 +50,7 @@ export default function DisclaimerPage() {
         <p>
           Welcome to{" "}
           <Link
-            href="https://mzadev.com"
+            href="https://www.mzadev.com"
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"
@@ -72,7 +72,7 @@ export default function DisclaimerPage() {
           <p>
             The information provided on{" "}
             <Link
-              href="https://mzadev.com"
+              href="https://www.mzadev.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary font-semibold hover:underline inline-flex items-center gap-0.5"

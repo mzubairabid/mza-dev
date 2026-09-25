@@ -5,10 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { Terminal, ArrowRight } from "lucide-react";
 import heroImg from "@/public/project-images/ai-robot.webp";
+import ParticlesBackground from "@/components/ParticlesBackground";
 
 export default function AboutHero() {
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border bg-muted/40 p-6 sm:p-10 md:p-12">
+      <ParticlesBackground className="opacity-60" 
+        icons={[
+      "/icons/nextjs.svg",
+      "/icons/react.svg",
+      "/icons/typescript.svg",
+      "/icons/javascript.svg",
+      "/icons/html5.svg",
+      "/icons/css3.svg",
+      "/icons/wordpress.svg",
+      "/icons/shopify.svg",
+      "/icons/github.svg",
+    ]}
+      />
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
         
         {/* Left Content */}

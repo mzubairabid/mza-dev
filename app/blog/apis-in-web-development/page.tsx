@@ -82,19 +82,19 @@ export default function ApiRoleShopifyCaseStudyPostPage() {
     author: {
       "@type": "Person",
       name: "Muhammad Zubair Abid",
-      url: "https://mzadev.com/about",
+      url: "https://www.mzadev.com/about",
     },
     publisher: {
       "@type": "Organization",
       name: "MZA Dev",
       logo: {
         "@type": "ImageObject",
-        url: "https://mzadev.com/logo.png",
+        url: "https://www.mzadev.com/logo.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": "https://mzadev.com/blog/role-of-apis-shopify-case-study",
+      "@id": "https://www.mzadev.com/blog/role-of-apis-shopify-case-study",
     },
   };
 
@@ -306,7 +306,7 @@ export default function ApiRoleShopifyCaseStudyPostPage() {
                   </div>
                 </div>
                 <a
-                  href="https://youtube.com/@ByteScriptMZA"
+                  href="https://youtube.com/@mzadev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:underline shrink-0"
