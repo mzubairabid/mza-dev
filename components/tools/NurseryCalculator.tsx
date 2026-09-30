@@ -4,7 +4,9 @@ import React, { useState } from "react";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { saveAs } from "file-saver";
-import { FadeIn } from "@/components/animations/fade-in";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { JsonLd } from "@/components/sections/JsonLd";
+import { faqSchema } from "@/lib/schema";
 
 import {
   Plus,
@@ -684,6 +686,7 @@ export default function NurseryCalculatorPage() {
         </div>
           </FadeIn>
         {/* 4. FAQ Accordion Section */}
+        <JsonLd data={faqSchema(faqs)} />
         <FadeIn direction="down" delay={0.3}>
         <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">

@@ -3,9 +3,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FadeIn } from "@/components/animations/fade-in";
-import FaqSchema from "@/components/FaqSchema";
-import { FaqSection } from "@/components/sections/faq-section";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { JsonLd } from "@/components/sections/JsonLd";
+import { faqSchema } from "@/lib/schema";
 import {
   Zap,
   Download,
@@ -236,7 +236,7 @@ export default function ReactCompilerPage() {
   ];
 
   return (
-    <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-16 bg-transparent text-foreground">
+    <div className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-16 bg-transparent text-foreground">
       {/* 1. Hero Section & Intro */}
 <section className="space-y-6">
   <div className="space-y-4">
@@ -470,6 +470,7 @@ export default function ReactCompilerPage() {
 </section>
 
 {/* 4. FAQs Section */}
+<JsonLd data={faqSchema(faqs)} />
 <section className="space-y-8 max-w-4xl mx-auto">
   <div className="text-center space-y-2">
     <h2 className="text-2xl sm:text-4xl font-serif font-light text-foreground tracking-tight">
@@ -522,6 +523,6 @@ export default function ReactCompilerPage() {
     <ArrowUpRight className="w-4 h-4" />
   </Link>
   </section>
-    </main>
+    </div>
   );
 }

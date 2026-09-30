@@ -1,47 +1,22 @@
-import { Metadata } from "next";
-import HtmlCssJsEditorClient from "@/components/tools/html-css-js-editor-client";
-import Breadcrumbs from "@/components/Breadcrumbs";
+// app/tools/live-html-css-js-editor-tester/page.tsx — tool ka code: components/tools/ (chheda nahi gaya)
+import HtmlCssJsEditor from "@/components/tools/html-css-js-editor-client";
+import { ToolPage } from "@/components/templates/ToolPage";
+import { tools } from "@/content/tools";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Free Online HTML CSS JS Code Editor & Live Tester",
-  description:
-    "Test and execute HTML, CSS, and JavaScript code online with real-time browser preview. Fast, free, and lightweight developer IDE.",
-  keywords: [
-    "HTML Editor",
-    "CSS Sandbox",
-    "JavaScript Playground",
-    "Online Code Tester",
-    "Real-time HTML Compiler",
-  ],
-  alternates: {
-    canonical: "https://www.mzadev.com/tools/live-html-css-js-editor-tester",
-  },
-  openGraph: {
-    title: "Online HTML CSS JS Editor & Tester | Free Real-Time Code Compiler",
-    description: "Run and test front-end code instantly with zero latency.",
-    url: "https://www.mzadev.com/tools/live-html-css-js-editor-tester",
-    type: "website",
-    images: [
-      {
-        url: "https://www.mzadev.com/project-images/html-css-js-code-editor-2026.webp", // Public folder me rakhi og-image ka exact URL
-        width: 1200,
-        height: 630,
-        alt: "Online HTML CSS JS Editor & Tester",
-      },
-    ],
-  },
-};
+const tool = tools.find((t) => t.slug === "live-html-css-js-editor-tester")!;
 
-export default function HtmlCssJsEditorToolPage() {
+export const metadata = buildMetadata({
+  title: "Free Online HTML, CSS & JS Editor, Live Preview | MZA Dev",
+  description: "Write HTML, CSS and JavaScript in your browser and see the result instantly. Free online code editor and tester, no signup needed.",
+  path: "/tools/live-html-css-js-editor-tester",
+  defaultImage: true,
+});
+
+export default function Page() {
   return (
-    <>
-      <div className="container mx-auto px-4 pt-6 max-w-6xl">
-        <Breadcrumbs items={[
-          { name: "Tools", href: "/tools" },
-          { name: "HTML CSS JS Editor & Tester", href: "/live-html-css-js-editor-tester" }]} />
-      </div>
-  
-      <HtmlCssJsEditorClient />;
-  </>
+    <ToolPage tool={tool} category="DeveloperApplication">
+      <HtmlCssJsEditor />
+    </ToolPage>
   );
 }

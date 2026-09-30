@@ -1,42 +1,22 @@
-import type { Metadata } from "next";
-import NurseryCalculatorPage from "@/components/tools/NurseryCalculator";
-import Breadcrumbs from "@/components/Breadcrumbs";
+// app/tools/nursery-calculator/page.tsx — tool ka code: components/tools/ (chheda nahi gaya)
+import NurseryCalculator from "@/components/tools/NurseryCalculator";
+import { ToolPage } from "@/components/templates/ToolPage";
+import { tools } from "@/content/tools";
+import { buildMetadata } from "@/lib/seo";
 
-// Server Component metadata (Google SEO ke liye)
-export const metadata: Metadata = {
-  title: "UK Nursery Profit Calculator | Estimate Revenue & Costs",
-  description:
-    "Calculate your UK nursery's monthly revenue, staff costs, fixed expenses, and net profit with our free interactive calculator. Download PDF & DOCX reports.",
-  alternates: {
-    canonical: "https://www.mzadev.com/tools/nursery-calculator",
-  },
-  openGraph: {
-    title: "UK Nursery Profit Calculator | Estimate Revenue & Costs",
-    description:
-      "Calculate your UK nursery's monthly revenue, staff costs, fixed expenses, and net profit with our free interactive calculator. Download PDF & DOCX reports.",
-    url: "https://www.mzadev.com/tools/nursery-calculator",
-    type: "website",
-    images: [
-      {
-        url: "https://www.mzadev.com/og-image.jpg", // Ya agar is tool ki apni dedicated image ho to uska full URL path dein
-        width: 1200,
-        height: 630,
-        alt: "UK Nursery Profit Calculator Tool",
-      },
-    ],
-  },
-};
+const tool = tools.find((t) => t.slug === "nursery-calculator")!;
+
+export const metadata = buildMetadata({
+  title: "UK Nursery Profit Calculator: Revenue & Costs | MZA Dev",
+  description: "Estimate a UK nursery's monthly revenue, staff costs, overheads and net profit with this free calculator. Download the results as a PDF or DOCX report.",
+  path: "/tools/nursery-calculator",
+  defaultImage: true,
+});
 
 export default function Page() {
   return (
-  <>
-        <div className="container mx-auto px-4 pt-6 max-w-6xl">
-          <Breadcrumbs items={[
-            { name: "Tools", href: "/tools" },
-            { name: "Nursery Calculator", href: "/nursery-calculator" }]} />
-        </div>
-    
-    <NurseryCalculatorPage />;
-  </>
-  );         
+    <ToolPage tool={tool} category="BusinessApplication">
+      <NurseryCalculator />
+    </ToolPage>
+  );
 }

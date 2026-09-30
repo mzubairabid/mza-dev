@@ -1,15 +1,34 @@
 // app/robots.ts
+// Search engines aur AI search bots ko ijazat. robots.txt sirf "request" hai:
+// bure bots isay ignore karte hain. Asli security next.config.mjs (headers),
+// contact API (rate limit/Turnstile) aur Vercel Firewall me hai.
 import type { MetadataRoute } from "next";
+import { site } from "@/lib/site";
+
+// Jin bots ka zikr is liye kiya ta ke saaf rahe ke ye allowed hain
+const AI_AND_SEARCH_BOTS = [
+  "Googlebot",
+  "Bingbot",
+  "Google-Extended",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "GPTBot",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Applebot",
+  "Applebot-Extended",
+];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      {
-        // "*" me Googlebot, GPTBot, ClaudeBot, PerplexityBot sab shamil hain
-        userAgent: "*",
-        allow: "/",
-      },
+      { userAgent: AI_AND_SEARCH_BOTS, allow: "/", disallow: ["/api/"] },
+      { userAgent: "*", allow: "/", disallow: ["/api/"] },
     ],
-    sitemap: "https://www.mzadev.com/sitemap.xml",
+    sitemap: `${site.url}/sitemap.xml`,
+    host: site.url,
   };
 }

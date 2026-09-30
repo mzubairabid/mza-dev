@@ -1,269 +1,107 @@
+// next.config.mjs
+import { BLOG_ALIASES, BLOG_MIGRATION, blogTarget } from "./lib/blog-migration.mjs";
+
+// ---------------------------------------------------------------------
+// Security headers. CSP jaan boojh kar "halki" hai: React compiler aur HTML
+// editor tools iframe me user ka code aur unpkg.com scripts chalate hain,
+// sakht script-src un ko tor deta. Ye headers clickjacking, MIME sniffing,
+// plugin/base-tag hijacking aur form hijacking rokte hain.
+// ---------------------------------------------------------------------
+const securityHeaders = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+  {
+    key: "Content-Security-Policy",
+    value: "frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests",
+  },
+];
+
+// ---------------------------------------------------------------------
+// Blog redirects: sab lib/blog-migration.mjs se banta hai. Wahan status badlo.
+// "gone" posts ka 410 proxy.ts deta hai.
+// ---------------------------------------------------------------------
+function blogRedirects() {
+  const out = [];
+  const add = (source, destination) => out.push({ source, destination, statusCode: 301 });
+
+  for (const slug of Object.keys(BLOG_MIGRATION)) {
+    const target = blogTarget(slug);
+    if (target === "GONE") continue;
+    const dest = target ?? `/blog/${slug}`; // null = abhi yahin live
+    if (target) add(`/blog/${slug}`, dest);
+    add(`/${slug}`, dest); // purane root-level post URLs (1 hop)
+    add(`/post/${slug}`, dest);
+  }
+
+  for (const [alias, real] of Object.entries(BLOG_ALIASES)) {
+    const target = blogTarget(real);
+    if (target === "GONE") continue;
+    add(`/blog/${alias}`, target ?? `/blog/${real}`);
+  }
+
+  // Baaqi /blog/*, /post/*, /category/* URLs → WordPress: proxy.ts me
+  // (taake "gone" posts ka 410 pehle chale)
+  return out;
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+    formats: ["image/avif", "image/webp"],
+    // remotePatterns nahi: pehle "**" tha, jis se koi bhi aap ke image optimizer ko
+    // proxy bana kar Vercel quota khatam kar sakta tha. Sab images /public se hain.
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
   },
 
-  experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+  async headers() {
+    return [{ source: "/:path*", headers: securityHeaders }];
   },
 
   async redirects() {
+    const r = (source, destination) => ({ source, destination, statusCode: 301 });
     return [
-      // ====================================================
-      // 1. UPDATED OLD SITE SPECIFIC URLS (gadgetcrunchie.com -> mzadev.com)
-      // ====================================================
-      {
-        source: "/contact-me",
-        destination: "/contact",
-        permanent: true, // 301 Permanent Redirect
-      },
-      {
-        source: "/shopify-developer-e-commerce-funnels",
-        destination: "/services/shopify-funnels",
-        permanent: true,
-      },
-      {
-        source: "/web-development-service-custom-fast-seo",
-        destination: "/services/web-development-service",
-        permanent: true,
-      },
+      // Purane URLs — seedha final URL par, 1 hop
+      r("/contact-me", "/contact"),
+      r("/shopify-developer-e-commerce-funnels", "/shopify-funnels"),
+      r("/web-development-service-custom-fast-seo", "/web-development-service"),
 
-      // ====================================================
-      // 2. GENERIC WILDCARD REDIRECTS
-      // ====================================================
-      {
-        source: "/post/:slug",
-        destination: "/blog/:slug",
-        permanent: true,
-      },
-      {
-        source: "/category/:slug",
-        destination: "/blog",
-        permanent: true,
-      },
+      // /services/x aur /service/x → root-level final service URLs
+      r("/services/graphic-design", "/graphic-design"),
+      r("/service/graphic-design", "/graphic-design"),
+      r("/services/shopify-funnels", "/shopify-funnels"),
+      r("/service/shopify-funnels", "/shopify-funnels"),
+      r("/services/web-development-service", "/web-development-service"),
+      r("/service/web-development-service", "/web-development-service"),
+      r("/service/web-development", "/web-development-service"),
+      r("/services/wordpress-development", "/wordpress-development"),
+      r("/service/wordpress-development", "/wordpress-development"),
+      r("/services/technical-seo", "/technical-seo"),
+      r("/service/technical-seo", "/technical-seo"),
 
-      // ====================================================
-// 3. SERVICES & SUB-PAGES (Clean URLs)
-// ====================================================
-{
-  source: "/services/graphic-design",
-  destination: "/graphic-design",
-  permanent: true,
-},
-{
-  source: "/service/graphic-design",
-  destination: "/graphic-design",
-  permanent: true,
-},
-{
-  source: "/services/shopify-funnels",
-  destination: "/shopify-funnels",
-  permanent: true,
-},
-{
-  source: "/service/shopify-funnels",
-  destination: "/shopify-funnels",
-  permanent: true,
-},
-{
-  source: "/services/web-development-service",
-  destination: "/web-development-service",
-  permanent: true,
-},
-{
-  source: "/service/web-development",
-  destination: "/web-development-service",
-  permanent: true,
-},
+      // Tools
+      r("/live-html-css-js-editor-tester", "/tools/live-html-css-js-editor-tester"),
+      r("/html-editor", "/tools/live-html-css-js-editor-tester"),
+      r("/nursery-calculator", "/tools/nursery-calculator"),
+      r("/online-react-compiler-2026", "/tools/online-react-compiler-2026"),
+      r("/react-compiler", "/tools/online-react-compiler-2026"),
+      r("/tools/schema-generator", "/tools"),
 
-      // ====================================================
-      // 4. TOOLS & SUB-PAGES
-      // ====================================================
-      {
-        source: "/live-html-css-js-editor-tester",
-        destination: "/tools/live-html-css-js-editor-tester",
-        permanent: true,
-      },
-      {
-        source: "/html-editor",
-        destination: "/tools/live-html-css-js-editor-tester",
-        permanent: true,
-      },
-      {
-        source: "/nursery-calculator",
-        destination: "/tools/nursery-calculator",
-        permanent: true,
-      },
-      {
-        source: "/online-react-compiler-2026",
-        destination: "/tools/online-react-compiler-2026",
-        permanent: true,
-      },
-      {
-        source: "/react-compiler",
-        destination: "/tools/online-react-compiler-2026",
-        permanent: true,
-      },
+      // Work / portfolio (/work/shopify-store kabhi bana hi nahi tha → /work)
+      r("/portfolio", "/work"),
+      r("/shopify-store", "/work"),
+      r("/portfolio/shopify-store", "/work"),
+      r("/work/shopify-store", "/work"),
 
-      // ====================================================
-      // 5. WORK & PORTFOLIO SUB-PAGES
-      // ====================================================
-      {
-        source: "/shopify-store",
-        destination: "/work/shopify-store",
-        permanent: true,
-      },
-      {
-        source: "/portfolio/shopify-store",
-        destination: "/work/shopify-store",
-        permanent: true,
-      },
+      // Hataya gaya test page
+      r("/my-first-page", "/services"),
 
-      // ====================================================
-      // 6. ALL 23 BLOG POSTS
-      // ====================================================
-      {
-        source: "/best-online-react-compiler-2026",
-        destination: "/blog/best-online-react-compiler-2026",
-        permanent: true,
-      },
-      {
-        source: "/modern-css-layouts-for-websites",
-        destination: "/blog/modern-css-layouts-for-websites",
-        permanent: true,
-      },
-      {
-        source: "/core-web-vitals-in-2026",
-        destination: "/blog/core-web-vitals-in-2026",
-        permanent: true,
-      },
-      {
-        source: "/add-google-adsense-to-wordpress",
-        destination: "/blog/add-google-adsense-to-wordpress",
-        permanent: true,
-      },
-      {
-        source: "/apis-in-web-development",
-        destination: "/blog/apis-in-web-development",
-        permanent: true,
-      },
-      {
-        source: "/how-to-fix-pagespeed-unable-to-resolve-url",
-        destination: "/blog/how-to-fix-pagespeed-unable-to-resolve-url",
-        permanent: true,
-      },
-      {
-        source: "/fix-inp-issue-on-wordpress",
-        destination: "/blog/fix-inp-issue-on-wordpress",
-        permanent: true,
-      },
-      {
-        source: "/the-blueprint-respiro-premium-shopify-design",
-        destination: "/blog/the-blueprint-respiro-premium-shopify-design",
-        permanent: true,
-      },
-      {
-        source: "/design-website-for-beginners",
-        destination: "/blog/design-website-for-beginners",
-        permanent: true,
-      },
-      {
-        source: "/website-redesign-2026",
-        destination: "/blog/website-redesign-2026",
-        permanent: true,
-      },
-      {
-        source: "/custom-web-development-for-small-businesses",
-        destination: "/blog/custom-web-development-for-small-businesses",
-        permanent: true,
-      },
-      {
-        source: "/on-page-seo-checklist-2026",
-        destination: "/blog/on-page-seo-checklist-2026",
-        permanent: true,
-      },
-      {
-        source: "/web-development-vs-website-builders",
-        destination: "/blog/web-development-vs-website-builders",
-        permanent: true,
-      },
-      {
-        source: "/increase-website-traffic-without-ads-2026",
-        destination: "/blog/increase-website-traffic-without-ads-2026",
-        permanent: true,
-      },
-      {
-        source: "/build-a-fast-seo-friendly-website",
-        destination: "/blog/build-a-fast-seo-friendly-website",
-        permanent: true,
-      },
-      {
-        source: "/dark-mode-vs-light-mode-ux",
-        destination: "/blog/dark-mode-vs-light-mode-ux",
-        permanent: true,
-      },
-      {
-        source: "/professional-website-redesign-2026",
-        destination: "/blog/professional-website-redesign-2026",
-        permanent: true,
-      },
-      {
-        source: "/best-seo-strategies-2026",
-        destination: "/blog/best-seo-strategies-2026",
-        permanent: true,
-      },
-      {
-        source: "/top-web-development-frameworks",
-        destination: "/blog/top-web-development-frameworks",
-        permanent: true,
-      },
-      {
-        source: "/top-web-design-trends-for-2026",
-        destination: "/blog/top-web-design-trends-for-2026",
-        permanent: true,
-      },
-      {
-        source: "/website-design-and-development-services",
-        destination: "/blog/website-design-and-development-services",
-        permanent: true,
-      },
-      {
-        source: "/google-seo-update-2026",
-        destination: "/blog/google-seo-update-2026",
-        permanent: true,
-      },
-      {
-        source: "/build-agentic-web-experiences",
-        destination: "/blog/build-agentic-web-experiences",
-        permanent: true,
-      },
-      {
-        source: '/blog/add-google-adsense-wordpress-without-plugins',
-        destination: '/blog/add-google-adsense-to-wordpress',
-        permanent: true,
-      },
-      {
-        source: '/blog/role-of-apis-in-web-development-shopify-case-study',
-        destination: '/blog/apis-in-web-development',
-        permanent: true,
-      },
-      {
-        source: '/tools/schema-generator',
-        destination: '/tools',
-        permanent: true,
-      },
-      {
-        source: '/portfolio',
-        destination: '/work',
-        permanent: true,
-      },
+      ...blogRedirects(),
     ];
   },
 };

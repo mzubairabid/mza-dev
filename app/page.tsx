@@ -1,74 +1,153 @@
-import React from "react";
-// Sections Imports
-import { Hero } from "@/components/sections/hero";
-import TrustBar from "@/components/sections/trust-bar";
-import HomeMarketplaceSection from "@/components/sections/HomeMarketplaceSection";
-import { Work } from "@/components/sections/work";
-import { Capabilities } from "@/components/sections/capabilities";
-import { Approach } from "@/components/sections/approach";
-import { Stack } from "@/components/sections/stack";
-import { About } from "@/components/sections/about";
-import { Contact } from "@/components/sections/contact";
-import { FaqSection } from "@/components/sections/faq-section";
-import FaqSchema from "@/components/FaqSchema";
+// app/page.tsx — Homepage. Text: content/home.ts
+import Image from "next/image";
+import Link from "next/link";
+import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid";
+import { CTABand } from "@/components/sections/CTABand";
+import { FAQ } from "@/components/sections/FAQ";
+import { ProcessSteps } from "@/components/sections/ProcessSteps";
+import { ServiceGrid } from "@/components/sections/ServiceGrid";
+import { ButtonLink, WhatsAppButton } from "@/components/ui/Button";
+import { caseStudies } from "@/content/case-studies";
+import { home } from "@/content/home";
+import { services } from "@/content/services";
+import { processSteps } from "@/content/shared";
+import { buildMetadata } from "@/lib/seo";
+import { site } from "@/lib/site";
 
-export const dynamic = "force-static";
+export const metadata = buildMetadata({
+  title: home.metaTitle,
+  description: home.metaDescription,
+  path: "/",
+});
 
-export default function Home() {
-  const faqs = [
-    {
-      q: "Who is Muhammad Zubair Abid (MZA Dev)?",
-      a: "Muhammad Zubair Abid, known as MZA Dev, is a Full-Stack Web Developer, Technical SEO Specialist, and Digital Solutions Architect specializing in Next.js, React, custom WordPress, and Shopify platforms.",
-    },
-    {
-      q: "What services, web tools, and resources are available on this platform?",
-      a: "This platform features custom full-stack web development services, specialized web engineering tools, technical SEO frameworks, real-world case studies, and performance optimization solutions.",
-    },
-    {
-      q: "Why choose custom Next.js engineering over traditional page builders?",
-      a: "Custom Next.js architectures deliver instant load times, top Core Web Vitals scores, better data security, and structured schema that help you rank higher on Google and AI search engines.",
-    },
-    {
-      q: "How can I start a project or work with MZA Dev?",
-      a: "You can reach out through the Contact page or click 'Let's Discuss Your Project'. MZA Dev reviews all inquiries directly within 24 hours to provide a transparent scope and roadmap.",
-    },
-  ];
-
+export default function HomePage() {
+  const [first, second, third] = home.heroImages;
   return (
-    <main className="w-full flex flex-col gap-16 sm:gap-24">
-      {/* 01 / HERO SECTION */}
-      <Hero />
-      <TrustBar />
-      
-      {/* 02 / SELECTED WORK SECTION */}
-      <Work />
+    <>
+      {/* Hero: asli client screenshots, koi fake stat nahi */}
+      <section className="overflow-hidden border-b border-border">
+        <div className="container-site grid items-center gap-12 py-14 md:py-20 lg:grid-cols-[1.05fr_1fr]">
+          <div className="space-y-6">
+            <h1 className="h1-display">{home.h1}</h1>
+            <p className="lead">{home.intro}</p>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href="/contact">Get a quote</ButtonLink>
+              <WhatsAppButton text="Hi Zubair, I found you on mzadev.com. I need a website: " />
+              <ButtonLink href="/work" variant="outline">
+                See my work
+              </ButtonLink>
+            </div>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 pt-2 text-sm text-muted-foreground">
+              {home.proofPoints.map((p) => (
+                <li key={p} className="flex items-center gap-2">
+                  <span aria-hidden className="size-1.5 rounded-full bg-success" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      {/* 03 / CAPABILITIES SECTION */}
-      <Capabilities />
+          <div className="relative mx-auto h-[20rem] w-full max-w-lg sm:h-[24rem]">
+            <Link href="/farah-brand" className="rise absolute right-0 top-0 w-[70%] overflow-hidden rounded-lg border border-border bg-card shadow-lg" style={{ animationDelay: "0.2s" }}>
+              <Image src={second.src} alt={second.alt} width={640} height={420} sizes="22rem" className="h-auto w-full" />
+            </Link>
+            <Link href="/respiro-shopify-store" className="rise absolute bottom-0 right-6 w-[60%] overflow-hidden rounded-lg border border-border bg-card shadow-lg" style={{ animationDelay: "0.35s" }}>
+              <Image src={third.src} alt={third.alt} width={560} height={360} sizes="19rem" className="h-auto w-full" />
+            </Link>
+            <Link href="/german-desi-shop-zellingen-2025" className="rise absolute left-0 top-12 w-[72%] overflow-hidden rounded-lg border border-border bg-card shadow-xl">
+              <Image src={first.src} alt={first.alt} width={680} height={440} priority sizes="(min-width: 1024px) 23rem, 72vw" className="h-auto w-full" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      {/* 04 / APPROACH SECTION */}
-      <Approach />
+      <section className="section" aria-labelledby="services-title">
+        <div className="container-site">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 id="services-title" className="h2-section">
+              {home.servicesTitle}
+            </h2>
+            <Link href="/services" className="link text-sm font-medium">
+              All services
+            </Link>
+          </div>
+          <div className="mt-10">
+            <ServiceGrid services={services} />
+          </div>
+        </div>
+      </section>
 
-      {/* 05 / TECH STACK SECTION */}
-      <Stack />
+      <section className="section border-t border-border" aria-labelledby="work-title">
+        <div className="container-site">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <h2 id="work-title" className="h2-section">
+                {home.workTitle}
+              </h2>
+              <p className="lead mt-2">{home.workIntro}</p>
+            </div>
+            <Link href="/work" className="link text-sm font-medium">
+              All case studies
+            </Link>
+          </div>
+          <div className="mt-10">
+            <CaseStudyGrid items={caseStudies.slice(0, 4)} />
+          </div>
+        </div>
+      </section>
 
-      <HomeMarketplaceSection />
-      {/* 06 / ABOUT SECTION */}
-      <About />
+      <ProcessSteps title={home.processTitle} steps={processSteps} />
 
-      {/* 07 / CONTACT SECTION */}
-      <Contact />
+      <section className="section" aria-labelledby="about-title">
+        <div className="container-site grid items-center gap-10 md:grid-cols-[auto_1fr]">
+          <Image
+            src={site.author.image}
+            alt={`${site.author.name}, web developer`}
+            width={220}
+            height={235}
+            className="rounded-xl border border-border"
+          />
+          <div>
+            <h2 id="about-title" className="h2-section">
+              Who you&apos;ll be working with
+            </h2>
+            <p className="lead mt-3">
+              {site.author.name}, web developer in {site.author.city}, {site.author.country}. Building websites since{" "}
+              {site.author.startedYear}, with work for clients in Pakistan, Germany, the US and the UK.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href="/about" variant="outline">
+                About me
+              </ButtonLink>
+              <ButtonLink href={site.social.upwork} variant="outline">
+                Upwork profile
+              </ButtonLink>
+              <ButtonLink href={site.social.fiverr} variant="outline">
+                Fiverr profile
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* FAQs Section Component */}
-      <FaqSection faqs={faqs} />
+      <section className="section border-t border-border" aria-labelledby="stack-title">
+        <div className="container-site">
+          <h2 id="stack-title" className="h2-section">
+            {home.stackTitle}
+          </h2>
+          <dl className="mt-8 grid gap-6 md:grid-cols-2">
+            {home.stack.map((s) => (
+              <div key={s.group} className="border-l-2 border-primary/60 pl-4">
+                <dt className="font-semibold">{s.group}</dt>
+                <dd className="mt-1 text-muted-foreground">{s.items}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
-      {/* 3. JSON-LD FAQ Schema Injection */}
-      <FaqSchema
-        faqList={faqs.map((item: { q: string; a: string }) => ({
-          question: item.q,
-          answer: item.a,
-        }))}
-      />
-    </main>
+      <FAQ items={home.faqs} title={home.faqTitle} />
+      <CTABand />
+    </>
   );
 }

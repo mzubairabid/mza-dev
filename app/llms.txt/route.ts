@@ -1,101 +1,34 @@
-import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+// app/llms.txt/route.ts — AI tools ke liye site ka saaf khulasa (content/ files se khud banta hai)
+import { caseStudies } from "@/content/case-studies";
+import { services } from "@/content/services";
+import { tools } from "@/content/tools";
+import { absoluteUrl, profileLinks, site } from "@/lib/site";
 
-interface SiteItem {
-  title: string;
-  slug: string;
-  description: string;
-}
+export const dynamic = "force-static";
 
-// 1. Permanent/Core Site Pages
-const CORE_PAGES: SiteItem[] = [
-  {
-    title: "Home",
-    slug: "",
-    description: "Full-stack developer portfolio, technical skills, and featured client projects.",
-  },
-  {
-    title: "Blog Archives",
-    slug: "blog",
-    description: "Technical articles, Next.js tutorials, and technical SEO frameworks.",
-  },
-  {
-    title: "Projects",
-    slug: "projects",
-    description: "Case studies of web applications, custom tools, and client platforms.",
-  },
-  {
-    title: "Services",
-    slug: "services",
-    description: "Full-stack development, Next.js optimization, and cloud architecture solutions.",
-  },
-];
+export function GET() {
+  const a = site.author;
+  const body = `# ${site.name}
 
-// 2. Dynamic MDX Articles / Pages Reader
-function getMDXItems(): SiteItem[] {
-  const contentDir = path.join(process.cwd(), "content/blog");
+> ${site.description}
 
-  if (!fs.existsSync(contentDir)) {
-    return [];
-  }
+${site.name} is run by ${a.name} (${a.alternateName}), a ${a.jobTitle.toLowerCase()} based in ${a.city}, ${a.country}, building websites since ${a.startedYear}. Clients are mainly in Pakistan, the United States, the United Kingdom and Europe.
 
-  const files = fs.readdirSync(contentDir);
+Contact: ${site.contact.email}${site.contact.whatsappDisplay ? ` | WhatsApp ${site.contact.whatsappDisplay}` : ""} | ${absoluteUrl("/contact")}
 
-  return files
-    .filter((file) => file.endsWith(".mdx") || file.endsWith(".md"))
-    .map((file) => {
-      const filePath = path.join(contentDir, file);
-      const fileContent = fs.readFileSync(filePath, "utf8");
-      const slug = file.replace(/\.mdx?$/, "");
+## Services
+${services.map((s) => `- [${s.name}](${absoluteUrl(`/${s.slug}`)}): ${s.metaDescription}`).join("\n")}
 
-      const titleMatch = fileContent.match(/title:\s*["']?([^"'\n]+)["']?/);
-      const descMatch = fileContent.match(/description:\s*["']?([^"'\n]+)["']?/);
+## Case studies
+${caseStudies.map((c) => `- [${c.name}](${absoluteUrl(`/${c.slug}`)}): ${c.cardLine} (${c.platform}, ${c.year})`).join("\n")}
 
-      return {
-        slug,
-        title: titleMatch ? titleMatch[1].trim() : slug,
-        description: descMatch ? descMatch[1].trim() : "Technical guide and architecture analysis.",
-      };
-    });
-}
+## Free tools
+${tools.map((t) => `- [${t.name}](${absoluteUrl(`/tools/${t.slug}`)}): ${t.description}`).join("\n")}
 
-export async function GET() {
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.mzadev.com";
-  const mdxPosts = getMDXItems();
-
-  // Format Core Pages
-  const corePagesFormatted = CORE_PAGES.map(
-    (page) =>
-      `- [${page.title}](${SITE_URL}${page.slug ? `/${page.slug}` : ""}): ${page.description}`
-  ).join("\n");
-
-  // Format MDX Posts
-  const mdxPostsFormatted =
-    mdxPosts.length > 0
-      ? mdxPosts
-          .map(
-            (post) =>
-              `- [${post.title}](${SITE_URL}/${post.slug}): ${post.description}`
-          )
-          .join("\n")
-      : "- No dynamic articles available.";
-
-  const llmsText = `# MZA Dev - Technical Portfolio & Blog
-
-> Muhammad Zubair Abid (MZA Dev) is a Full-Stack Web Developer, Technical SEO Specialist, and Digital Solutions Architect specializing in Next.js, Web Performance, and Custom Automation.
-
-## Core Pages
-${corePagesFormatted}
-
-## Technical Articles & MDX Guides
-${mdxPostsFormatted}
+## More
+- [About ${a.name}](${absoluteUrl("/about")})
+- [Blog](${site.blogUrl})
+${profileLinks.map((p) => `- [${p.label}](${p.href})`).join("\n")}
 `;
-
-  return new NextResponse(llmsText, {
-    headers: {
-      "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, s-maxage=86400, stale-while-revalidate=43200",
-    },
-  });
+  return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

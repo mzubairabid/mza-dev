@@ -1,55 +1,22 @@
-import { Metadata } from "next";
-import ReactCompilerPage from "@/components/tools/react-compiler-2026-client"; // Apne folder path ke mutabiq adjust karein
-import Breadcrumbs from "@/components/Breadcrumbs";
+// app/tools/online-react-compiler-2026/page.tsx — tool ka code: components/tools/ (chheda nahi gaya)
+import ReactCompiler from "@/components/tools/react-compiler-2026-client";
+import { ToolPage } from "@/components/templates/ToolPage";
+import { tools } from "@/content/tools";
+import { buildMetadata } from "@/lib/seo";
 
-// 1. Technical SEO & Metadata Configuration
-export const metadata: Metadata = {
-  title: "Free Online React Compiler & JSX Editor",
-  description:
-    "Write, compile, and test React code live in your browser with our online JSX editor.",
-  openGraph: {
-    title: "Free Online React Compiler & JSX Editor",
-    description:
-      "Write, compile, and test React code live in your browser with our online JSX editor.",
-    type: "website",
-  },
-};
+const tool = tools.find((t) => t.slug === "online-react-compiler-2026")!;
 
-// 2. Strict Static Pre-rendering Config
-export const dynamic = "force-static";
+export const metadata = buildMetadata({
+  title: "Free Online React Compiler & JSX Editor | MZA Dev",
+  description: "Write, compile and test React components with JSX in your browser, with a live preview. Free online React compiler, no signup needed.",
+  path: "/tools/online-react-compiler-2026",
+  defaultImage: true,
+});
 
 export default function Page() {
   return (
-    <>
-    <div className="container mx-auto px-4 pt-6 max-w-6xl">
-    <Breadcrumbs
-  items={[
-    { name: "Tools", href: "/tools" },
-    { name: "Online React Compiler", href: "/tools/online-react-compiler-2026" },
-  ]}
-/>
-</div>
-      {/* 3. JSON-LD SoftwareApplication Schema for Search Engines */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Online React Compiler",
-            operatingSystem: "All",
-            applicationCategory: "DeveloperApplication",
-            offers: {
-              "@type": "Offer",
-              price: "0",
-              priceCurrency: "USD",
-            },
-          }),
-        }}
-      />
-
-      {/* 4. Client Tool Rendering */}
-      <ReactCompilerPage />
-    </>
+    <ToolPage tool={tool} category="DeveloperApplication">
+      <ReactCompiler />
+    </ToolPage>
   );
 }

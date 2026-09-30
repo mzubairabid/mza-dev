@@ -1,39 +1,27 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { site } from "@/lib/site";
 
-// Google indexing se prevent karne ke liye metadata
 export const metadata: Metadata = {
-  title: "404 - Page Not Found | MZA Dev",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  title: { absolute: "Page not found | MZA Dev" },
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <div className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4">
-      <h1 className="text-6xl font-extrabold text-neutral-900 dark:text-neutral-100 mb-4">404</h1>
-      <h2 className="text-2xl font-semibold mb-2">Page Not Found</h2>
-      <p className="text-neutral-600 dark:text-neutral-400 mb-6 max-w-md">
-        The page, tool, or blog post you are looking for doesn't exist or has been moved.
-      </p>
-      
-      {/* Homepage and Blog Dual Navigation */}
-      <div className="flex flex-wrap gap-4 justify-center">
-        <Link
-          href="/"
-          className="px-6 py-3 bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-medium rounded-lg hover:opacity-90 transition"
-        >
-          Go to Homepage
-        </Link>
-        <Link
-          href="/blog"
-          className="px-6 py-3 bg-neutral-200 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100 font-medium rounded-lg hover:opacity-90 transition"
-        >
-          Browse Blog
-        </Link>
+    <section className="section">
+      <div className="container-site max-w-2xl text-center">
+        <p className="font-serif text-6xl text-primary">404</p>
+        <h1 className="h2-section mt-4">This page doesn&apos;t exist</h1>
+        <p className="lead mx-auto mt-3">
+          It may have moved. Blog articles now live on the MZA Dev blog.
+        </p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <Link href="/" className="btn btn-primary">Go to homepage</Link>
+          <Link href="/services" className="btn btn-outline">See services</Link>
+          <a href={site.blogUrl} className="btn btn-outline">Open the blog</a>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

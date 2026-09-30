@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
-/* 1. Tailwind v4 Theme Configuration */
-@theme {
-  /* Editorial Tech Typography Fonts */
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: "Playfair Display", "Newsreader", Georgia, Cambria, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+/* Dark mode = <html class="dark"> (ThemeToggle + head script set karte hain) */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  /* Color Mappings for Tailwind CSS Utility Classes */
+/* =====================================================================
+   MZA Dev design system
+   Rang, fonts, spacing sab yahan. Components sirf in tokens ko use karte hain.
+   ===================================================================== */
+@theme {
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -29,359 +33,265 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-whatsapp: #128c4a;
+  --color-whatsapp-hover: #0e6f3a;
 
-  /* Nav Theme Classes */
-  --color-nav-bg: var(--nav-bg);
-  --color-nav-scrolled-bg: var(--nav-scrolled-bg);
-  --color-nav-border: var(--nav-border);
-  --color-submenu-bg: var(--submenu-bg);
-  --color-submenu-border: var(--submenu-border);
-
-  /* Radius Scales */
-  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 18px;
-  --radius-2xl: 24px;
-  --radius-3xl: 32px;
 }
 
-/* 2. Color Palette & Root CSS Variables (Blue + Emerald Modern Tech Theme) */
 :root {
-  /* Warm Slate & Crisp Light Theme */
-  --background: #F8FAFC;         /* Soft Cool Gray/White Background */
-  --foreground: #0F172A;         /* Slate 900 Text */
-  --card: #FFFFFF;
-  --card-foreground: #0F172A;
-  --popover: #FFFFFF;
-  --popover-foreground: #0F172A;
-  
-  /* Primary Theme Color (Tech Blue) */
-  --primary: #2563EB;            /* Blue 600 */
-  --primary-hover: #1D4ED8;      /* Blue 700 */
-  --primary-foreground: #FFFFFF;
-
-  /* Success & Action Color (Emerald Green) */
-  --success: #059669;            /* Emerald 600 */
-  --success-hover: #047857;      /* Emerald 700 */
-  
-  --secondary: #F1F5F9;          /* Slate 100 */
-  --secondary-foreground: #0F172A;
-  
-  --muted: #F1F5F9;              /* Slate 100 */
-  --muted-foreground: #64748B;   /* Slate 500 Muted Text */
-  
-  --accent: #EFF6FF;             /* Blue 50 Light Hover State */
-  --accent-foreground: #2563EB;
-  
-  --destructive: #EF4444;
-  --border: #E2E8F0;             /* Slate 200 Border */
-  --input: #E2E8F0;
-  --ring: #2563EB;
-
-  /* Header Navbar & Submenu Colors (Light Mode) */
-  --nav-bg: rgba(248, 250, 252, 0.85);
-  --nav-scrolled-bg: rgba(255, 255, 255, 0.92);
-  --nav-border: rgba(226, 232, 240, 0.8);
-  --submenu-bg: #FFFFFF;
-  --submenu-border: #E2E8F0;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --success: #059669;
+  --success-hover: #047857;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #526077; /* WCAG AA on white */
+  --accent: #eff6ff;
+  --accent-foreground: #1d4ed8;
+  --destructive: #dc2626;
+  --border: #e2e8f0;
+  --input: #cbd5e1;
+  --ring: #2563eb;
+  --nav-bg: rgba(248, 250, 252, 0.92);
+  color-scheme: light;
 }
 
 .dark {
-  /* Obsidian & Deep Slate Dark Theme */
-  --background: #090D16;         /* Deep Rich Black/Navy */
-  --foreground: #F8FAFC;         /* Crisp Light Gray Text */
+  --background: #090d16;
+  --foreground: #f8fafc;
   --card: #111827;
-  --card-foreground: #F8FAFC;
+  --card-foreground: #f8fafc;
   --popover: #111827;
-  --popover-foreground: #F8FAFC;
-  
-  /* Primary Theme Color (Tech Blue - Dark Mode Contrast) */
-  --primary: #3B82F6;            /* Blue 500 */
-  --primary-hover: #60A5FA;      /* Blue 400 */
-  --primary-foreground: #090D16;
-
-  /* Success & Action Color (Emerald Green) */
-  --success: #10B981;            /* Emerald 500 */
-  --success-hover: #34D399;      /* Emerald 400 */
-  
-  --secondary: #1E293B;          /* Slate 800 */
-  --secondary-foreground: #F8FAFC;
-  
-  --muted: #1E293B;
-  --muted-foreground: #94A3B8;   /* Slate 400 */
-  
-  --accent: #1E293B;
-  --accent-foreground: #3B82F6;
-  
-  --destructive: #F87171;
-  --border: #1E293B;
-  --input: #1E293B;
-  --ring: #3B82F6;
-
-  /* Header Navbar & Submenu Colors (Dark Mode) */
-  --nav-bg: rgba(9, 13, 22, 0.85);
-  --nav-scrolled-bg: rgba(17, 24, 39, 0.92);
-  --nav-border: rgba(30, 41, 59, 0.8);
-  --submenu-bg: #111827;
-  --submenu-border: #1E293B;
+  --popover-foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-foreground: #090d16;
+  --success: #10b981;
+  --success-hover: #34d399;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #a3b1c6;
+  --accent: #172554;
+  --accent-foreground: #93c5fd;
+  --destructive: #f87171;
+  --border: #1e293b;
+  --input: #334155;
+  --ring: #60a5fa;
+  --nav-bg: rgba(9, 13, 22, 0.92);
+  color-scheme: dark;
 }
 
-/* 3. Global Base & SEO / Typography Defaults */
 @layer base {
   html {
-    scroll-behavior: smooth;
     text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 5rem;
   }
-
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    @apply bg-background text-foreground font-sans antialiased;
   }
-
-  /* Headings Accent */
-  h1, h2, h3, h4, .font-editorial {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-serif);
     font-weight: 500;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-/* 4. Header Nav & Sub-Menu Styling Utilities */
-@utility site-header {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+/* ---------- Layout ---------- */
+@utility container-site {
   width: 100%;
-  background-color: var(--nav-bg);
-  border-bottom: 1px solid var(--nav-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all 0.3s ease-in-out;
-
-  &.is-scrolled {
-    background-color: var(--nav-scrolled-bg);
-    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-    border-bottom-color: var(--border);
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 640px) {
+    padding-inline: 1.5rem;
   }
 }
 
-@utility nav-link {
-  color: var(--foreground);
-  font-weight: 500;
-  font-size: 0.875rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
-
-  &:hover {
-    color: var(--primary);
-    background-color: var(--accent);
+@utility section {
+  padding-block: 3.5rem;
+  @media (width >= 768px) {
+    padding-block: 5rem;
   }
 }
 
-@utility sub-menu {
-  background-color: var(--submenu-bg);
-  border: 1px solid var(--submenu-border);
+/* ---------- Type scale ---------- */
+@utility h1-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 1.4rem + 3vw, 3.4rem);
+  line-height: 1.08;
+}
+@utility h2-section {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 1.25rem + 1.4vw, 2.25rem);
+  line-height: 1.15;
+}
+@utility lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  max-width: 42rem;
+}
+
+/* ---------- Buttons ---------- */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.25rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  padding: 0.5rem;
-  backdrop-filter: blur(16px);
-
-  & .sub-menu-item {
-    display: flex;
-    align-items: center;
-    padding: 0.625rem 0.875rem;
-    font-size: 0.875rem;
-    color: var(--foreground);
-    border-radius: var(--radius-sm);
-    transition: all 0.15s ease;
-
-    &:hover {
-      background-color: var(--accent);
-      color: var(--primary);
-      transform: translateX(2px);
-    }
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+@utility btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  &:hover {
+    background: var(--primary-hover);
+  }
+}
+@utility btn-whatsapp {
+  background: var(--color-whatsapp);
+  color: #fff;
+  &:hover {
+    background: var(--color-whatsapp-hover);
+  }
+}
+@utility btn-outline {
+  border: 1px solid var(--input);
+  background: var(--card);
+  color: var(--foreground);
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 }
 
-/* 5. Content Canvas Utility (Auto-styles Markdown Posts / Calculators) */
-@utility content-canvas {
-  /* Headings Setup */
-  & h1, & h2, & h3, & h4 {
-    font-family: var(--font-serif);
-    color: var(--foreground);
-    margin-top: 1.8em;
-    margin-bottom: 0.6em;
-    line-height: 1.25;
+/* ---------- Surfaces ---------- */
+@utility card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* ---------- Text links inside content ---------- */
+@utility link {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  &:hover {
+    text-decoration-thickness: 2px;
   }
+}
 
-  & h1 { font-size: 2.25rem; font-weight: 600; }
-  & h2 { font-size: 1.75rem; font-weight: 600; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
-  & h3 { font-size: 1.35rem; font-weight: 500; }
-
-  /* Paragraphs */
-  & p {
-    color: var(--foreground);
-    font-size: 1rem;
-    line-height: 1.75;
-    margin-bottom: 1.25em;
-    opacity: 0.92;
-  }
-
-  /* Code Blocks */
-  & code {
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-    background-color: var(--muted);
-    color: var(--primary);
-    padding: 0.2em 0.4em;
-    border-radius: var(--radius-xs);
-    border: 1px solid var(--border);
-  }
-
-  /* High Converting Links */
-  & a {
-    color: var(--primary);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    font-weight: 500;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: var(--primary-hover);
-    }
-  }
-
-  /* Structured Lists */
-  & ul, & ol {
-    margin-bottom: 1.25em;
-    padding-left: 1.5em;
-  }
-
-  & ul { list-style-type: disc; }
-  & ol { list-style-type: decimal; }
-  & li { margin-bottom: 0.5em; line-height: 1.6; }
-
-  /* Tables */
-  & table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5em 0;
-    font-size: 0.9rem;
-  }
-
-  & th, & td {
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    text-align: left;
-  }
-
-  & th {
-    background-color: var(--muted);
-    font-weight: 600;
-  }
-
-  /* Blockquotes & Images */
-  & blockquote {
-    border-left: 3px solid var(--primary);
-    padding-left: 1rem;
-    font-style: italic;
+/* ---------- Forms ---------- */
+@utility field {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--input);
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 1rem; /* 16px: iOS zoom nahi karta */
+  &::placeholder {
     color: var(--muted-foreground);
-    margin: 1.5em 0;
   }
-
-  & img {
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    margin: 1.5em 0;
+  &:focus {
+    outline: 2px solid var(--ring);
+    outline-offset: 0;
+    border-color: transparent;
   }
 }
 
-/* Code Snippets & Syntax Highlighting Styles */
-[data-rehype-pretty-code-title] {
-  @apply rounded-t-xl border-x border-t border-border bg-slate-900 px-4 py-2 font-mono text-xs text-slate-300 font-semibold;
+/* FAQ <details> — JavaScript ke baghair accordion */
+.faq-item summary {
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item .faq-icon {
+  transition: transform 0.2s ease;
+}
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
 }
 
-[data-rehype-pretty-code-title] + [data-rehype-pretty-code-fragment] div {
-  @apply rounded-t-none border-t-0;
-}
-
-[data-rehype-pretty-code-fragment] {
-  @apply relative my-6 overflow-hidden rounded-xl border border-border bg-slate-950 text-slate-50;
-}
-
-[data-rehype-pretty-code-fragment] pre {
-  @apply overflow-x-auto p-4 text-sm leading-relaxed;
-}
-
-[data-highlighted-line] {
-  @apply -mx-4 bg-slate-800/60 px-4 border-l-2 border-primary;
-}
-
-@keyframes slideInLeft {
+/* Hero screenshots: page load par sirf aik dafa */
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: none;
   }
 }
-
-/* FAQ Component Custom Utilities (Tailwind v4) */
-@utility faq-item {
-  border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
-  background-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
-
-  & summary::-webkit-details-marker {
-    display: none;
-  }
+.rise {
+  animation: rise 0.6s ease-out both;
 }
 
-@utility faq-summary {
-  width: 100%;
-  padding: 1rem 1.25rem;
-  text-align: left;
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: var(--foreground);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: var(--accent);
-  }
-
-  @media (min-width: 640px) {
-    font-size: 1rem;
-  }
+/* ---------- Currency (PriceTag) ---------- */
+[data-price] {
+  display: none;
 }
-
-@utility faq-content {
-  padding: 0.5rem 1.25rem 1.25rem 1.25rem;
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
-  border-top: 1px solid var(--border);
-  line-height: 1.625;
-  font-weight: 400;
-
-  @media (min-width: 640px) {
-    font-size: 0.875rem;
-  }
+html:not([data-cur="GBP"]):not([data-cur="PKR"]) [data-price="USD"],
+html[data-cur="GBP"] [data-price="GBP"],
+html[data-cur="PKR"] [data-price="PKR"] {
+  display: inline;
+}
+html:not([data-cur="GBP"]):not([data-cur="PKR"]) [data-cur-btn="USD"],
+html[data-cur="GBP"] [data-cur-btn="GBP"],
+html[data-cur="PKR"] [data-cur-btn="PKR"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
 }

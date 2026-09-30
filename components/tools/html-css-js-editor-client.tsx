@@ -3,9 +3,8 @@ import Link from "next/link";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { FadeIn } from "@/components/animations/fade-in";
-import FaqSchema from "@/components/FaqSchema";
-import { FaqSection } from "@/components/sections/faq-section";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { FAQ } from "@/components/sections/FAQ";
 
 import {
   Play,
@@ -247,7 +246,7 @@ export default function HtmlCssJsEditorClient() {
   ];
 
   return (
-    <main className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
+    <div className="w-full min-h-screen py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto space-y-20 bg-transparent text-foreground">
       
       {/* 1. Hero Section */}
       <FadeIn>
@@ -486,8 +485,7 @@ export default function HtmlCssJsEditorClient() {
       </FadeIn>
 
       {/* 7. SEO Schema & FAQs Section */}
-        <FaqSchema faqList={faqs} />
-        <FaqSection faqs={faqs} />
-    </main>
+        <FAQ items={faqs} />
+    </div>
   );
 }
