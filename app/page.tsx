@@ -113,7 +113,7 @@ export default function HomePage() {
             </h2>
             <p className="lead mt-3">
               {site.author.name}, web developer in {site.author.city}, {site.author.country}. Building websites since{" "}
-              {site.author.startedYear}, with work for clients in Pakistan, Germany, the US and the UK.
+              {site.author.startedYear}, with work for clients in Pakistan, Germany, Italy, the US and the UK.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <ButtonLink href="/about" variant="outline">

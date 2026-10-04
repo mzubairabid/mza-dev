@@ -36,7 +36,8 @@ export function proxy(req: NextRequest) {
 
   const res = NextResponse.next();
   if (!req.cookies.get("cur")) {
-    const country = req.headers.get("x-vercel-ip-country") ?? "";
+    // Vercel: x-vercel-ip-country | Cloudflare: cf-ipcountry
+    const country = req.headers.get("x-vercel-ip-country") ?? req.headers.get("cf-ipcountry") ?? "";
     res.cookies.set("cur", CURRENCY[country] ?? "USD", { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" });
   }
   return res;

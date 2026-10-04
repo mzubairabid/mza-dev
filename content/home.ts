@@ -4,10 +4,10 @@ import type { FaqItem } from "@/types/content";
 export const home = {
   metaTitle: "Web Developer for Next.js, Shopify & WordPress | MZA Dev",
   metaDescription:
-    "M Zubair Abid builds fast Next.js, Shopify and WordPress websites for businesses in Pakistan, the US and the UK. Building websites since 2019.",
+    "Muhammad Zubair Abid builds fast Next.js, Shopify and WordPress websites for businesses in Pakistan, the US and the UK. Building websites since 2019.",
   h1: "Websites and online stores that load fast and bring in leads",
   intro:
-    "I'm M Zubair Abid, a web developer in Hyderabad, Pakistan. Since 2019 I've been building Next.js, Shopify and WordPress sites for businesses in Pakistan, the US, the UK and Europe, with technical SEO built in from the start.",
+    "I'm Muhammad Zubair Abid, a web developer from Hyderabad, Pakistan. Since 2019 I've been building Next.js, Shopify and WordPress sites for businesses in Pakistan, the US, the UK and Europe, with technical SEO built in from the start.",
   heroImages: [
     { src: "/project-images/desi-shopzellingen-hero.webp", alt: "Desi Shop Zellingen WooCommerce store" },
     { src: "/project-images/farah-brand-2026-hero.webp", alt: "Farah Brand online store" },
@@ -27,13 +27,13 @@ export const home = {
     { group: "Websites and apps", items: "Next.js, React, TypeScript, Tailwind CSS, Node.js, Express, MongoDB" },
     { group: "Stores and CMS", items: "Shopify and Liquid, WordPress, WooCommerce" },
     { group: "SEO and analytics", items: "Google Search Console, GA4, PageSpeed Insights, Rank Math, Semrush, Ahrefs" },
-    { group: "Hosting", items: "Vercel, Netlify, Cloudflare" },
+    { group: "Hosting", items: "Hostinger, Cloudflare, Vercel, Netlify" },
   ],
   faqTitle: "Common questions",
   faqs: [
     {
       q: "Who is MZA Dev?",
-      a: "MZA Dev is the web development studio of M Zubair Abid, a web developer based in Hyderabad, Pakistan. He has been building websites since 2019 and works with Next.js, React, Shopify and WordPress.",
+      a: "MZA Dev is the web development studio of Muhammad Zubair Abid, a web developer based in Hyderabad, Pakistan. He has been building websites since 2019 and works with Next.js, React, Shopify and WordPress.",
     },
     {
       q: "Which countries do you work with?",

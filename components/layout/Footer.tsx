@@ -22,7 +22,7 @@ export function Footer() {
             <span className="font-serif text-xl">{site.name}</span>
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Web development, Shopify, WordPress and technical SEO by {site.author.name}, {site.author.city},{" "}
+            Web development, Shopify, WordPress, React, Next.js and technical SEO by {site.author.name}, {site.author.city},{" "}
             {site.author.country}. Building websites since {site.author.startedYear}.
           </p>
           <ul className="space-y-1.5 text-sm">

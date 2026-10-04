@@ -19,7 +19,7 @@ export const services: Service[] = [
     navDescription: "Next.js & React websites and web apps",
     metaTitle: "Custom Web Development with Next.js & React | MZA Dev",
     metaDescription:
-      "Custom websites and web apps built with Next.js and React: fast, mobile-first and SEO-ready. Built by M Zubair Abid. Share your project for a quote.",
+      "Custom websites and web apps built with Next.js and React: fast, mobile-first and SEO-ready. Built by Muhammad Zubair Abid. Share your project for a quote.",
     h1: "Custom web development with Next.js and React",
     intro:
       "I build business websites, landing pages and web apps in Next.js and React. Every build is mobile-first, loads fast on a phone connection and ships with technical SEO already in place, so you are not paying someone else to fix it after launch.",

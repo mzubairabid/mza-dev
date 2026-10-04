@@ -10,11 +10,11 @@ export const site = {
   url: "https://www.mzadev.com", // end me "/" nahi
   locale: "en_US",
   description:
-    "MZA Dev is the web development studio of M Zubair Abid: Next.js, Shopify and WordPress websites, plus technical SEO, for businesses in Pakistan, the US and the UK.",
+    "MZA Dev is the web development studio of Muhammad Zubair Abid: Next.js, Shopify and WordPress websites, plus technical SEO, for businesses in Pakistan, the US and the UK.",
   foundingYear: "2019",
 
   author: {
-    name: "M Zubair Abid",
+    name: "Muhammad Zubair Abid",
     alternateName: "Muhammad Zubair Abid",
     jobTitle: "Web Developer",
     image: "/project-images/author-mza.webp",

@@ -177,7 +177,7 @@ export const caseStudies: CaseStudy[] = [
       "A Fiverr client sold a high-value partnership programme through a stock Shopify theme that looked like every other store. I built a custom design in Shopify Liquid and connected Funnelish for the checkout flow.",
     cardLine: "Custom Liquid design and Funnelish funnel for a premium offer.",
     client: "Blueprint Respiro",
-    location: "[COUNTRY]",
+    location: "Italy",
     industry: "E-commerce / partnership programme",
     year: "2026",
     platform: "Shopify",

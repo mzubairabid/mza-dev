@@ -51,9 +51,9 @@ function blogRedirects() {
 const nextConfig = {
   poweredByHeader: false,
   images: {
-    formats: ["image/avif", "image/webp"],
-    // remotePatterns nahi: pehle "**" tha, jis se koi bhi aap ke image optimizer ko
-    // proxy bana kar Vercel quota khatam kar sakta tha. Sab images /public se hain.
+    // Cloudflare Workers: images seedha CDN se (pehle se WebP aur 150 KB se chhoti).
+    // Is se har image Worker request nahi banti aur free plan ki limit bachti hai.
+    unoptimized: true,
   },
   experimental: {
     optimizePackageImports: ["lucide-react"],

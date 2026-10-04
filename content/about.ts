@@ -2,12 +2,12 @@
 import type { FaqItem } from "@/types/content";
 
 export const about = {
-  metaTitle: "About M Zubair Abid, Web Developer Since 2019 | MZA Dev",
+  metaTitle: "About Muhammad Zubair Abid, Web Developer Since 2019 | MZA Dev",
   metaDescription:
-    "M Zubair Abid is a web developer from Hyderabad, Pakistan, building websites since 2019 with Next.js, React, WordPress and Shopify.",
-  h1: "About M Zubair Abid",
+    "Muhammad Zubair Abid is a web developer from Hyderabad, Pakistan, building websites since 2019 with Next.js, React, WordPress and Shopify.",
+  h1: "About Muhammad Zubair Abid",
   intro: [
-    "I'm M Zubair Abid, the developer behind MZA Dev. I live in Hyderabad, Pakistan, and I've been building for the web since 2019.",
+    "I'm Muhammad Zubair Abid, the developer behind MZA Dev. I'm from Hyderabad, Pakistan, and I've been building for the web since 2019.",
     "I started with C# MVC applications and SQL databases, moved into JavaScript tools and WordPress, and now build most new projects in Next.js and React. Along the way I launched my own tech site, Gadget Crunchie, which taught me how SEO works from the publisher's side.",
     "Today I work with businesses in Pakistan, the US, the UK and Europe: building websites and stores, fixing slow or broken ones, and making sure Google can find them.",
   ],
@@ -41,12 +41,12 @@ export const about = {
   ],
   faqs: [
     {
-      q: "Who is M Zubair Abid?",
-      a: "M Zubair Abid (Muhammad Zubair Abid) is a web developer from Hyderabad, Pakistan, and the founder of MZA Dev. He has been building websites since 2019, working with Next.js, React, Shopify and WordPress.",
+      q: "Who is Muhammad Zubair Abid?",
+      a: "Muhammad Zubair Abid (Muhammad Zubair Abid) is a web developer from Hyderabad, Pakistan, and the founder of MZA Dev. He has been building websites since 2019, working with Next.js, React, Shopify and WordPress.",
     },
     {
       q: "Is MZA Dev an agency?",
-      a: "No. MZA Dev is an independent studio run by M Zubair Abid. Clients work directly with him.",
+      a: "No. MZA Dev is an independent studio run by Muhammad Zubair Abid. Clients work directly with him.",
     },
     {
       q: "Where can I see reviews of your work?",

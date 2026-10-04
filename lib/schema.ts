@@ -50,7 +50,7 @@ export function organizationSchema() {
     name: site.name,
     url: site.url,
     logo: absoluteUrl("/project-images/mza-dev-logo.webp"),
-    image: absoluteUrl("/opengraph-image"),
+    image: absoluteUrl("/og/home.png"),
     description: site.description,
     email: site.contact.email,
     ...(isFilled(site.contact.whatsappDisplay) && { telephone: site.contact.whatsappDisplay }),

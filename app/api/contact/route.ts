@@ -129,7 +129,7 @@ export async function POST(req: Request) {
         from: FROM,
         to: email,
         subject: "We received your message - MZA Dev",
-        text: `Hi,\n\nThanks for getting in touch with MZA Dev. Your message has been received and you'll get a reply ${site.contact.responseTime}.\n\nM Zubair Abid\nMZA Dev - ${site.url}`,
+        text: `Hi,\n\nThanks for getting in touch with MZA Dev. Your message has been received and you'll get a reply ${site.contact.responseTime}.\n\nMuhammad Zubair Abid\nMZA Dev - ${site.url}`,
       })
       .catch(() => {});
   }

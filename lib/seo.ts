@@ -2,23 +2,27 @@
 import type { Metadata } from "next";
 import { absoluteUrl, site } from "@/lib/site";
 
+/** "/" → "home", "/tools/nursery-calculator" → "tools-nursery-calculator" */
+export function ogKey(path: string) {
+  return path === "/" ? "home" : path.replace(/^\//, "").replace(/\//g, "-");
+}
+
 type SeoInput = {
   title: string;
   description: string;
   path: string;
   type?: "website" | "article" | "profile";
   noindex?: boolean;
-  /** true = site ki default OG image (jin routes ki apni opengraph-image.tsx NAHI hai) */
+  /** purana option (ab har page ki apni PNG hai: public/og/) */
   defaultImage?: boolean;
 };
 
 /**
  * - title "absolute" hai: layout koi "| MZA Dev" dobara nahi jorega
  * - canonical har page ka apna
- * - OG image har route ki apni opengraph-image.tsx se aati hai (file convention),
- *   is liye yahan images set nahi karte
+ * - OG image: public/og/<page>.png (scripts/generate-og.tsx build se pehle banata hai)
  */
-export function buildMetadata({ title, description, path, type = "website", noindex, defaultImage }: SeoInput): Metadata {
+export function buildMetadata({ title, description, path, type = "website", noindex }: SeoInput): Metadata {
   const url = absoluteUrl(path);
 
   if (process.env.NODE_ENV !== "production") {
@@ -37,13 +41,13 @@ export function buildMetadata({ title, description, path, type = "website", noin
       siteName: site.name,
       locale: site.locale,
       type,
-      ...(defaultImage && { images: [{ url: `${site.url}/opengraph-image`, width: 1200, height: 630, alt: title }] }),
+      images: [{ url: `${site.url}/og/${ogKey(path)}.png`, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(defaultImage && { images: [`${site.url}/opengraph-image`] }),
+      images: [`${site.url}/og/${ogKey(path)}.png`],
     },
     ...(noindex && { robots: { index: false, follow: true } }),
   };

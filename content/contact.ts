@@ -2,7 +2,7 @@
 export const contact = {
   metaTitle: "Contact MZA Dev | Get a Website Project Quote",
   metaDescription:
-    "Tell MZA Dev about your website project. Reach M Zubair Abid by form, email or WhatsApp for Next.js, Shopify, WordPress or SEO work.",
+    "Tell MZA Dev about your website project. Reach Muhammad Zubair Abid by form, email or WhatsApp for Next.js, Shopify, WordPress or SEO work.",
   h1: "Tell me about your project",
   intro:
     "Share what you need and I'll reply with questions or a quote, usually within 24 hours. Prefer WhatsApp? Use the button and your message is ready to send.",
