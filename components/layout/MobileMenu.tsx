@@ -1,15 +1,22 @@
 "use client";
 // components/layout/MobileMenu.tsx — sirf mobile par. Desktop menu server-rendered hai.
+// Menu panel createPortal se <body> me render hota hai. Wajah: Header par
+// "backdrop-blur" hai, aur CSS me backdrop-filter wale parent ke andar
+// "position: fixed" element us parent (64px header) ke andar qaid ho jata hai,
+// is liye panel ki height 0 ho jati thi aur menu nazar nahi aata tha.
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { CloseIcon, MenuIcon } from "@/components/ui/Icons";
 import type { NavItem } from "@/lib/site";
 
 export function MobileMenu({ items }: { items: NavItem[] }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
+  useEffect(() => setMounted(true), []);
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -31,9 +38,9 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
         {open ? <CloseIcon /> : <MenuIcon />}
       </button>
 
-      {open && (
-        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-border bg-background">
-          <nav aria-label="Mobile" className="container-site py-6">
+      {open && mounted && createPortal(
+        <div id="mobile-menu" className="fixed inset-x-0 top-16 bottom-0 z-[60] overflow-y-auto border-t border-border bg-background lg:hidden">
+          <nav aria-label="Mobile" className="container-site py-6" onClick={(e) => (e.target as HTMLElement).closest("a") && setOpen(false)}>
             <ul className="space-y-6">
               {items.map((item) => (
                 <li key={item.href}>
@@ -54,7 +61,8 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
               Get a quote
             </Link>
           </nav>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
