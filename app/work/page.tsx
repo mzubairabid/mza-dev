@@ -29,7 +29,7 @@ export default function WorkPage() {
               Reviews on Upwork
             </ButtonLink>
             <ButtonLink href={site.social.fiverr} variant="outline">
-              Reviews on Fiverr
+              Profile on Fiverr
             </ButtonLink>
           </>
         }

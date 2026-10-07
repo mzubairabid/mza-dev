@@ -1,6 +1,7 @@
-// components/layout/Header.tsx — desktop menu (CSS dropdown, JS nahi) + mobile menu
+// components/layout/Header.tsx — desktop menu (sub menu: DesktopDropdown.tsx) + mobile menu
 import Image from "next/image";
 import Link from "next/link";
+import { DesktopDropdown } from "@/components/layout/DesktopDropdown";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { ChevronDownIcon } from "@/components/ui/Icons";
@@ -27,9 +28,8 @@ export function Header() {
 
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {mainNav.map((item) => (
-              <li key={item.href} className="group relative">
-                {item.external ? (
+            {mainNav.map((item) => {
+              const link = item.external ? (
                   <a href={item.href} target="_blank" rel="noopener" className="rounded-md px-3 py-2 text-[0.9375rem] font-medium hover:bg-accent hover:text-primary">
                     {item.label}
                   </a>
@@ -38,9 +38,16 @@ export function Header() {
                     {item.label}
                     {item.children && <ChevronDownIcon className="size-4 opacity-60" />}
                   </Link>
-                )}
-                {item.children && (
-                  <div className="invisible absolute left-0 top-full pt-2 opacity-0 transition-opacity group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                );
+              if (!item.children) {
+                return (
+                  <li key={item.href} className="relative">
+                    {link}
+                  </li>
+                );
+              }
+              return (
+                <DesktopDropdown key={item.href} trigger={link}>
                     <ul className="card w-72 p-2 shadow-lg">
                       {item.children.map((c) => (
                         <li key={c.href}>
@@ -51,10 +58,9 @@ export function Header() {
                         </li>
                       ))}
                     </ul>
-                  </div>
-                )}
-              </li>
-            ))}
+                </DesktopDropdown>
+              );
+            })}
           </ul>
         </nav>
 

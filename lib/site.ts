@@ -15,7 +15,7 @@ export const site = {
 
   author: {
     name: "Muhammad Zubair Abid",
-    alternateName: "Muhammad Zubair Abid",
+    alternateName: "M Zubair Abid",
     jobTitle: "Web Developer",
     image: "/project-images/author-mza.webp",
     startedYear: 2019,
@@ -67,19 +67,11 @@ export const mainNav: NavItem[] = [
       { label: "Shopify Stores & Funnels", href: "/shopify-funnels", description: "Store setup, custom Liquid, funnel pages" },
       { label: "WordPress & WooCommerce", href: "/wordpress-development", description: "Lightweight builds and speed fixes" },
       { label: "Technical SEO", href: "/technical-seo", description: "Indexing, Core Web Vitals, schema" },
-      { label: "Graphic Design", href: "/graphic-design", description: "Logos, brand kits, social graphics" },
+      // Graphic design menu se hata diya (page live hai, footer aur /services mein link hai)
     ],
   },
   { label: "Work", href: "/work" },
-  {
-    label: "Tools",
-    href: "/tools",
-    children: [
-      { label: "HTML/CSS/JS Editor", href: "/tools/live-html-css-js-editor-tester", description: "Live code editor in your browser" },
-      { label: "React Compiler", href: "/tools/online-react-compiler-2026", description: "Write and run React online" },
-      { label: "Nursery Calculator", href: "/tools/nursery-calculator", description: "UK nursery profit estimates" },
-    ],
-  },
+  // Tools menu se hata diye. Pages live hain: footer → "Free tools" (/tools)
   { label: "About", href: "/about" },
   { label: "Blog", href: site.blogUrl, external: true },
 ];
@@ -111,9 +103,6 @@ export const footerNav: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Privacy Policy", href: "/privacy-policy" },
       { label: "Terms & Conditions", href: "/terms-and-conditions" },
-      { label: "Disclaimer", href: "/disclaimer" },
-      { label: "Copyright Policy", href: "/copyright-policy" },
-      { label: "Affiliate Disclosure", href: "/affiliate-disclosure" },
     ],
   },
 ];

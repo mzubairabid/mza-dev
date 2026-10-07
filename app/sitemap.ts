@@ -1,7 +1,6 @@
-// app/sitemap.ts — sirf canonical, indexable URLs (koi redirect ya 410 nahi)
+// app/sitemap.ts — sirf canonical, indexable URLs (koi redirect, 410 ya noindex nahi)
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/case-studies";
-import { legalPages } from "@/content/legal";
 import { services } from "@/content/services";
 import { tools } from "@/content/tools";
 import { BLOG_MIGRATION, hasLivePosts } from "@/lib/blog-migration.mjs";
@@ -32,6 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url("/tools", 0.5),
     ...tools.map((t) => url(`/tools/${t.slug}`, 0.5)),
     ...(hasLivePosts() ? [url("/blog", 0.3, "weekly"), ...liveBlog] : []),
-    ...Object.keys(legalPages).map((slug) => url(`/${slug}`, 0.1, "yearly")),
+    // Legal pages noindex hain (footer se link hain), is liye sitemap mein nahi
   ];
 }

@@ -1,19 +1,11 @@
-// Legal text: components/legal/PrivacyPolicy.tsx | title/description: content/legal.ts
-import PrivacyPolicy from "@/components/legal/PrivacyPolicy";
-import { Breadcrumbs } from "@/components/sections/Breadcrumbs";
+// Text: content/legal.ts | Design: components/legal/LegalDoc.tsx
+import { LegalDoc } from "@/components/legal/LegalDoc";
 import { legalPages } from "@/content/legal";
 import { buildMetadata } from "@/lib/seo";
 
 const page = legalPages["privacy-policy"];
-export const metadata = buildMetadata({ title: page.title, description: page.description, path: "/privacy-policy", defaultImage: true });
+export const metadata = buildMetadata({ title: page.title, description: page.description, path: "/privacy-policy", noindex: true });
 
 export default function Page() {
-  return (
-    <>
-      <div className="container-site pt-6">
-        <Breadcrumbs items={[{ name: page.name, href: "/privacy-policy" }]} />
-      </div>
-      <PrivacyPolicy />
-    </>
-  );
+  return <LegalDoc slug="privacy-policy" />;
 }

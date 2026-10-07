@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CheckList, ContentSections } from "@/components/sections/ContentSections";
 import { CTABand } from "@/components/sections/CTABand";
+import { FAQ } from "@/components/sections/FAQ";
 import { JsonLd } from "@/components/sections/JsonLd";
 import { PageHero } from "@/components/sections/PageHero";
 import { ButtonLink } from "@/components/ui/Button";
@@ -107,6 +108,25 @@ export function CaseStudyPage({ study: c, next }: { study: CaseStudy; next?: Cas
         </div>
       </section>
 
+      {c.extraSections?.map((sec) => {
+        const List = sec.numbered ? "ol" : "ul";
+        return (
+          <section key={sec.title} className="section pb-0">
+            <div className="container-site">
+              <h2 className="h2-section">{sec.title}</h2>
+              {sec.body && <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">{sec.body}</p>}
+              {sec.points && (
+                <List className={`mt-5 max-w-3xl space-y-3 leading-relaxed text-muted-foreground ${sec.numbered ? "list-decimal" : "list-disc"} pl-5`}>
+                  {sec.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </List>
+              )}
+            </div>
+          </section>
+        );
+      })}
+
       {showTestimonial && (
         <section className="section">
           <figure className="container-site max-w-3xl">
@@ -142,6 +162,8 @@ export function CaseStudyPage({ study: c, next }: { study: CaseStudy; next?: Cas
           </div>
         </section>
       )}
+
+      {c.faqs && c.faqs.length > 0 && <FAQ items={c.faqs} title="Common questions" />}
 
       <CTABand title="Want something similar?" whatsappText={`Hi Zubair, I saw the ${c.name} case study. I need: `} />
     </>

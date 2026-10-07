@@ -12,6 +12,65 @@ import type { CaseStudy } from "@/types/content";
 
 export const caseStudies: CaseStudy[] = [
   // ------------------------------------------------------------------
+  // Client ka naam client ki marzi se nahi dikhaya gaya.
+  {
+    slug: "us-retreat-center-wordpress-speed",
+    name: "US Retreat Center: WordPress Speed",
+    metaTitle: "WordPress Speed Fix: Mobile Score 46 to 94 | MZA Dev",
+    metaDescription:
+      "How I took a US retreat center's WordPress site from 46 to 94 on mobile PageSpeed by removing heavy plugins and setting up LiteSpeed Cache properly.",
+    h1: "WordPress speed optimization: mobile score from 46 to 94",
+    summary:
+      "A US-based retreat center hired me on Upwork because their WordPress site was slow on mobile. Most of the problem was plugins: several were heavy, and some were doing the same job twice. After a cleanup, hosting-level caching and a careful LiteSpeed Cache setup, the mobile PageSpeed score went from 46 to 94.",
+    cardLine: "Plugin cleanup and caching took a slow WordPress site from 46 to 94 on mobile.",
+    client: "US retreat center (name withheld at the client's request)",
+    location: "United States",
+    industry: "Wellness and retreats",
+    year: "2026",
+    platform: "WordPress",
+    projectType: "Client project (via Upwork)",
+    serviceSlugs: ["wordpress-development", "technical-seo"],
+    heroImage: "/project-images/wordpress-speed-before-after.webp",
+    heroImageAlt: "Original PageSpeed Insights reports before and after the WordPress speed fix, with the URL blurred",
+    gallery: [
+      { src: "/project-images/upwork-review-speed-client.webp", alt: "5-star Upwork review from the US retreat center client" },
+    ],
+    liveUrl: "",
+    proofUrl: "https://www.upwork.com/freelancers/~018cd50705508ffb52",
+    proofLabel: "Reviews on Upwork",
+    challenge:
+      "The site scored 46 for mobile performance in PageSpeed Insights. Largest Contentful Paint in the lab test was 14.7 seconds, and the layout jumped while loading (CLS 0.262). The site had grown over time: plugins had been added for every new feature, and a few of them overlapped. Every extra plugin added scripts and styles to every page, whether the page needed them or not.",
+    work: [
+      {
+        title: "Plugin audit with the client",
+        body: "I listed every active plugin, what it did and what it cost in load time. Then I walked the client through which ones they actually needed. Heavy plugins and duplicates were removed only after the client agreed.",
+      },
+      {
+        title: "Hosting-level caching",
+        body: "I configured the caching settings on the hosting side, so pages are served from cache instead of being rebuilt by WordPress on every visit.",
+      },
+      {
+        title: "LiteSpeed Cache setup",
+        body: "I set up LiteSpeed Cache for page caching and CSS/JS optimization. One of the CSS options broke the page layout during testing, so I adjusted those settings until the site looked right and stayed fast. A high score is useless if visitors see a broken page.",
+      },
+    ],
+    stack: ["WordPress", "LiteSpeed Cache", "Hosting cache", "PageSpeed Insights", "Lighthouse"],
+    results: [
+      "Mobile PageSpeed performance score: 46 to 94 (lab test)",
+      "First retest after the cleanup: 90, with LCP down from 14.7s to 1.8s",
+      "Layout shift (CLS) down from 0.262 to 0",
+      "No features lost: only plugins the client agreed to remove were taken out",
+    ],
+    testimonial: {
+      quote:
+        "Best SEO professional I have found. Hired as a \"conversion specialist\" and I am not disappointed. Fixed multiple issues with outdated pages and website. Replaced plugins with metrics that were valuable to conversions and updated pages.",
+      author: "Client on Upwork",
+      role: "US retreat center, 5.0 rating (Apr–Jun 2026)",
+      approved: true,
+    },
+  },
+
+  // ------------------------------------------------------------------
   {
     slug: "german-desi-shop-zellingen-2025",
     name: "Desi Shop Zellingen",
@@ -215,6 +274,114 @@ export const caseStudies: CaseStudy[] = [
     ],
     stack: ["Shopify", "Liquid", "JavaScript", "Funnelish"],
     results: ["[NATEEJA: e.g. conversion rate before vs after — sirf verified]"],
+  },
+  // ------------------------------------------------------------------
+  {
+    slug: "hyderabad-car-rental-website",
+    name: "Indus Drive Car Rental",
+    metaTitle: "Car Rental Website in Next.js for Hyderabad | MZA Dev",
+    metaDescription:
+      "Case study: a rent a car website with instant pricing, WhatsApp booking and an owner dashboard, built in Next.js by MZA Dev in Hyderabad, Pakistan.",
+    h1: "Car rental website for Hyderabad with instant pricing and an owner dashboard",
+    summary:
+      "Indus Drive is a car rental website I designed and built as a working demo for rent a car businesses in Hyderabad, Sindh. Customers pick a service and a car, see the full price instantly, and send a ready-written booking request. The owner gets a dashboard to manage bookings and the fleet.",
+    cardLine: "Rent a car demo with instant pricing, WhatsApp booking and an owner dashboard.",
+    client: "Indus Drive Rentals",
+    location: "Hyderabad, Pakistan",
+    industry: "Car rental and transport",
+    year: "2026",
+    platform: "Next.js, React, TypeScript",
+    projectType: "Portfolio demo (not a real company)",
+    serviceSlugs: ["web-development-service"],
+    heroImage: "/project-images/hyderabad-car-rental-hero.webp",
+    heroImageAlt: "Indus Drive car rental website homepage for Hyderabad with instant price widget",
+    gallery: [
+      { src: "/project-images/hyderabad-car-rental-owner-dashboard.webp", alt: "Owner dashboard with revenue chart, fleet status and bookings table" },
+      { src: "/project-images/hyderabad-car-rental-booking-page.webp", alt: "Booking page with live price summary for a wedding booking" },
+    ],
+    liveUrl: "https://hyd-rental-car.vercel.app/",
+    proofUrl: "",
+    proofLabel: "",
+    challenge:
+      "Most rent a car businesses in Pakistan still run on phone calls and WhatsApp. A customer asks for the rate, waits for a reply, then asks again about fuel, driver charges and the Karachi airport fare, and many give up and call the next company. Owners have the opposite problem: bookings sit in chat threads and notebooks, so it is hard to see which car is free and what the business earned this week. The goal was a website that answers the price question before the customer has to ask, and gives the owner one place to manage the work.",
+    workTitle: "What was built",
+    work: [
+      {
+        title: "Instant price widget on the homepage",
+        body: "Visitors choose a service, a car and a date from the first screen and get a price in seconds, instead of waiting for a reply.",
+      },
+      {
+        title: "Four services in one booking flow",
+        body: "City pick and drop by the hour or day, Hyderabad to Karachi airport transfers on the M-9, wedding and event cars with flower decoration, and self-drive rental with a security deposit.",
+      },
+      {
+        title: "Fleet with filters and car detail pages",
+        body: "Six local favourites, from Suzuki Mehran to Honda Civic. Customers filter by size, gearbox and self-drive, and each car has its own page with every rate listed.",
+      },
+      {
+        title: "Booking page with live price calculation",
+        body: "The total updates as the customer changes hours, days, round trip, number of wedding cars or decoration. Phone numbers are checked against the Pakistani mobile format.",
+      },
+      {
+        title: "WhatsApp-ready booking message",
+        body: "The request is written for the customer with service, car, date, pickup area, flight number and total. On a live business site it opens WhatsApp addressed to the owner; the demo shows a preview.",
+      },
+      {
+        title: "Owner dashboard",
+        body: "Weekly revenue chart, fleet status for each car and driver, and a bookings table with status filters, search and one-click actions to confirm, start or complete a trip.",
+      },
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "ESLint", "Playwright", "GitHub", "Vercel"],
+    results: [],
+    extraSections: [
+      {
+        title: "How it was built",
+        body: "The demo went from plan to live deploy in one day. A clear scope, with no database and no login, made that possible.",
+        numbered: true,
+        points: [
+          "Plan: services, car list, pricing rules and pages, based on how rent a car businesses in Hyderabad take bookings.",
+          "Design: a visual identity drawn from Sindhi ajrak, with indigo, madder red and saffron, so it doesn't look like a generic template.",
+          "Build: pages, reusable components, pricing logic and the dashboard in Next.js and TypeScript.",
+          "Test: production build, ESLint, and screenshot checks on desktop and a 390px phone screen.",
+          "Deploy: pushed to GitHub and deployed on Vercel.",
+        ],
+      },
+      {
+        title: "Speed, SEO and accessibility decisions",
+        points: [
+          "No database in the demo. Cars, prices and sample bookings live in TypeScript files, so the site never goes down and costs nothing to host.",
+          "Static pages. The homepage, fleet and every car page are generated at build time, so they load fast on mobile data.",
+          "Accessible by default: real form labels, keyboard focus styles, clear validation messages and reduced motion respected.",
+          "The demo is set to noindex so it is never mistaken for a real rental company in Google.",
+        ],
+      },
+      {
+        title: "What a real client version adds",
+        body: "For a real rent a car business, the same site can be connected to a database and owner login, send booking alerts by WhatsApp or SMS, take advance payments for weddings through JazzCash or Easypaisa, and add Urdu and Sindhi pages. That version is scoped and quoted per business, because the right features depend on fleet size and how bookings are handled today.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Who built the Indus Drive car rental website?",
+        a: "It was designed and developed by Muhammad Zubair Abid of MZA Dev, a web developer based in Hyderabad, Pakistan, who has been building websites since 2019.",
+      },
+      {
+        q: "Is Indus Drive a real rent a car company?",
+        a: "No. Indus Drive is a portfolio demo that shows what a car rental website can do. The design, booking flow and dashboard are real and can be built for an actual business.",
+      },
+      {
+        q: "Can you build a car rental website for my city?",
+        a: "Yes. The cars, services, pickup areas and prices are all editable, so the same system works for Karachi, Lahore, Islamabad or any other city, in Pakistan or abroad.",
+      },
+      {
+        q: "Can customers book a rental car through WhatsApp?",
+        a: "Yes. The booking page writes the full request, including car, date, pickup and price, and opens WhatsApp addressed to the owner, which is how most Pakistani customers prefer to book.",
+      },
+      {
+        q: "How much does a car rental website cost in Pakistan?",
+        a: "It depends on the features. A booking website without a database costs less than one with owner login, online payments and SMS alerts. Send your requirements and you get a fixed quote before any work starts.",
+      },
+    ],
   },
 ];
 

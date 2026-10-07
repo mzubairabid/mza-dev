@@ -72,7 +72,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="mt-10">
-            <ServiceGrid services={services} />
+            <ServiceGrid services={services.filter((s) => s.slug !== "graphic-design")} />
           </div>
         </div>
       </section>

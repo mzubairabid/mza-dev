@@ -2,7 +2,7 @@
 import type { FaqItem } from "@/types/content";
 
 export const about = {
-  metaTitle: "About Muhammad Zubair Abid, Web Developer Since 2019 | MZA Dev",
+  metaTitle: "About Muhammad Zubair Abid, Web Developer | MZA Dev",
   metaDescription:
     "Muhammad Zubair Abid is a web developer from Hyderabad, Pakistan, building websites since 2019 with Next.js, React, WordPress and Shopify.",
   h1: "About Muhammad Zubair Abid",
@@ -42,7 +42,7 @@ export const about = {
   faqs: [
     {
       q: "Who is Muhammad Zubair Abid?",
-      a: "Muhammad Zubair Abid (Muhammad Zubair Abid) is a web developer from Hyderabad, Pakistan, and the founder of MZA Dev. He has been building websites since 2019, working with Next.js, React, Shopify and WordPress.",
+      a: "Muhammad Zubair Abid (also written M Zubair Abid) is a web developer from Hyderabad, Pakistan, and the founder of MZA Dev. He has been building websites since 2019, working with Next.js, React, Shopify and WordPress.",
     },
     {
       q: "Is MZA Dev an agency?",

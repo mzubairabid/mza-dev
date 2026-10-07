@@ -98,6 +98,11 @@ const nextConfig = {
       r("/portfolio/shopify-store", "/work"),
       r("/work/shopify-store", "/work"),
 
+      // Purane legal pages: zaroori hissa Terms mein shamil kar diya gaya
+      r("/disclaimer", "/terms-and-conditions"),
+      r("/copyright-policy", "/terms-and-conditions"),
+      r("/affiliate-disclosure", "/terms-and-conditions"),
+
       // Hataya gaya test page
       r("/my-first-page", "/services"),
 

@@ -88,6 +88,10 @@ export type CaseStudy = {
   /** Sirf verified nateeje. "[...]" wali lines site par nahi dikhti. */
   results: string[];
   testimonial?: Testimonial;
+  /** Optional: extra sections (process, decisions, etc.) */
+  extraSections?: { title: string; body?: string; points?: string[]; numbered?: boolean }[];
+  /** Optional: FAQs (FAQPage schema bhi banta hai) */
+  faqs?: FaqItem[];
 };
 
 export type Tool = {
